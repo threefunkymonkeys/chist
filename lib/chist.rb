@@ -2,9 +2,9 @@ ENV['RACK_ENV'] ||= "development"
 require 'yaml'
 
 class Settings
-  def self.load
+  def self.load(path_relative = "/../config/settings.yml")
     begin
-      YAML.load_file(File.dirname(__FILE__) + "/../config/settings.yml")[ENV['RACK_ENV']]
+      YAML.load_file(File.dirname(__FILE__) + path_relative)[ENV['RACK_ENV']]
     rescue => e
       puts e.message
       abort("Can't load settings file")
