@@ -1,0 +1,11 @@
+namespace :db do
+  desc "Create/Update tables"
+  task :generate do
+    require 'sequel'
+    require_relative 'lib/chist'
+
+    DB = Sequel.connect DatabaseUtil.connection_path(Settings.load['db'])
+
+    load './db/init.rb'
+  end
+end
