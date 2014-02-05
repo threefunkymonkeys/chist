@@ -1,0 +1,23 @@
+production:
+  db:
+    host: ''
+    post: ''
+    user: ''
+    password: ''
+    db_name: ''
+
+development:
+  db:
+    host: '127.0.0.1'
+    post: '5432'
+    user: 'chist'
+    password: 'changepasswordplease'
+    db_name: 'chist'
+
+test:
+  db:
+    host: '127.0.0.1'
+    post: '5432'
+    user: 'chist'
+    password: 'changepasswordplease'
+    db_name: 'chist'
