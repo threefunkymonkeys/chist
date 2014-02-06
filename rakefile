@@ -4,7 +4,7 @@ namespace :db do
     require 'sequel'
     require_relative 'lib/chist'
 
-    DB = Sequel.connect DatabaseUtil.connection_path(Settings.load['db'])
+    DB = Chist::Database.connect(Chist::Settings.load['db'])
 
     load './db/init.rb'
   end
