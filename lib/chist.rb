@@ -3,9 +3,15 @@ require 'yaml'
 
 module Chist
   class Settings
+    @@config = {}
+
+    def self.get(key = nil)
+      key.nil? ? @@config : @@config[key]
+    end
+
     def self.load(path_relative = "/../config/settings.yml")
       begin
-        YAML.load_file(File.dirname(__FILE__) + path_relative)[ENV['RACK_ENV']]
+        @@config = YAML.load_file(File.dirname(__FILE__) + path_relative)[ENV['RACK_ENV']]
       rescue => e
         puts e.message
         abort("Can't load settings file")
