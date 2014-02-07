@@ -1,0 +1,7 @@
+en:
+  home:
+    email: 'E-mail'
+    password: 'Password'
+    confirm_password: 'Confirm Password'
+    new_user: 'Sign up'
+    signup: 'Sign up'
