@@ -20,4 +20,4 @@ test:
     post: '5432'
     user: 'chist'
     password: 'changepasswordplease'
-    db_name: 'chist'
+    db_name: 'chist_test'

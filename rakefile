@@ -1,3 +1,6 @@
+@env = ARGV[1].nil? ? 'development' : ARGV[1]
+task @env do ;  end unless ARGV[1].nil?
+
 namespace :db do
   desc "Create/Update tables"
   task :generate do

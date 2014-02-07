@@ -5,12 +5,13 @@ require "i18n"
 require "rack/protection"
 require "shield"
 require_relative "lib/chist"
+require 'mail'
 
 Chist::Settings.load
 DB = Chist::Database.connect Chist::Settings.get('db')
 
 I18n.locale = :en
-I18n.load_path = Dir['./locale/**/*.yml']
+I18n.load_path += Dir['./locale/**/*.yml']
 
 Cuba.settings[:render]= {:template_engine => :haml}
 Cuba.use Rack::Session::Cookie, :secret => "ef9dfef977c094acfb5a642cdeb0f0be0258df5c1d58b8101aee0aae4e041ebedc02ba38d2b4a658"
