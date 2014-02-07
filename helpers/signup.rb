@@ -10,15 +10,19 @@ module Chist::Helpers
 
     def valid?
       reset_errors
-      add_error('email', 'not_missing') unless assert_present('email')
-      add_error('email', 'not_empty') unless assert_not_empty('email')
-      add_error('email', 'unique') unless assert_unique_email
-      add_error('password', 'not_missing') unless assert_present('password')
-      add_error('password', 'not_empty') unless assert_not_empty('password')
-      add_error('password', 'not_strong') unless assert_secure_password
-      add_error('confirm_password', 'not_missing') unless assert_present('confirm_password')
-      add_error('confirm_password', 'not_empty') unless assert_not_empty('confirm_password')
-      add_error('confirm_password', 'not_match') unless assert_password_confirmation
+
+      if assert_present('email') && assert_not_empty('email')
+        assert_valid_email
+        assert_unique_email
+      end
+
+      if assert_present('password') && assert_not_empty('password')
+        assert_secure_password
+      end
+
+      if assert_present('confirm_password') && assert_not_empty('confirm_password')
+        assert_password_confirmation
+      end
 
       @errors.empty?
     end
@@ -33,25 +37,42 @@ module Chist::Helpers
         @errors = {}
       end
 
-      def assert_present(field)
-        @params.has_key?(field)
+      def assert_present(field, &block)
+        result = @params.has_key?(field)
+        add_error(field, 'not_missing') unless result
+        result
       end
 
       def assert_not_empty(field)
         @params[field].strip!
-        !@params.empty?
+        result = !@params[field].empty?
+        add_error(field, 'not_empty') unless result
+        result
       end
 
       def assert_secure_password
-        @params['password'].size >= 6
+        result = @params['password'].size >= 6
+        add_error('password', 'more_than_5_chars') unless result
+        result
       end
 
       def assert_password_confirmation
-        @params['password'] == @params['confirm_password']
+        result =  @params['password'] == @params['confirm_password']
+        add_error('confirm_password', 'match') unless result
+        result
       end
 
       def assert_unique_email
-        User.find(:email => @params['email']).nil?
+        result = User.find(:email => @params['email']).nil?
+        add_error('email', 'unique') unless result
+        result
+      end
+
+      def assert_valid_email
+        parsed = Mail::Address.new(@params['email'])
+        result = parsed.address == @params['email'] && parsed.local != @params['email']
+        add_error('email', 'valid') unless result
+        result
       end
   end
 end
