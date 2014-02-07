@@ -7,7 +7,10 @@ require "shield"
 require_relative "lib/chist"
 require 'mail'
 
-Chist::Settings.load
+ENV["RACK_ENV"] ||= :development
+settings_file = File.join(File.dirname(__FILE__), "config/settings.yml")
+
+Chist::Settings.load(settings_file, ENV["RACK_ENV"])
 DB = Chist::Database.connect Chist::Settings.get('db')
 
 I18n.locale = :en

@@ -9,9 +9,9 @@ module Chist
       key.nil? ? @@config : @@config[key]
     end
 
-    def self.load(path_relative = "/../config/settings.yml")
+    def self.load(file_path, env)
       begin
-        @@config = YAML.load_file(File.dirname(__FILE__) + path_relative)[ENV['RACK_ENV']]
+        @@config = YAML.load_file(file_path)[env]
       rescue => e
         puts e.message
         abort("Can't load settings file")
