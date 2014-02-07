@@ -12,8 +12,7 @@ module Chist
             res.status = 201
             #flash message
           rescue SignupException => e
-            #flash message
-            puts signup.errors
+            #flash message// signup.errors
             res.status = 400
           end
           res.redirect '/'

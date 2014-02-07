@@ -37,7 +37,7 @@ module Chist::Helpers
         @errors = {}
       end
 
-      def assert_present(field, &block)
+      def assert_present(field)
         result = @params.has_key?(field)
         add_error(field, 'not_missing') unless result
         result
