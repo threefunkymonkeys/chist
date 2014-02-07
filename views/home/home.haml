@@ -1,0 +1,12 @@
+%h1=I18n.t('home.new_user')
+%form{action: '/users', method: 'post'}
+  %label=I18n.t('home.email',)
+  %input{type: 'email', name: 'email'}
+  %br
+  %label=I18n.t('home.password')
+  %input{type: 'password', name: 'password'}
+  %br
+  %label=I18n.t('home.confirm_password')
+  %input{type: 'password', name: 'confirm_password'}
+  %br
+  %input{type: 'submit', value: I18n.t('home.signup')}
