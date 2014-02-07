@@ -1,3 +1,6 @@
+@env = ARGV[1].nil? ? 'development' : ARGV[1]
+task @env do ;  end unless ARGV[1].nil?
+
 namespace :db do
   desc "Create/Update tables"
   task :generate do
@@ -8,4 +11,17 @@ namespace :db do
 
     load './db/init.rb'
   end
+end
+
+namespace :test do
+  @env = 'test'
+  desc "Test all"
+  task :all do
+    load_files "test/helpers/*.rb"
+    load_files "test/routes/*.rb"
+  end
+end
+
+def load_files(dir)
+  Dir[dir].each { |file| load file }
 end
