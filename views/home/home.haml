@@ -10,3 +10,13 @@
   %input{type: 'password', name: 'confirm_password'}
   %br
   %input{type: 'submit', value: I18n.t('home.signup')}
+
+%h1=I18n.t('home.login')
+%form{action: '/users/login', method: 'post'}
+  %label=I18n.t('home.email',)
+  %input{type: 'email', name: 'email'}
+  %br
+  %label=I18n.t('home.password')
+  %input{type: 'password', name: 'password'}
+  %br
+  %input{type: 'submit', value: I18n.t('home.login')}

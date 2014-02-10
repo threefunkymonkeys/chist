@@ -1,4 +1,3 @@
-ENV['RACK_ENV'] ||= "development"
 require 'yaml'
 
 module Chist

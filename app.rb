@@ -27,20 +27,31 @@ Dir["./lib/**/*.rb"].each     { |rb| require rb }
 Dir["./models/**/*.rb"].each     { |rb| require rb }
 Dir["./routes/**/*.rb"].each     { |rb| require rb }
 Dir["./helpers/**/*.rb"].each     { |rb| require rb }
+Dir["./context/**/*.rb"].each     { |rb| require rb }
 
 Cuba.plugin Chist::Helpers
+Cuba.plugin Chist::Context::Session
+include Cuba::Render::Helper
 
 Cuba.define do
-  on get do
-    on root do
-      res.write render("./views/layouts/app.haml") {
-        render("./views/home/home.haml")
-      }
-    end
-  end
-
   on 'users' do
     run Chist::Users
+  end
+
+  on 'dashboard' do
+    run Chist::Dashboard
+  end
+
+  on get do
+    on root do
+      if current_user
+        res.redirect('/dashboard')
+      else
+        res.write render("./views/layouts/app.haml") {
+          render("./views/home/home.haml")
+        }
+      end
+    end
   end
 
   on default do

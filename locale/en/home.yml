@@ -5,3 +5,5 @@ en:
     confirm_password: 'Confirm Password'
     new_user: 'Sign up'
     signup: 'Sign up'
+    login: 'Login'
+    user_created: 'Account created'
