@@ -13,7 +13,7 @@ describe Chist::Dashboard do
     assert_equal 200, last_response.status
   end
 
-  it 'should not login user' do
+  it 'should not login user without password' do
     post '/users/login', {email: @user.email, password: ''}
 
     get '/dashboard'
