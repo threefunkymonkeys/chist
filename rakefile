@@ -2,18 +2,6 @@
 task @env do ;  end unless ARGV[1].nil?
 
 namespace :db do
-  desc "Create/Update tables"
-  task :generate do
-    require 'sequel'
-    require_relative 'lib/chist'
-
-    settings = Chist::Settings.load('config/settings.yml', @env)
-
-    DB = Chist::Database.connect(settings['db'])
-
-    load './db/init.rb'
-  end
-
   desc "Run DB migrations on db/migrate directory"
   task :migrate do
     require 'sequel'
