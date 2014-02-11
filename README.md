@@ -13,8 +13,10 @@ Share your chat with a unified style
 
 ## Run Tests
 
-1. Edit `config/settings.yml` with test database config
+1. Install necessary gems with `dep install -f .gems-test` (only the first time or if you need any update)
 
-2. Run `rake db:test:prepare` task to copy development DB structure
+2. Edit `config/settings.yml` with test database config
 
-3. Run `rake test:all`
+3. Run `rake db:test:prepare` task to copy development DB structure
+
+4. Run `rake test:all`
