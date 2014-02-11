@@ -10,8 +10,8 @@ namespace :db do
     Sequel.extension :migration
 
     env      ||= ENV['RACK_ENV'] || :development
-    settings = Chist::Settings.load('config/settings.yml', env)
-    DB       = Chist::Database.connect(settings['db'])
+    Chist::Settings.load(File.dirname(__FILE__) + '/config/settings.yml', env)
+    DB       = Chist::Database.connect(Chist::Settings.get('db'))
 
     puts 'Running migrations...'
 
@@ -27,8 +27,8 @@ namespace :db do
       require_relative 'lib/chist'
 
       env      ||= ENV['RACK_ENV'] || :development
-      settings = Chist::Settings.load('config/settings.yml', env)
-      db       = Chist::Database.connect(settings['db'])
+      Chist::Settings.load( File.dirname(__FILE__) + '/config/settings.yml', env)
+      db       = Chist::Database.connect(Chist::Settings.get('db'))
 
       db.extension :schema_dumper
 
@@ -50,8 +50,8 @@ namespace :db do
 
       puts "Loading schema..."
       env      ||= ENV['RACK_ENV'] || :test
-      settings = Chist::Settings.load('config/settings.yml', env)
-      db       = Chist::Database.connect(settings['db'])
+      Chist::Settings.load(  File.dirname(__FILE__) + '/config/settings.yml', env)
+      db       = Chist::Database.connect(Chist::Settings.get('db'))
 
       migration = eval(File.read('./db/schema.rb'))
 
