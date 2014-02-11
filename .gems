@@ -6,3 +6,7 @@ rack-protection -v 1.5.2
 shield -v 2.1.0
 haml -v 4.0.5
 mail -v 2.5.4
+omniauth -v 1.2.1
+omniauth-facebook -v 1.6.0
+omniauth-twitter -v 1.0.1
+omniauth-github -v 1.1.1
