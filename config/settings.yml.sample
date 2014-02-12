@@ -5,6 +5,13 @@ production:
     user: ''
     password: ''
     db_name: ''
+  omniauth:
+    twitter_key: 'Ph8rktLnaT7VX8HvMg'
+    twitter_secret: '4eANa3c2SfJNl1Iurr9mxKpb9j10fqPRvUzVpXznxHQ'
+    github_key: '445b5ebe9b40840c7970'
+    github_secret: 'b51fd9ad1433f0337927f59de506086fbd327c96'
+    facebook_key: '779384328757645'
+    facebook_secret: '0f9c43cfe20c29ae760cd6de526aec81'
 
 development:
   db:
@@ -13,6 +20,13 @@ development:
     user: 'chist'
     password: 'changepasswordplease'
     db_name: 'chist'
+  omniauth:
+    twitter_key: 'Ph8rktLnaT7VX8HvMg'
+    twitter_secret: '4eANa3c2SfJNl1Iurr9mxKpb9j10fqPRvUzVpXznxHQ'
+    github_key: '445b5ebe9b40840c7970'
+    github_secret: 'b51fd9ad1433f0337927f59de506086fbd327c96'
+    facebook_key: '779384328757645'
+    facebook_secret: '0f9c43cfe20c29ae760cd6de526aec81'
 
 test:
   db:
@@ -21,3 +35,10 @@ test:
     user: 'chist'
     password: 'changepasswordplease'
     db_name: 'chist_test'
+  omniauth:
+    twitter_key: 'Ph8rktLnaT7VX8HvMg'
+    twitter_secret: '4eANa3c2SfJNl1Iurr9mxKpb9j10fqPRvUzVpXznxHQ'
+    github_key: '445b5ebe9b40840c7970'
+    github_secret: 'b51fd9ad1433f0337927f59de506086fbd327c96'
+    facebook_key: '779384328757645'
+    facebook_secret: '0f9c43cfe20c29ae760cd6de526aec81'

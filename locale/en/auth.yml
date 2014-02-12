@@ -1,0 +1,5 @@
+en:
+  auth:
+    twitter: 'You can now log in using Twitter'
+    facebook: 'You can now log in using Facebook'
+    github: 'You can now log in using Github'
