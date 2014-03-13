@@ -3,16 +3,39 @@ module Chist
     define do
       on get do
         on ':provider/callback' do |provider|
-          auth_hash = @env['omniauth.auth']
+          auth = @env['omniauth.auth']
           if current_user
-            current_user.send("#{provider}_user=", auth_hash.uid)
-            current_user.save
-            flash[:success] = I18n.t("auth.#{provider}")
-            res.redirect '/dashboard'
-          elsif user = User.find(:"#{provider}_user" => auth_hash.uid)
+            unless current_user.send("#{provider}_user") != auth.uid
+              current_user.send("#{provider}_user=", auth.uid)
+              current_user.save
+              flash[:success] = I18n.t("auth.#{provider}")
+              res.redirect '/dashboard'
+            else
+              flash[:warning] = I18n.t("auth.duplicated")
+              res.redirect '/dashboard'
+            end
+          elsif user = User.find(:"#{provider}_user" => auth.uid)
             authenticate(user)
             res.redirect '/dashboard'
           else
+            auth_hash = auth.to_signup_hash
+            unless auth_hash[:email].empty?
+              unless User.find(email: auth_hash[:email])
+                user = User.new(email: auth_hash[:email], name: auth_hash[:name])
+                user.send("#{provider}_user=", auth.uid)
+                user.password = SecureRandom.hex(15)
+                user.save
+                flash[:success] = I18n.t('home.user_created')
+                res.redirect '/'
+              else
+                flash[:warning] = I18n.t("auth.account_exists")
+                res.redirect '/'
+              end
+            else
+              session['chist.auth'] = auth_hash
+              flash[:warning] = I18n.t("auth.missing_email")
+              res.redirect '/users/signup'
+            end
           end
         end
       end

@@ -1,0 +1,17 @@
+%h2=I18n.t('home.new_user')
+%form{action: '/users', method: 'post'}
+  %label=I18n.t('home.name',)
+  %input{type: 'text', name: 'name', value: auth[:name]}
+  %br
+  %label=I18n.t('home.email',)
+  %input{type: 'email', name: 'email', value: auth[:email]}
+  %br
+  %label=I18n.t('home.password')
+  %input{type: 'password', name: 'password'}
+  %br
+  %label=I18n.t('home.confirm_password')
+  %input{type: 'password', name: 'confirm_password'}
+  %br
+  %input{type: 'hidden', name: 'origin', value: '/users/signup'}
+  %input{type: 'submit', value: I18n.t('home.signup')}
+

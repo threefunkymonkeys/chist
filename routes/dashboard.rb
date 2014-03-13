@@ -1,14 +1,21 @@
 module Chist
   class Dashboard < Cuba
     define do
-      res.redirect '/' unless current_user
-      on get do
-        on root do
-          res.write render("./views/layouts/app.haml") {
-            render("./views/dashboard/index.haml")
-          }
+      on authenticated(User) do
+        on get do
+          on root do
+            res.write render("./views/layouts/app.haml") {
+              render("./views/dashboard/index.haml")
+            }
+          end
+
+          not_found!
         end
+
+        not_found!
       end
+
+      not_found!
     end
   end
 end

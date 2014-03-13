@@ -16,6 +16,7 @@ settings_file = File.join(File.dirname(__FILE__), "config/settings.yml")
 Chist::Settings.load(settings_file, ENV["RACK_ENV"])
 DB = Chist::Database.connect Chist::Settings.get('db')
 
+I18n.enforce_available_locales = false
 I18n.locale = :en
 I18n.load_path += Dir['./locale/**/*.yml']
 
@@ -71,12 +72,15 @@ Cuba.define do
         }
       end
     end
+
+    on '404' do
+      res.write render("./views/layouts/app.haml") {
+        render("./views/errors/404.haml")
+      }
+    end
+
+    not_found!
   end
 
-  on default do
-    res.status = 404
-    res.write render("./views/layouts/app.haml") {
-      render("./views/errors/404.haml")
-    }
-  end
+  not_found!
 end
