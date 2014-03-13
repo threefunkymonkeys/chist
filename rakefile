@@ -88,6 +88,7 @@ namespace :test do
   task :all do
     load_files "test/helpers/*.rb"
     load_files "test/routes/*.rb"
+    load_files "test/lib/*.rb"
   end
 end
 
