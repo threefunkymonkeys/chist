@@ -3,3 +3,7 @@ en:
     twitter: 'You can now log in using Twitter'
     facebook: 'You can now log in using Facebook'
     github: 'You can now log in using Github'
+
+    duplicated: 'Your account is already linked to this service.'
+    account_exists: 'An account already exists with this email. Please login and add this service from profile settings'
+    missing_email: 'The service does not provide an email. Please create an account using another service or using our form'
