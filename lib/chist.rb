@@ -10,7 +10,7 @@ module Chist
 
     def self.load(file_path, env)
       begin
-        @@config = YAML.load_file(file_path)[env]
+        @@config = YAML.load_file(file_path)[env.to_s]
       rescue => e
         puts e.message
         abort("Can't load settings file")

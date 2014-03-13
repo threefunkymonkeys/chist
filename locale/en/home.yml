@@ -7,3 +7,9 @@ en:
     signup: 'Sign up'
     login: 'Login'
     user_created: 'Account created'
+    login_omniauth: 'Or login with:'
+    name: 'Name'
+    providers:
+      facebook: 'Facebook'
+      twitter: 'Twitter'
+      github: 'Github'

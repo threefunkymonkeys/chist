@@ -17,6 +17,6 @@ describe Chist::Dashboard do
     post '/users/login', {email: @user.email, password: ''}
 
     get '/dashboard'
-    assert_equal 302, last_response.status
+    assert_equal 404, last_response.status
   end
 end

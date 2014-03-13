@@ -18,3 +18,5 @@ class MiniTest::Spec
     Cuba.app
   end
 end
+
+OmniAuth.config.test_mode = true
