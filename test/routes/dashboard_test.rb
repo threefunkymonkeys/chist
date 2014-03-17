@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 
-describe Chist::Dashboard do
+describe ChistApp::Dashboard do
   def setup
     User.all.each { |user| user.delete }
     @user = User.spawn(password: 'qwe123')

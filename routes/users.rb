@@ -1,4 +1,4 @@
-module Chist
+module ChistApp
   class Users < Cuba
     define do
       on get do

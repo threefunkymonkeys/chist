@@ -1,4 +1,4 @@
-module Chist::Helpers
+module ChistApp::Helpers
   class SignupException < StandardError; end
   class Signup
     attr_reader :errors

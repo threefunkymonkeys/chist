@@ -1,4 +1,4 @@
-module Chist
+module ChistApp
   class Dashboard < Cuba
     define do
       on authenticated(User) do

@@ -1,4 +1,4 @@
-module Chist::Helpers
+module ChistApp::Helpers
   def not_found!
     res.redirect '/404'
   end

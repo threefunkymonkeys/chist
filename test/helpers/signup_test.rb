@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 
-describe Chist::Helpers::Signup do
+describe ChistApp::Helpers::Signup do
   def setup
     User.all.each { |user| user.delete }
   end
@@ -13,7 +13,7 @@ describe Chist::Helpers::Signup do
       'confirm_password' => password
     }
 
-    signup = Chist::Helpers::Signup.new(params)
+    signup = ChistApp::Helpers::Signup.new(params)
 
     assert(signup.valid?)
   end
@@ -22,7 +22,7 @@ describe Chist::Helpers::Signup do
     params = {
     }
 
-    signup = Chist::Helpers::Signup.new(params)
+    signup = ChistApp::Helpers::Signup.new(params)
 
     assert_equal(false, signup.valid?)
     assert_equal(true, signup.errors.any?)
@@ -38,7 +38,7 @@ describe Chist::Helpers::Signup do
       'confirm_password' => ''
     }
 
-    signup = Chist::Helpers::Signup.new(params)
+    signup = ChistApp::Helpers::Signup.new(params)
 
     assert_equal(false, signup.valid?)
     assert_equal(true, signup.errors.any?)
@@ -55,7 +55,7 @@ describe Chist::Helpers::Signup do
       'confirm_password' => password
     }
 
-    signup = Chist::Helpers::Signup.new(params)
+    signup = ChistApp::Helpers::Signup.new(params)
 
     assert_equal(false, signup.valid?)
     assert_equal(true, signup.errors.any?)
@@ -71,7 +71,7 @@ describe Chist::Helpers::Signup do
       'confirm_password' => password
     }
 
-    signup = Chist::Helpers::Signup.new(params)
+    signup = ChistApp::Helpers::Signup.new(params)
 
     assert_equal(false, signup.valid?)
     assert_equal(true, signup.errors.any?)
@@ -86,7 +86,7 @@ describe Chist::Helpers::Signup do
       'confirm_password' => password
     }
 
-    signup = Chist::Helpers::Signup.new(params)
+    signup = ChistApp::Helpers::Signup.new(params)
 
     assert_equal(false, signup.valid?)
     assert_equal(true, signup.errors.any?)
@@ -100,7 +100,7 @@ describe Chist::Helpers::Signup do
       'confirm_password' => Faker::Internet.password
     }
 
-    signup = Chist::Helpers::Signup.new(params)
+    signup = ChistApp::Helpers::Signup.new(params)
 
     assert_equal(false, signup.valid?)
     assert_equal(true, signup.errors.any?)

@@ -1,4 +1,4 @@
-module Chist::Context
+module ChistApp::Context
   module Session
     def current_user
       authenticated(User)
