@@ -2,10 +2,10 @@
 
 %form{action: '/chists', method: 'post'}
   %label=I18n.t('chists.title',)
-  %input{type: 'text', name: 'title'}
+  %input{type: 'text', name: 'title', required: true}
   %br
   %label=I18n.t('chists.chat')
-  %textarea{name: 'chist'}
+  %textarea{name: 'chist', required: true}
   %br
   %span
     %input{type: 'checkbox', name: 'public', value: 1}

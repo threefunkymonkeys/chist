@@ -1,23 +1,23 @@
 %h2=I18n.t('home.new_user')
 %form{action: '/users', method: 'post'}
   %label=I18n.t('home.email',)
-  %input{type: 'email', name: 'email'}
+  %input{type: 'email', name: 'email', required: true}
   %br
   %label=I18n.t('home.password')
-  %input{type: 'password', name: 'password'}
+  %input{type: 'password', name: 'password', required: true}
   %br
   %label=I18n.t('home.confirm_password')
-  %input{type: 'password', name: 'confirm_password'}
+  %input{type: 'password', name: 'confirm_password', required: true}
   %br
   %input{type: 'submit', value: I18n.t('home.signup')}
 
 %h2=I18n.t('home.login')
 %form{action: '/users/login', method: 'post'}
   %label=I18n.t('home.email',)
-  %input{type: 'email', name: 'email'}
+  %input{type: 'email', name: 'email', required: true}
   %br
   %label=I18n.t('home.password')
-  %input{type: 'password', name: 'password'}
+  %input{type: 'password', name: 'password', required: true}
   %br
   %input{type: 'submit', value: I18n.t('home.login')}
 
