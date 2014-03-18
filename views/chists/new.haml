@@ -1,0 +1,14 @@
+%h2=I18n.t('chists.create')
+
+%form{action: '/chists', method: 'post'}
+  %label=I18n.t('chists.title',)
+  %input{type: 'text', name: 'title'}
+  %br
+  %label=I18n.t('chists.chat')
+  %textarea{name: 'chist'}
+  %br
+  %span
+    %input{type: 'checkbox', name: 'public', value: 1}
+    =I18n.t('chists.public')
+  %br
+  %input{type: 'submit', value: I18n.t('chists.create')}

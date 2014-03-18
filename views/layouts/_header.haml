@@ -1,0 +1,3 @@
+- if authenticated(User)
+  %a{href: '/dashboard'}=current_user.email
+  %a{href: '/users/logout'}=I18n.t('Logout')

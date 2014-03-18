@@ -42,6 +42,7 @@ module ChistApp
             remember(authenticated(User)) if req.params['remember_me']
             res.redirect "/dashboard"
           else
+            flash[:error] = I18n.t('home.login_error')
             res.redirect "/"
           end
         end

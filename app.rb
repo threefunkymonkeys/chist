@@ -62,6 +62,10 @@ Cuba.define do
     run ChistApp::Dashboard
   end
 
+  on 'chists' do
+    run ChistApp::Chists
+  end
+
   on get do
     on root do
       if current_user
