@@ -9,6 +9,7 @@ require 'mail'
 require 'omniauth-github'
 require 'omniauth-twitter'
 require 'omniauth-facebook'
+require 'hatch'
 
 ENV["RACK_ENV"] ||= :development
 settings_file = File.join(File.dirname(__FILE__), "config/settings.yml")
@@ -44,9 +45,12 @@ Dir["./models/**/*.rb"].each     { |rb| require rb }
 Dir["./routes/**/*.rb"].each     { |rb| require rb }
 Dir["./helpers/**/*.rb"].each     { |rb| require rb }
 Dir["./context/**/*.rb"].each     { |rb| require rb }
+Dir["./validators/**/*.rb"].each     { |rb| require rb }
 
 Cuba.plugin ChistApp::Helpers
 Cuba.plugin ChistApp::Context::Session
+Cuba.plugin ChistApp::Validators
+
 include Cuba::Render::Helper
 
 Cuba.define do

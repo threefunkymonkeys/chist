@@ -18,11 +18,16 @@ module ChistApp
       on post do
         on root do
           begin
+            chist = req.params['chist'].strip
+            chist_form = ChistApp::Validators::ChistForm.hatch(chist)
+
+            raise ArgumentError.new(chist_form.errors.full_messages.join(', ')) unless chist_form.valid?
+
             Chist.create({
-              title:     req.params['title'],
-              chist:     req.params['chist'],
-              chist_raw: req.params['chist'],
-              public:    req.params.has_key?('public'),
+              title:     chist['title'],
+              chist:     chist['chist'],
+              chist_raw: chist['chist'],
+              public:    chist.has_key?('public'),
               user: current_user
             })
             flash[:success] = I18n.t('chists.chists_created')

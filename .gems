@@ -10,3 +10,4 @@ omniauth -v 1.2.1
 omniauth-facebook -v 1.6.0
 omniauth-twitter -v 1.0.1
 omniauth-github -v 1.1.1
+hatch -v 0.1.3
