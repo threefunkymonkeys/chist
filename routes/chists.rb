@@ -5,7 +5,7 @@ module ChistApp
         on authenticated(User) do
           on 'new' do
             res.write render("./views/layouts/app.haml") {
-              render("./views/chists/new.haml")
+              render("./views/chists/new.haml", params: session.delete('chist.chist_params') || {})
             }
           end
 
@@ -33,7 +33,9 @@ module ChistApp
             flash[:success] = I18n.t('chists.chists_created')
             res.redirect '/dashboard'
           rescue => e
-            res.write e.message
+            flash[:error] = e.message
+            session['chist.chist_params'] = chist
+            res.redirect '/chists/new'
           end
         end
 

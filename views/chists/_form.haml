@@ -1,0 +1,12 @@
+%label=I18n.t('chists.title',)
+%input{type: 'text', name: 'chist[title]', value: params['title'] || '', required: true}
+%br
+%label=I18n.t('chists.chat')
+%textarea{name: 'chist[chist]', required: true}
+  =params['chist'] || ''
+%br
+%span
+  %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: params.has_key?('public')}
+  =I18n.t('chists.public')
+%br
+%input{type: 'submit', value: I18n.t('chists.create')}
