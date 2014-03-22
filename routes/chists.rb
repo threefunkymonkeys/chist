@@ -2,6 +2,17 @@ module ChistApp
   class Chists < Cuba
     define do
       on get do
+
+        on ":id" do |chist_id|
+          if chist = Chist[chist_id]
+            res.write render("./views/layouts/app.haml") {
+              render("./views/chists/show.haml", chist: chist)
+            }
+          else
+            not_found!
+          end
+        end
+
         on authenticated(User) do
           on 'new' do
             res.write render("./views/layouts/app.haml") {

@@ -4,4 +4,5 @@
 - if chists.any?
   %ul
     - chists.each do |chist|
-      %li=chist.title
+      %li
+        %a{href: "/chists/#{chist.id}"}=chist.title
