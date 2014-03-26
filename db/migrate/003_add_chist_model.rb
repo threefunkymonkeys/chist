@@ -6,7 +6,7 @@ Sequel.migration do
       String :title, :null => false
       Text :chist, :null => false
       Text :chist_raw, :null => false
-      Boolean :public, :default => true
+      Boolean :public, :default => false
     end
   end
 
