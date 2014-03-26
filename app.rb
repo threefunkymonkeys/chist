@@ -9,12 +9,13 @@ require 'mail'
 require 'omniauth-github'
 require 'omniauth-twitter'
 require 'omniauth-facebook'
+require 'hatch'
 
 ENV["RACK_ENV"] ||= :development
 settings_file = File.join(File.dirname(__FILE__), "config/settings.yml")
 
-Chist::Settings.load(settings_file, ENV["RACK_ENV"])
-DB = Chist::Database.connect Chist::Settings.get('db')
+ChistApp::Settings.load(settings_file, ENV["RACK_ENV"])
+DB = ChistApp::Database.connect ChistApp::Settings.get('db')
 
 I18n.enforce_available_locales = false
 I18n.locale = :en
@@ -28,7 +29,7 @@ OmniAuth.config.on_failure = Proc.new { |env|
   OmniAuth::FailureEndpoint.new(env).redirect_to_failure
 }
 
-omniauth = Chist::Settings.get('omniauth')
+omniauth = ChistApp::Settings.get('omniauth')
 
 Cuba.use OmniAuth::Builder do
   provider :github, omniauth['github_key'], omniauth['github_secret'], :scope => "user,repo"
@@ -44,22 +45,29 @@ Dir["./models/**/*.rb"].each     { |rb| require rb }
 Dir["./routes/**/*.rb"].each     { |rb| require rb }
 Dir["./helpers/**/*.rb"].each     { |rb| require rb }
 Dir["./context/**/*.rb"].each     { |rb| require rb }
+Dir["./validators/**/*.rb"].each     { |rb| require rb }
 
-Cuba.plugin Chist::Helpers
-Cuba.plugin Chist::Context::Session
+Cuba.plugin ChistApp::Helpers
+Cuba.plugin ChistApp::Context::Session
+Cuba.plugin ChistApp::Validators
+
 include Cuba::Render::Helper
 
 Cuba.define do
   on 'auth' do
-    run Chist::Auth
+    run ChistApp::Auth
   end
 
   on 'users' do
-    run Chist::Users
+    run ChistApp::Users
   end
 
   on 'dashboard' do
-    run Chist::Dashboard
+    run ChistApp::Dashboard
+  end
+
+  on 'chists' do
+    run ChistApp::Chists
   end
 
   on get do

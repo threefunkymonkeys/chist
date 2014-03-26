@@ -1,0 +1,7 @@
+en:
+  chists:
+    title: 'Title'
+    chat: 'Paste your chat'
+    public: 'Make it public'
+    create: 'Create Chist'
+    chists_created: 'Chist created'

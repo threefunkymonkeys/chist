@@ -1,6 +1,6 @@
 require 'yaml'
 
-module Chist
+module ChistApp
   class Settings
     @@config = {}
 

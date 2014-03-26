@@ -1,4 +1,4 @@
-module Chist
+module ChistApp
   class Auth < Cuba
     define do
       on get do

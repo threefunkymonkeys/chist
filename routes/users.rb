@@ -1,4 +1,4 @@
-module Chist
+module ChistApp
   class Users < Cuba
     define do
       on get do
@@ -42,6 +42,7 @@ module Chist
             remember(authenticated(User)) if req.params['remember_me']
             res.redirect "/dashboard"
           else
+            flash[:error] = I18n.t('home.login_error')
             res.redirect "/"
           end
         end
