@@ -21,10 +21,16 @@ module ChistApp
             auth_hash = auth.to_signup_hash
             unless auth_hash[:email].empty?
               unless User.find(email: auth_hash[:email])
-                user = User.new(email: auth_hash[:email], name: auth_hash[:name])
+                user = User.new(
+                  email: auth_hash[:email],
+                  name: auth_hash[:name],
+                  password: SecureRandom.hex(15),
+                  validation_code: SecureRandom.hex(24),
+                  update_password: true
+                )
                 user.send("#{provider}_user=", auth.uid)
-                user.password = SecureRandom.hex(15)
                 user.save
+                Mailer.send_validation_code(user)
                 flash[:success] = I18n.t('home.user_created')
                 res.redirect '/'
               else

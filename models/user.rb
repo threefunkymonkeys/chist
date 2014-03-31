@@ -6,4 +6,10 @@ class User < Sequel::Model
   def self.fetch(email)
     find(:email => email)
   end
+
+  def activate
+    valid = true
+    validation_code = ""
+    save
+  end
 end

@@ -1,4 +1,5 @@
 production:
+  url: 'http://127.0.0.1:9393'
   db:
     host: ''
     post: ''
@@ -14,6 +15,7 @@ production:
     facebook_secret: '0f9c43cfe20c29ae760cd6de526aec81'
 
 development:
+  url: 'http://127.0.0.1:9393'
   db:
     host: '127.0.0.1'
     post: '5432'
@@ -29,6 +31,7 @@ development:
     facebook_secret: '0f9c43cfe20c29ae760cd6de526aec81'
 
 test:
+  url: 'http://127.0.0.1:9393'
   db:
     host: '127.0.0.1'
     post: '5432'

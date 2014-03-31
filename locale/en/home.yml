@@ -5,11 +5,15 @@ en:
     confirm_password: 'Confirm Password'
     new_user: 'Sign up'
     signup: 'Sign up'
-    login: 'Login'
-    user_created: 'Account created'
+    user_created: 'Account created. Check your email to validate your account.'
+    user_activated: 'Account activated.'
     login_omniauth: 'Or login with:'
     name: 'Name'
     providers:
       facebook: 'Facebook'
       twitter: 'Twitter'
       github: 'Github'
+    login:
+      login: 'Login'
+      login_error: 'Your email or password were incorrect.'
+      account_not_validated: 'You must validate your account first. Check your email.'
