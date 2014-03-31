@@ -4,7 +4,8 @@
 - if chists.any?
   - chists.each do |chist|
     %div
-      %h3="#{chist.title}"
+      %h3
+        %a{href: "/chists/#{chist.id}"}=chist.title
       %form{method: 'post', action: "/chists/#{chist.id}"}
         %input{type: 'hidden', name: '_method', value: 'DELETE'}
         %input{type: 'submit', value: I18n.t('chists.delete')}
