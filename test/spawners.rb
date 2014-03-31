@@ -17,4 +17,6 @@ User.extend(Spawn).spawner do |user|
   user.username = Faker::Internet.user_name
   user.password = Faker::Internet.password
   user.valid = true
+  user.validation_code = SecureRandom.hex(24)
+  user.update_password = false
 end

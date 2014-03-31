@@ -8,7 +8,7 @@ class User < Sequel::Model
   end
 
   def activate
-    valid = true
+    self.valid = true #use self to avoid collition
     validation_code = ""
     save
   end

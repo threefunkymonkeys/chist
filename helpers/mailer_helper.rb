@@ -15,7 +15,6 @@ module ChistApp::Helpers
     end
 
     def self.send(mail)
-      puts mail.body
       return unless ENV['RACK_ENV'] == :production
       mail.deliver
     end
