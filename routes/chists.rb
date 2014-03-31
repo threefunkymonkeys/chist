@@ -49,8 +49,7 @@ module ChistApp
             flash[:success] = I18n.t('chists.deleted')
             res.redirect '/dashboard'
           else
-            flash[:error] = I18n.t('chist.errors.not_found')
-            res.redirect '/dashboard'
+            not_found!
           end
         end
 
