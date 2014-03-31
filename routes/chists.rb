@@ -42,6 +42,20 @@ module ChistApp
         not_found!
       end
 
+      on delete do
+        on ':chist_id' do |chist_id|
+          if chist = Chist[chist_id]
+            chist.destroy
+            flash[:success] = I18n.t('chists.deleted')
+            res.redirect '/dashboard'
+          else
+            not_found!
+          end
+        end
+
+        not_found!
+      end
+
       not_found!
     end
   end
