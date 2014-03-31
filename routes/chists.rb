@@ -2,14 +2,25 @@ module ChistApp
   class Chists < Cuba
     define do
       on get do
-        on authenticated(User) do
-          on 'new' do
+
+        on 'new' do
+          on authenticated(User) do
             res.write render("./views/layouts/app.haml") {
               render("./views/chists/new.haml", params: session.delete('chist.chist_params') || {})
             }
           end
 
           not_found!
+        end
+
+        on ":id" do |chist_id|
+          if chist = Chist[chist_id]
+            res.write render("./views/layouts/app.haml") {
+              render("./views/chists/show.haml", chist: chist)
+            }
+          else
+            not_found!
+          end
         end
 
         not_found!
