@@ -5,5 +5,5 @@ en:
     public: 'Make it public'
     create: 'Create Chist'
     chists_created: 'Chist created'
-    public_chist: 'Público'
-    private_chist: 'Privado'
+    public_chist: 'Public'
+    private_chist: 'Private'
