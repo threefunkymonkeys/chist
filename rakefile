@@ -56,7 +56,7 @@ namespace :db do
       migration = eval(File.read('./db/schema.rb'))
 
       puts "Dropping old tables..."
-      db.drop_table *db.tables
+      db.drop_table *db.tables, cascade: true
 
       puts "Applying new schema..."
       migration.apply(db, :up)
