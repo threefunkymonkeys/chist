@@ -5,6 +5,10 @@
 %textarea{name: 'chist[chist]', required: true}
   =params['chist'] || ''
 %br
+%select{name: 'chist[format]'}
+  %option{value: 'none'}=I18n.t('chists.format.none')
+  %option{value: 'irc'}=I18n.t('chists.format.irc')
+  %option{value: 'skype'}=I18n.t('chists.format.skype')
 %span
   %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: params.has_key?('public')}
   =I18n.t('chists.public')
