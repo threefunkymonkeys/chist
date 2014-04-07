@@ -1,7 +1,6 @@
-class String
+class ChistApp::IRCParser
 
-  def to_irc
-    log = self.dup
+  def self.parse(log)
     #scan for participants
     participants = log.scan(/<([^>]+)>/).uniq.collect! { |scan| scan.first }
     #map usernames

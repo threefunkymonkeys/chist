@@ -1,7 +1,6 @@
-class String
+class ChistApp::SkypeParser
 
-  def to_skype
-    log = self.dup
+  def self.parse(log)
     time_regexp = /^\[[^\]]+\]/
     #scan for participants
     participants = log.scan(/\[\d+:\d{2}:\d{2}\s[AMPM]{2}\]\s([^:]+):.+/).uniq.collect! { |scan| scan.last }

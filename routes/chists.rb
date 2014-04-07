@@ -37,7 +37,7 @@ module ChistApp
             Chist.create({
               title:     chist['title'],
               chist_raw: chist['chist'],
-              chist:     chist['format'] != 'none' ? chist['chist'].send("to_#{chist['format']}") : chist['chist'],
+              chist:     ChistApp::Parser.parse(chist['format'], chist['chist']),
               public:    chist.has_key?('public'),
               format:    chist['format'],
               user:      current_user
