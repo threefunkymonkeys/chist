@@ -51,6 +51,7 @@ Dir["./validators/**/*.rb"].each     { |rb| require rb }
 Cuba.plugin ChistApp::Helpers
 Cuba.plugin ChistApp::Context::Session
 Cuba.plugin ChistApp::Validators
+Cuba.plugin ChistApp::Parsers
 
 include Cuba::Render::Helper
 
