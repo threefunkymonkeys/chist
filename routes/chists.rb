@@ -36,8 +36,8 @@ module ChistApp
 
             Chist.create({
               title:     chist['title'],
-              chist:     chist['chist'],
-              chist_raw: chist['format'] != 'none' ? chist['chist'].send("to_#{chist['format']}") : chist['chist'],
+              chist_raw: chist['chist'],
+              chist:     chist['format'] != 'none' ? chist['chist'].send("to_#{chist['format']}") : chist['chist'],
               public:    chist.has_key?('public'),
               format:    chist['format'],
               user:      current_user
@@ -46,6 +46,7 @@ module ChistApp
             res.redirect '/dashboard'
           rescue => e
             flash[:error] = e.message
+            chist.delete('chist')
             session['chist.chist_params'] = chist
             res.redirect '/chists/new'
           end
