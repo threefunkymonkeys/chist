@@ -31,4 +31,11 @@ describe ChistApp::Users do
     user = User.find(:email => params['email'])
     assert_equal nil, user
   end
+
+  it 'should activate account' do
+    user = User.spawn({valid: false})
+    assert_equal false, user.valid
+    get "/users/#{user.id}/activate/#{user.validation_code}"
+    assert_equal true, User[user.id].valid
+  end
 end

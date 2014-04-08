@@ -13,6 +13,17 @@ module ChistApp
           }
         end
 
+        on ':id/activate/:code' do |id, code|
+          user = User[id]
+          if user && user.validation_code ==  code
+            user.activate
+            flash[:success] = I18n.t('home.user_activated')
+            res.redirect '/'
+          else
+            not_found!
+          end
+        end
+
         not_found!
       end
 
@@ -21,12 +32,17 @@ module ChistApp
           begin
             signup = Signup.new(req.params)
             raise SignupException.new unless signup.valid?
-            user = User.new(:email => req.params['email'], :name => req.params['name'] || '')
-            user.password = req.params['password']
+            user = User.new(
+              :email => req.params['email'],
+              :name => req.params['name'] || '',
+              :password => req.params['password'],
+              :validation_code => SecureRandom.hex(24)
+            )
             if auth = session['chist.auth']
               user.send("#{auth[:provider]}_user=", auth[:uid])
             end
             user.save
+            Mailer.send_validation_code(user)
             session.delete('chist.auth')
             flash[:success] = I18n.t('home.user_created')
             res.redirect '/'
@@ -38,11 +54,15 @@ module ChistApp
         end
 
         on 'login' do
-          if login(User, req.params['email'], req.params['password'])
-            remember(authenticated(User)) if req.params['remember_me']
+          begin
+            raise LoginException.new(I18n.t('home.login.login_error')) unless login(User, req.params['email'], req.params['password'])
+            user = authenticated(User)
+            raise LoginException.new(I18n.t('home.login.account_not_validated')) unless user.valid
+            remember(user) if req.params['remember_me']
             res.redirect "/dashboard"
-          else
-            flash[:error] = I18n.t('home.login_error')
+          rescue LoginException => e
+            logout(User)
+            flash[:error] = e.message
             res.redirect "/"
           end
         end

@@ -14,6 +14,8 @@ Sequel.migration do
       String :github_user, :text=>true
       String :twitter_user, :text=>true
       String :facebook_user, :text=>true
+      String :validation_code, :text=>true
+      TrueClass :update_password, :default=>false
     end
     
     create_table(:chists) do

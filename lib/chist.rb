@@ -28,4 +28,6 @@ module ChistApp
         "postgres://#{settings['user']}:#{settings['password']}@#{settings['host']}:#{settings['port']}/#{settings['db_name']}"
       end
   end
+
+  class LoginException < StandardError; end;
 end
