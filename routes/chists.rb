@@ -15,7 +15,7 @@ module ChistApp
 
         on ":id" do |chist_id|
           if chist = Chist[chist_id]
-            res.write render("./views/layouts/app.haml") {
+            res.write render("./views/layouts/app.haml", is_public: chist.public) {
               render("./views/chists/show.haml", chist: chist)
             }
           else
