@@ -1,9 +1,18 @@
 en:
   user:
     edit_user: 'Editar perfil'
+    change_password: 'Change Password'
     name: 'Name:'
     username: 'Username:'
     save: 'Save Changes'
     user_edited: 'User profile updated'
     error_editing: 'There was an error while updating profile. Try again'
+    old_password: 'Old Password:'
+    new_password: 'New Password:'
+    confirm_password: 'Confirm New Password:'
+    password_changed: 'User password changed'
+    wrong_password: 'Invalid Password'
+    same_password: 'Please choose a different password'
+    password_doesnt_match: 'New password does not match confirmation'
+
 

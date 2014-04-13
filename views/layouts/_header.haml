@@ -1,4 +1,5 @@
 - if authenticated(User)
   %a{href: '/dashboard'}=current_user.email
   %a{href: '/users/edit'}=I18n.t('user.edit_user')
+  %a{href: '/users/password'}=I18n.t('user.change_password')
   %a{href: '/users/logout'}=I18n.t('.layout.logout')

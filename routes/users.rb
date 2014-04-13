@@ -30,6 +30,14 @@ module ChistApp
               render("./views/users/edit.haml", user: current_user)
             }
           end
+
+          on 'password' do
+            res.write render("./views/layouts/app.haml") {
+              render("./views/users/password.haml")
+            }
+          end
+
+          not_found!
         end
 
         not_found!
@@ -48,6 +56,23 @@ module ChistApp
               res.redirect '/users/edit'
             end
           end
+
+          on 'password' do
+            begin
+              raise StandardError.new(I18n.t('user.wrong_password')) unless Shield::Password.check(req.params['old_password'], current_user.crypted_password)
+              raise StandardError.new(I18n.t('user.same_password')) unless req.params['old_password'] != req.params['new_password']
+              raise StandardError.new(I18n.t('user.password_doesnt_match')) unless req.params['new_password'] == req.params['confirm_password']
+              current_user.password = req.params['new_password']
+              current_user.save
+              flash[:success] = I18n.t('user.password_changed')
+              res.redirect '/'
+            rescue => e
+              flash[:error] = e.message
+              res.redirect '/users/password'
+            end
+          end
+
+          not_found!
         end
 
         not_found!
