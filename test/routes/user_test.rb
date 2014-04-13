@@ -63,4 +63,15 @@ describe ChistApp::Users do
       assert_equal new_username, updated_user.username
     end
   end
+
+  describe "User external connections" do
+    it 'should delete external connection' do
+      user = User.spawn({password: 'test', twitter_user: '1234'})
+      login user, 'test'
+
+      delete '/users/connections/twitter'
+      updated_user = User[user.id]
+      assert_equal nil, updated_user.twitter_user
+    end
+  end
 end
