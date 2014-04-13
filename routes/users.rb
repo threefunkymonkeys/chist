@@ -24,6 +24,32 @@ module ChistApp
           end
         end
 
+        on authenticated(User) do
+          on 'edit' do
+            res.write render("./views/layouts/app.haml") {
+              render("./views/users/edit.haml", user: current_user)
+            }
+          end
+        end
+
+        not_found!
+      end
+
+      on put do
+        on authenticated(User) do
+          on root do
+            current_user.name = req.params['name']
+            current_user.username = req.params['username']
+            if current_user.save
+              flash[:success] = I18n.t('user.user_edited')
+              res.redirect '/'
+            else
+              flash[:success] = I18n.t('user.error_editing')
+              res.redirect '/users/edit'
+            end
+          end
+        end
+
         not_found!
       end
 
