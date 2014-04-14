@@ -17,6 +17,10 @@ class MiniTest::Spec
   def app
     Cuba.app
   end
+
+  def login(user, password)
+    post '/users/login', {email: user.email, password: password}
+  end
 end
 
 OmniAuth.config.test_mode = true

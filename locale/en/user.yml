@@ -1,0 +1,9 @@
+en:
+  user:
+    edit_user: 'Editar perfil'
+    name: 'Name:'
+    username: 'Username:'
+    save: 'Save Changes'
+    user_edited: 'User profile updated'
+    error_editing: 'There was an error while updating profile. Try again'
+
