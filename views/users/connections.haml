@@ -1,0 +1,26 @@
+%h2=I18n.t('user.edit_connections')
+%ul
+  %li
+    - if user.twitter_user.nil?
+      %a{href: '/auth/twitter'}=I18n.t('home.providers.twitter')
+    - else  
+      %span=I18n.t('home.providers.twitter')
+      %form{method: 'post', action: "/users/connections/twitter"}
+        %input{type: 'hidden', name: '_method', value: 'DELETE'}
+        %input{type: 'submit', value: I18n.t('user.delete_connection')}
+  %li
+    - if user.facebook_user.nil?
+      %a{href: '/auth/facebook'}=I18n.t('home.providers.facebook')
+    - else  
+      %span=I18n.t('home.providers.facebook')
+      %form{method: 'post', action: "/users/connections/facebook"}
+        %input{type: 'hidden', name: '_method', value: 'DELETE'}
+        %input{type: 'submit', value: I18n.t('user.delete_connection')}
+  %li
+    - if user.github_user.nil?
+      %a{href: '/auth/github'}=I18n.t('home.providers.github')
+    - else  
+      %span=I18n.t('home.providers.github')
+      %form{method: 'post', action: "/users/connections/github"}
+        %input{type: 'hidden', name: '_method', value: 'DELETE'}
+        %input{type: 'submit', value: I18n.t('user.delete_connection')}

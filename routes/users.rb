@@ -30,6 +30,12 @@ module ChistApp
               render("./views/users/edit.haml", user: current_user)
             }
           end
+
+          on 'connections' do
+            res.write render("./views/layouts/app.haml") {
+              render("./views/users/connections.haml", user: current_user)
+            }
+          end
         end
 
         not_found!
@@ -91,6 +97,17 @@ module ChistApp
             flash[:error] = e.message
             res.redirect "/"
           end
+        end
+
+        not_found!
+      end
+
+      on delete do
+        on 'connections/:provider' do |provider|
+          current_user.send("#{provider}_user=", nil)
+          current_user.save
+          flash[:success] = I18n.t("user.connection_deleted")
+          res.redirect '/users/connections'
         end
 
         not_found!

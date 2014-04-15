@@ -1,9 +1,15 @@
 en:
   user:
-    edit_user: 'Editar perfil'
+    edit_user: 'Edit perfil'
+    edit_connections: 'Edit Connections'
     name: 'Name:'
     username: 'Username:'
     save: 'Save Changes'
     user_edited: 'User profile updated'
     error_editing: 'There was an error while updating profile. Try again'
+    manage_connections: 'Manage External Connections'
+    connection_deleted: 'External Connection was deleted'
+    delete_connection: 'Delete connection'
+    connection_deleted: 'Connection was deleted'
+
 

@@ -23,4 +23,13 @@ describe ChistApp::Auth do
     assert_equal('Test', user.name)
     assert_equal('123545', user.github_user)
   end
+
+  it 'should add external provider to existing user' do
+    user = User.spawn({password: 'test', github_user: nil})
+    login user, 'test'
+
+    get '/auth/github/callback', {}, headers: {'omniauth.auth' => OmniAuth.config.mock_auth[:github]}
+    updated_user = User[user.id]
+    assert_equal OmniAuth.config.mock_auth[:github].uid, updated_user.github_user
+  end
 end

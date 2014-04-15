@@ -5,11 +5,11 @@ module ChistApp
         on ':provider/callback' do |provider|
           auth = @env['omniauth.auth']
           if current_user
-            unless current_user.send("#{provider}_user") != auth.uid
+            if current_user.send("#{provider}_user").nil?
               current_user.send("#{provider}_user=", auth.uid)
               current_user.save
               flash[:success] = I18n.t("auth.#{provider}")
-              res.redirect '/dashboard'
+              res.redirect '/users/connections'
             else
               flash[:warning] = I18n.t("auth.duplicated")
               res.redirect '/dashboard'
