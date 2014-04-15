@@ -7,3 +7,8 @@ en:
     chists_created: 'Chist created'
     public_chist: 'Public'
     private_chist: 'Private'
+
+    format:
+      none: 'None'
+      irc: 'IRC'
+      skype: 'Skype'

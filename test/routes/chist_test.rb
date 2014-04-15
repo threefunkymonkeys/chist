@@ -10,6 +10,7 @@ describe ChistApp::Chists do
       'chist' => {
         'title' => Faker::Lorem.sentence(1),
         'chist' => Faker::Lorem.paragraph,
+        'format' => 'none',
         'public' => "true"
       }
     }
@@ -27,6 +28,7 @@ describe ChistApp::Chists do
       'chist' => {
         'title' => Faker::Lorem.sentence(1),
         'chist' => Faker::Lorem.paragraph,
+        'format' => 'none'
       }
     }
     post '/chists', params
@@ -43,6 +45,7 @@ describe ChistApp::Chists do
       title: Faker::Lorem.sentence(1),
       chist: Faker::Lorem.paragraph,
       chist_raw: Faker::Lorem.paragraph,
+      format: 'none',
       public: true
     )
     chist.wont_be_nil
