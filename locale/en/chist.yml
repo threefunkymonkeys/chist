@@ -7,6 +7,8 @@ en:
     chists_created: 'Chist created'
     public_chist: 'Public'
     private_chist: 'Private'
+    edit: 'Edit'
+    chist_edited: 'Chist edited'
 
     format:
       none: 'None'
