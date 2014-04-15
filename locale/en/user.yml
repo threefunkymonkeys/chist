@@ -2,6 +2,7 @@ en:
   user:
     edit_user: 'Edit perfil'
     edit_connections: 'Edit Connections'
+    change_password: 'Change Password'
     name: 'Name:'
     username: 'Username:'
     save: 'Save Changes'
@@ -11,5 +12,10 @@ en:
     connection_deleted: 'External Connection was deleted'
     delete_connection: 'Delete connection'
     connection_deleted: 'Connection was deleted'
-
-
+    old_password: 'Old Password:'
+    new_password: 'New Password:'
+    confirm_password: 'Confirm New Password:'
+    password_changed: 'User password changed'
+    wrong_password: 'Invalid Password'
+    same_password: 'Please choose a different password'
+    password_doesnt_match: 'New password does not match confirmation'

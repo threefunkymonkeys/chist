@@ -62,6 +62,24 @@ describe ChistApp::Users do
       assert_equal new_name, updated_user.name
       assert_equal new_username, updated_user.username
     end
+
+    it 'should change password' do
+      user = User.spawn({password: 'test'})
+      login user, 'test'
+
+      new_password = 'test1'
+
+      params = {
+        'old_password' => 'test',
+        'new_password' => new_password,
+        'confirm_password' => new_password
+      }
+
+      put '/users/password', params
+      updated_user = User[user.id]
+
+      assert_equal true, Shield::Password.check(new_password, updated_user.crypted_password)
+    end
   end
 
   describe "User external connections" do
