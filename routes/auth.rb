@@ -22,6 +22,7 @@ module ChistApp
           when :user_authenticated
             res.redirect '/dashboard'
           when :empty_email
+            session['chist.auth'] = @env['omniauth.auth'].to_signup_hash
             flash[:warning] = I18n.t("auth.missing_email")
             res.redirect '/users/signup'
 

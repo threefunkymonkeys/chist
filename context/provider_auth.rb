@@ -18,7 +18,6 @@ module ChistApp::Context
       else
         auth_hash = @auth_info.to_signup_hash
         if auth_hash[:email].empty?
-          session['chist.auth'] = auth_hash
           return :empty_email
         else
           if User.find(:email => auth_hash[:email])
