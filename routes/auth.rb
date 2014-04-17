@@ -3,45 +3,33 @@ module ChistApp
     define do
       on get do
         on ':provider/callback' do |provider|
-          auth = @env['omniauth.auth']
-          if current_user
-            if current_user.send("#{provider}_user").nil?
-              current_user.send("#{provider}_user=", auth.uid)
-              current_user.save
-              flash[:success] = I18n.t("auth.#{provider}")
-              res.redirect '/users/connections'
-            else
-              flash[:warning] = I18n.t("auth.duplicated")
-              res.redirect '/dashboard'
-            end
-          elsif user = User.find(:"#{provider}_user" => auth.uid)
-            authenticate(user)
+          context = ChistApp::Context::ProviderSessionCreate.new(
+                      @env['omniauth.auth'],
+                      provider,
+                      self
+                   )
+          result = context.call
+
+          case result
+          when :provider_duplicated
+            flash[:warning] = I18n.t("auth.duplicated")
             res.redirect '/dashboard'
-          else
-            auth_hash = auth.to_signup_hash
-            unless auth_hash[:email].empty?
-              unless User.find(email: auth_hash[:email])
-                user = User.new(
-                  email: auth_hash[:email],
-                  name: auth_hash[:name],
-                  password: SecureRandom.hex(15),
-                  validation_code: SecureRandom.hex(24),
-                  update_password: true
-                )
-                user.send("#{provider}_user=", auth.uid)
-                user.save
-                Mailer.send_validation_code(user)
-                flash[:success] = I18n.t('home.user_created')
-                res.redirect '/'
-              else
-                flash[:warning] = I18n.t("auth.account_exists")
-                res.redirect '/'
-              end
-            else
-              session['chist.auth'] = auth_hash
-              flash[:warning] = I18n.t("auth.missing_email")
-              res.redirect '/users/signup'
-            end
+
+          when :provided_added
+            flash[:success] = I18n.t("auth.#{provider}")
+            res.redirect '/users/connections'
+
+          when :user_authenticated
+            res.redirect '/dashboard'
+          when :empty_email
+            session['chist.auth'] = @env['omniauth.auth'].to_signup_hash
+            flash[:warning] = I18n.t("auth.missing_email")
+            res.redirect '/users/signup'
+
+          when :user_created
+            Mailer.send_validation_code(context.user)
+            flash[:success] = I18n.t('home.user_created')
+            res.redirect '/'
           end
         end
       end
