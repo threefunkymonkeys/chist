@@ -1,4 +1,4 @@
-%h2=I18n.t('Dashboard')
+%h2=I18n.t('dashboard.dashboard')
 
 %a{href: '/chists/new'}=I18n.t('dashboard.create_chist')
 - if chists.any?
@@ -6,6 +6,9 @@
     %div
       %h3
         %a{href: "/chists/#{chist.id}"}=chist.title
+        (
+        %a{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
+        )
       %form{method: 'post', action: "/chists/#{chist.id}"}
         %input{type: 'hidden', name: '_method', value: 'DELETE'}
         %input{type: 'submit', value: I18n.t('chists.delete')}

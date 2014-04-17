@@ -1,0 +1,7 @@
+%h2=I18n.t('chists.edit')
+
+%form{action: "/chists/#{chist.id}/edit", method: 'post'}
+  %input{type: 'hidden', name: '_method', value: 'PUT'}
+  = partial 'chists/_form', params: params, chist: chist
+  %input{type: 'submit', value: I18n.t('chists.edit')}
+

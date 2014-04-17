@@ -2,3 +2,4 @@
 
 %form{action: '/chists', method: 'post'}
   = partial 'chists/_form', params: params 
+  %input{type: 'submit', value: I18n.t('chists.create')}

@@ -40,6 +40,25 @@ describe ChistApp::Chists do
     assert_equal params['chist']['chist'], chist.chist
   end
 
+  it 'should edit a chist' do
+    chist = Chist.create(
+      title: Faker::Lorem.sentence(1),
+      chist: Faker::Lorem.paragraph,
+      chist_raw: Faker::Lorem.paragraph,
+      format: 'none',
+      public: true
+    )
+    chist.wont_be_nil
+    new_title = Faker::Name.name
+
+    put "/chists/#{chist.id}/edit", {'chist': {'title': new_title, 'public': false}}
+
+    updated_chist = Chist[chist.id]
+
+    assert_equal new_title, updated_chist.title
+    assert_equal false, updated_chist.public
+  end
+
   it 'should delete a chist' do
     chist = Chist.create(
       title: Faker::Lorem.sentence(1),

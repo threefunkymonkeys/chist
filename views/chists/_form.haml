@@ -1,16 +1,24 @@
 %label=I18n.t('chists.title',)
-%input{type: 'text', name: 'chist[title]', value: params['title'] || '', required: true}
+%input{type: 'text', name: 'chist[title]', value: defined?(chist) ? chist.title : (params['title'] || ''), required: true}
 %br
 %label=I18n.t('chists.chat')
 %textarea{name: 'chist[chist]', required: true}
-  =params['chist'] || ''
+  =defined?(chist) ? chist.chist_raw : (params['chist'] || '')
 %br
 %select{name: 'chist[format]'}
-  %option{value: 'none'}=I18n.t('chists.format.none')
-  %option{value: 'irc'}=I18n.t('chists.format.irc')
-  %option{value: 'skype'}=I18n.t('chists.format.skype')
+  - if (defined?(chist) && chist.format == 'none') || (params.has_key?('format') && params['format'] == 'none')
+    %option{value: 'none', selected: 'selected'}=I18n.t('chists.format.none')
+  - else 
+    %option{value: 'none'}=I18n.t('chists.format.none')
+  - if (defined?(chist) && chist.format == 'irc') || (params.has_key?('format') && params['format'] == 'irc')
+    %option{value: 'irc', selected: 'selected'}=I18n.t('chists.format.irc')
+  - else 
+    %option{value: 'irc'}=I18n.t('chists.format.irc')
+  - if (defined?(chist) && chist.format == 'skype') || (params.has_key?('format') && params['format'] == 'skype')
+    %option{value: 'skype', selected: 'selected'}=I18n.t('chists.format.skype')
+  - else 
+    %option{value: 'skype'}=I18n.t('chists.format.skype')
 %span
-  %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: params.has_key?('public')}
+  %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: (defined?(chist) && chist.public) || params.has_key?('public')}
   =I18n.t('chists.public')
 %br
-%input{type: 'submit', value: I18n.t('chists.create')}
