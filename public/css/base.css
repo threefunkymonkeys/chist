@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+}
+h2 {
+    color: white;
+}
+.line {
+    width: 100%;
+    height: auto;
+    min-height: 20px;
+}
+.message {
+    color: white;
+}
+
+.open-close, .time {
+    color: orange;
+}
+.username_0 {
+    color: red;
+}
+.username_1 {
+    color: green;
+}
+
+.username_2 {
+    color: blue;
+}
+
+.username_3 {
+    color: seagreen;
+}
+.username_4 {
+    color: magenta;
+}
+.username_5 {
+    color: crimson;
+}
+.username_6 {
+    color: indigo;
+}
+.username_7 {
+    color: orangered;
+}
+
+.channel-info {
+    color: brown;
+}
