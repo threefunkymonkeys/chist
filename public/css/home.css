@@ -6,7 +6,10 @@
 }
 
 #moto {
+  font-family: 'Inconsolata';
+  font-size: 1.2em;
   text-align: center;
+  color: #006687;
 }
 
 ul#login-providers {
