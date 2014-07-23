@@ -14,6 +14,6 @@ en:
       twitter: 'Twitter'
       github: 'Github'
     login:
-      login: 'Login'
+      login: 'Sign In'
       login_error: 'Your email or password were incorrect.'
       account_not_validated: 'You must validate your account first. Check your email.'

@@ -7,13 +7,14 @@
       %meta{ :name => "robots", :content => "noindex, nofollow"}
       %meta{ :name => "referrer", :content => "never"}
     %link{ :href => "css/bootstrap.min.css", :rel => "stylesheet" }
+    %link{ :href => "css/home.css", :rel => "stylesheet" }
+    %link{ :href => "http://fonts.googleapis.com/css?family=Inconsolata", :rel => "stylesheet", :type => "text/css" }
   %body
-    #wrap
-      %header
-        = partial 'layouts/_header'
+    #wrapper
+      %header.navbar.navbar-inverse
+
       #container.container
-        #content.row
-          .col-md-9
-            .flash-messages
-              =show_flash_message
-            = yield
+        .flash-messages
+          =show_flash_message
+        = yield
+

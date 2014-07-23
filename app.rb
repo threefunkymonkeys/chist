@@ -26,6 +26,10 @@ Cuba.use Rack::Session::Cookie, :secret => "ef9dfef977c094acfb5a642cdeb0f0be0258
 Cuba.use Rack::Protection
 Cuba.use Rack::MethodOverride
 
+Cuba.use Rack::Static,
+          root: File.expand_path(File.dirname(__FILE__)) + "/public",
+          urls: %w[/img /css /js]
+
 OmniAuth.config.on_failure = Proc.new { |env|
   OmniAuth::FailureEndpoint.new(env).redirect_to_failure
 }
@@ -106,7 +110,7 @@ Cuba.define do
       if current_user
         res.redirect('/dashboard')
       else
-        res.write render("./views/layouts/app.haml") {
+        res.write render("./views/layouts/home.haml") {
           render("./views/home/home.haml")
         }
       end
