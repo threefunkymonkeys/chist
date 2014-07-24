@@ -46,3 +46,8 @@ h2 {
 .channel-info {
     color: brown;
 }
+
+.header-form {
+  margin: 5px -15px;
+  padding: 10px 15px;
+}

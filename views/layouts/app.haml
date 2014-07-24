@@ -6,14 +6,11 @@
     - if defined?(is_public) && !is_public
       %meta{ :name => "robots", :content => "noindex, nofollow"}
       %meta{ :name => "referrer", :content => "never"}
-    %link{ :href => "css/bootstrap.min.css", :rel => "stylesheet" }
+    %link{ :href => "/css/bootstrap.min.css", :rel => "stylesheet" }
   %body
     #wrap
-      %header
-        = partial 'layouts/_header'
+      = partial 'shared/_header'
       #container.container
-        #content.row
-          .col-md-9
-            .flash-messages
-              =show_flash_message
-            = yield
+        .flash-messages
+          =show_flash_message
+        = yield
