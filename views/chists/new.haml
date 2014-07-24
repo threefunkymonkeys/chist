@@ -1,5 +1,5 @@
-%h2=I18n.t('chists.create')
-
-%form{action: '/chists', method: 'post'}
-  = partial 'chists/_form', params: params 
-  %input{type: 'submit', value: I18n.t('chists.create')}
+%form.form-horizontal{action: '/chists', method: 'post'}
+  %fieldset
+    = partial 'chists/_form', params: params
+    .actions.col-lg-11
+      %input.btn.btn-primary.btn-sm{type: 'submit', value: I18n.t('chists.create')}

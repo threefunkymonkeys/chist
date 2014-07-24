@@ -1,24 +1,25 @@
-%label=I18n.t('chists.title',)
-%input{type: 'text', name: 'chist[title]', value: defined?(chist) ? chist.title : (params['title'] || ''), required: true}
-%br
-%label=I18n.t('chists.chat')
-%textarea{name: 'chist[chist]', required: true}
-  =defined?(chist) ? chist.chist_raw : (params['chist'] || '')
-%br
-%select{name: 'chist[format]'}
-  - if (defined?(chist) && chist.format == 'none') || (params.has_key?('format') && params['format'] == 'none')
-    %option{value: 'none', selected: 'selected'}=I18n.t('chists.format.none')
-  - else 
-    %option{value: 'none'}=I18n.t('chists.format.none')
-  - if (defined?(chist) && chist.format == 'irc') || (params.has_key?('format') && params['format'] == 'irc')
-    %option{value: 'irc', selected: 'selected'}=I18n.t('chists.format.irc')
-  - else 
-    %option{value: 'irc'}=I18n.t('chists.format.irc')
-  - if (defined?(chist) && chist.format == 'skype') || (params.has_key?('format') && params['format'] == 'skype')
-    %option{value: 'skype', selected: 'selected'}=I18n.t('chists.format.skype')
-  - else 
-    %option{value: 'skype'}=I18n.t('chists.format.skype')
-%span
-  %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: (defined?(chist) && chist.public) || params.has_key?('public')}
-  =I18n.t('chists.public')
-%br
+.form-group
+  .col-lg-11
+    %input.form-control{type: 'text', name: 'chist[title]', value: defined?(chist) ? chist.title : (params['title'] || ''), required: true, placeholder: I18n.t('chists.title',)}
+.form-group
+  .col-lg-11
+    %textarea.form-control{name: 'chist[chist]', required: true, placeholder: I18n.t('chists.chat'), :rows => "15"}
+      =defined?(chist) ? chist.chist_raw : (params['chist'] || '')
+.form-group
+  .col-lg-11
+    %select.col-lg-2#chat-format{name: 'chist[format]'}
+      - if (defined?(chist) && chist.format == 'none') || (params.has_key?('format') && params['format'] == 'none')
+        %option{value: 'none', selected: 'selected'}=I18n.t('chists.format.none')
+      - else
+        %option{value: 'none'}=I18n.t('chists.format.none')
+      - if (defined?(chist) && chist.format == 'irc') || (params.has_key?('format') && params['format'] == 'irc')
+        %option{value: 'irc', selected: 'selected'}=I18n.t('chists.format.irc')
+      - else
+        %option{value: 'irc'}=I18n.t('chists.format.irc')
+      - if (defined?(chist) && chist.format == 'skype') || (params.has_key?('format') && params['format'] == 'skype')
+        %option{value: 'skype', selected: 'selected'}=I18n.t('chists.format.skype')
+      - else
+        %option{value: 'skype'}=I18n.t('chists.format.skype')
+    %span
+      %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: (defined?(chist) && chist.public) || params.has_key?('public')}
+      =I18n.t('chists.public')
