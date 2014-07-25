@@ -1,16 +1,17 @@
 en:
   chists:
-    title: 'Title'
-    chat: 'Paste your chat'
-    public: 'Make it public'
-    create: 'Create Chist'
-    chists_created: 'Chist created'
-    public_chist: 'Public'
-    private_chist: 'Private'
-    edit: 'Edit'
-    chist_edited: 'Chist edited'
+    title: Title
+    chat: Paste your chat here
+    public: Make it public
+    create: Create Chist
+    new: New Chist
+    chists_created: Chist created
+    public_chist: Public
+    private_chist: Private
+    edit: Edit
+    chist_edited: Chist edited
 
     format:
-      none: 'None'
-      irc: 'IRC'
-      skype: 'Skype'
+      none: None
+      irc: IRC
+      skype: Skype

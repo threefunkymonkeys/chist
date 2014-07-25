@@ -1,3 +1,5 @@
 en:
   layout:
-    logout: 'Logout'
+    logout: Logout
+    search: Search
+    new_chist: New Chist

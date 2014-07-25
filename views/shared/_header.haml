@@ -1,0 +1,29 @@
+%header.navbar.navbar-inverse{ :role => "navigation" }
+  .container
+    .navbar-header
+      %a.navbar-brand{ :href => "/" }
+        Chist
+    .navbar-collapse.collapse.navbar-inverse-collapse
+      %ul.nav.navbar-nav.col-lg-7
+        %li{ :style => "width: 100%" }
+          %form.search-form.navbar-left.col-lg-12{ :style => "margin: 5px -15px" }
+            %input.form-control.col-lg-12{ :type => :text, :placeholder => I18n.t('.layout.search') }
+      - if authenticated(User)
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
+              =current_user.email
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: '/users/edit'}=I18n.t('user.edit_user')
+              %li
+                %a{href: '/users/connections'}=I18n.t('user.manage_connections')
+              %li
+                %a{href: '/users/password'}=I18n.t('user.change_password')
+
+          %li
+            %a{ :href => "/chists/new" }= I18n.t('.layout.new_chist')
+
+          %li
+            %a{href: '/users/logout'}=I18n.t('.layout.logout')
