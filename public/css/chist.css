@@ -8,6 +8,8 @@
   margin-bottom: 35px;
 }
 
+#delete-chist-form button { margin-left: 20px;}
+
 .chist-format-skype .chist-theme-default { }
   .chist-format-skype.chist-theme-default .line .time {
     color: #003300;

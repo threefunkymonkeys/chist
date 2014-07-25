@@ -1,7 +1,10 @@
 %h2.chist-header
   ="#{current_user.name}/#{chist.title}"
   - if current_user && current_user.id == chist.user_id
-    %a{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
+    %form{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST', class: 'pull-right'}
+      %input{type: 'hidden', name: '_method', value: 'DELETE'}
+      %button{type: 'submit', class: "btn btn-danger"}=I18n.t('chists.delete')
+    %a{href: "/chists/#{chist.id}/edit", class: "btn btn-primary pull-right"}=I18n.t('chists.edit')
 %h3.chist-title
   - unless chist.public
     %img{src: "/img/private.png", alt: I18n.t('chists.private_chist'), title: I18n.t('chists.private_chist')}
