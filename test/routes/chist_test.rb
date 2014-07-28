@@ -51,7 +51,7 @@ describe ChistApp::Chists do
     chist.wont_be_nil
     new_title = Faker::Name.name
 
-    put "/chists/#{chist.id}/edit", {'chist': {'title': new_title, 'public': false}}
+    put "/chists/#{chist.id}/edit", {:'chist' => {:'title' => new_title, :'public' => false}}
 
     updated_chist = Chist[chist.id]
 
