@@ -53,7 +53,7 @@ module ChistApp
                 raise ArgumentError.new(chist_form.errors.full_messages.join(', ')) unless chist_form.valid?
 
                 chist.title = chist_params['title']
-                chist.chist_raw = chist_params['chist']
+                chist.chist_raw = chist_params['chist'].dup
                 chist.chist = ChistApp::Parser.parse(chist_params['format'], chist_params['chist'])
                 chist.public = chist_params.has_key?('public')
                 chist.format = chist_params['format']
@@ -87,7 +87,7 @@ module ChistApp
 
             Chist.create({
               title:     chist['title'],
-              chist_raw: chist['chist'],
+              chist_raw: chist['chist'].dup,
               chist:     ChistApp::Parser.parse(chist['format'], chist['chist']),
               public:    chist.has_key?('public'),
               format:    chist['format'],

@@ -1,0 +1,48 @@
+.chist-title {
+  padding: 10px 10px 0;
+}
+.chist-chat {
+  width: 100%;
+  border: 1px solid grey;
+  padding: 10px;
+  margin-bottom: 35px;
+}
+
+#delete-chist-form button { margin-left: 20px;}
+
+.chist-format-skype .chist-theme-default { }
+  .chist-format-skype.chist-theme-default .line .time {
+    color: #003300;
+  }
+
+  .chist-format-skype.chist-theme-default .line .username_0   { color: #f6917f; }
+  .chist-format-skype.chist-theme-default .line .username_1   { color: #3f7b48; }
+  .chist-format-skype.chist-theme-default .line .username_2   { color: #669988; }
+  .chist-format-skype.chist-theme-default .line .username_3   { color: #cc7ef6; }
+  .chist-format-skype.chist-theme-default .line .username_4   { color: #2255aa; }
+  .chist-format-skype.chist-theme-default .line .username_5   { color: #cc32b2; }
+  .chist-format-skype.chist-theme-default .line .username_6   { color: #907ef6; }
+  .chist-format-skype.chist-theme-default .line .username_7   { color: #cc6666; }
+  .chist-format-skype.chist-theme-default .line .username_8   { color: #7b3f55; }
+  .chist-format-skype.chist-theme-default .line .username_9   { color: #3f7b65; }
+  .chist-format-skype.chist-theme-default .line .username_10  { color: #9c6e7f; }
+
+.chist-format-irc .chist-theme-default { }
+  .chist-format-irc.chist-theme-default .line .open-close {
+    color: #cc9900;
+  }
+  .chist-format-irc.chist-theme-default .line .channel-info {
+    color: #553355;
+  }
+
+  .chist-format-irc.chist-theme-default .line .username_0   { color: #f6917f; }
+  .chist-format-irc.chist-theme-default .line .username_1   { color: #3f7b48; }
+  .chist-format-irc.chist-theme-default .line .username_2   { color: #669988; }
+  .chist-format-irc.chist-theme-default .line .username_3   { color: #cc7ef6; }
+  .chist-format-irc.chist-theme-default .line .username_4   { color: #2255aa; }
+  .chist-format-irc.chist-theme-default .line .username_5   { color: #cc32b2; }
+  .chist-format-irc.chist-theme-default .line .username_6   { color: #907ef6; }
+  .chist-format-irc.chist-theme-default .line .username_7   { color: #cc6666; }
+  .chist-format-irc.chist-theme-default .line .username_8   { color: #7b3f55; }
+  .chist-format-irc.chist-theme-default .line .username_9   { color: #3f7b65; }
+  .chist-format-irc.chist-theme-default .line .username_10  { color: #9c6e7f; }
