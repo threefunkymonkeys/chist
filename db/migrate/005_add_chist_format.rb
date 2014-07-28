@@ -4,7 +4,7 @@ Sequel.migration do
   end
 
   down do
-    remove_column :chists, :format
+    drop_column :chists, :format
   end
 end
 

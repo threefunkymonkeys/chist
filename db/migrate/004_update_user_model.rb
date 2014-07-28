@@ -5,8 +5,8 @@ Sequel.migration do
   end
 
   down do
-    remove_column :users, :validation_code
-    remove_column :users, :update_password
+    drp_column :users, :validation_code
+    drop_column :users, :update_password
   end
 end
 
