@@ -1,9 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 
 describe ChistApp::Chists do
-  def setup
-    Chist.all.each { |chist| chist.delete }
-  end
 
   it 'should create public chist (201)' do
     params = {
@@ -41,17 +38,23 @@ describe ChistApp::Chists do
   end
 
   it 'should edit a chist' do
+    user = User.spawn(password: 'test')
+    login(user, 'test')
     chist = Chist.create(
       title: Faker::Lorem.sentence(1),
       chist: Faker::Lorem.paragraph,
       chist_raw: Faker::Lorem.paragraph,
       format: 'none',
+      user_id: user.id,
       public: true
     )
     chist.wont_be_nil
     new_title = Faker::Name.name
 
-    put "/chists/#{chist.id}/edit", {:'chist' => {:'title' => new_title, :'public' => false}}
+    params = chist.to_hash.merge(title: new_title)
+    params.delete(:public)
+    params.delete(:id)
+    put "/chists/#{chist.id}/edit", {chist: params}
 
     updated_chist = Chist[chist.id]
 

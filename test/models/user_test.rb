@@ -1,8 +1,5 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 describe User do
-  def setup
-    User.dataset.delete
-  end
 
   it 'should tell if has provider' do
     user = User.spawn(:github_user => nil)

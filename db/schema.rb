@@ -19,13 +19,15 @@ Sequel.migration do
     end
     
     create_table(:chists) do
-      primary_key :id
       foreign_key :user_id, :users, :key=>[:id]
       String :title, :text=>true, :null=>false
       String :chist, :text=>true, :null=>false
       String :chist_raw, :text=>true, :null=>false
-      TrueClass :public, :default=>false
+      TrueClass :public, :default=>true
       String :format, :default=>"none", :text=>true, :null=>false
+      String :id, :text=>true, :null=>false
+      
+      primary_key [:id]
     end
   end
 end

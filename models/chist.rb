@@ -3,7 +3,7 @@ class Chist < Sequel::Model
   unrestrict_primary_key
 
   def before_create
-    values[:id] ||= SecureRandom.hex
+    self.id ||= SecureRandom.hex
     super
   end
 end

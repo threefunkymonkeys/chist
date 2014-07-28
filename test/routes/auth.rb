@@ -3,7 +3,6 @@ require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 describe ChistApp::Auth do
 
   def setup
-    User.all.each { |user| user.delete }
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       :provider => 'github',
       :uid => '123545',
