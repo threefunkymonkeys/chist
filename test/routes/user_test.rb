@@ -1,9 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 
 describe ChistApp::Users do
-  def setup
-    User.all.each { |user| user.delete }
-  end
 
   describe "User creation" do
 

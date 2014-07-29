@@ -18,6 +18,11 @@ class MiniTest::Spec
     Cuba.app
   end
 
+  def setup
+    Chist.dataset.delete
+    User.dataset.delete
+  end
+
   def login(user, password)
     post '/users/login', {email: user.email, password: password}
   end

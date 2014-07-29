@@ -1,9 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 
 describe 'ProviderSessionCreate' do
-  def setup
-    User.dataset.delete
-  end
 
   it 'should detect a duplicated provider' do
     user = User.spawn(:github_user => "kandalf")

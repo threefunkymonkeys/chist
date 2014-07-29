@@ -6,8 +6,8 @@ Sequel.migration do
   end
 
   down do
-    remove_column :users, :github_user
-    remove_column :users, :twitter_user
-    remove_column :users, :facebook_user
+    drop_column :users, :github_user
+    drop_column :users, :twitter_user
+    drop_column :users, :facebook_user
   end
 end

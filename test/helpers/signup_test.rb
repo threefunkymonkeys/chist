@@ -1,9 +1,6 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 
 describe ChistApp::Helpers::Signup do
-  def setup
-    User.all.each { |user| user.delete }
-  end
 
   it 'should validate new signup' do
     password = Faker::Internet.password
