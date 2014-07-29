@@ -25,7 +25,7 @@ Sequel.migration do
       String :chist_raw, :text=>true, :null=>false
       TrueClass :public, :default=>true
       String :format, :default=>"none", :text=>true, :null=>false
-      String :id, :text=>true, :null=>false
+      String :id, :null=>false
       
       primary_key [:id]
     end

@@ -5,9 +5,9 @@ Sequel.migration do
   up do
     chists = Chist.all
     backup = chists.dup
-    chists.each { |chist| chist.destroy }
+    Chist.dataset.destroy
     drop_column :chists, :id
-    add_column :chists, :id, String, primary_key: true
+    add_column :chists, :id, :Uuid, primary_key: true
     backup.each { |chist|
       hash = chist.to_hash
       hash[:id] = SecureRandom.hex
@@ -18,9 +18,9 @@ Sequel.migration do
   down do
     chists = Chist.all
     backup = chists.dup
-    chists.each { |chist| chist.destroy }
+    Chist.dataset.destroy
     drop_column :chists, :id
-    add_column :chists, :id, primary_key: true
+    add_column :chists, :id, :serial, primary_key: true
     backup.each { |chist|
       hash = chist.to_hash
       hash.delete(:id)
