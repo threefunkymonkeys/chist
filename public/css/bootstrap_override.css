@@ -1,0 +1,18 @@
+.navbar-default {
+  border-radius: 0px;
+  min-height: 52px;
+  height: 52px;
+}
+
+.navbar div, .navbar-collapse.collapse {
+  min-height: 52px;
+  height: 52px !important;
+}
+
+.navbar input[type="text"] {
+  height: 33px;
+}
+
+.navbar-nav > li > a, .navbar-header a {
+  line-height: 13px;
+}
