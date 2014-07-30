@@ -13,6 +13,7 @@ en:
     delete: Delete
     chist_deleted: Chist deleted
     your_chists: Your Chists
+    lines: Chist Lines
 
     format:
       none: None
@@ -21,3 +22,4 @@ en:
 
     actions:
       save: Save
+      download: Download Chist

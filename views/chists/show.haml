@@ -11,9 +11,27 @@
       %a.btn.btn-primary.btn-sm.pull-right{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
 
 .row
-  .panel.panel-info
-    .panel-heading
-      %h3.panel-title=chist.title
-    .panel-body
-      %div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
-        =chist.chist
+  .col-md-9
+    .panel.panel-primary
+      .panel-heading
+        %h3.panel-title=chist.title
+      .panel-body
+        %div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
+          =chist.chist
+  .col-md-3
+    .panel.panel-info
+      .panel-heading
+        %h3
+      .panel-body
+        .form-group
+          %label.control-label
+            Chist URL
+          %input.form-control.input-sm{ value: "http://chist.io/chists/#{chist.id}" }
+        .form-group
+          %label.control-label
+            =I18n.t('.chists.lines')
+          .form-control= chist.chist_raw.lines.count
+        %br
+        .form-group
+          %a.form-control.btn.btn-sm.btn-success{ href: "/chists/#{chist.id}/raw" }
+            =I18n.t('.chists.actions.download')
