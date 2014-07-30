@@ -16,7 +16,7 @@ en:
     lines: Chist Lines
 
     format:
-      none: None
+      none: Select Format
       irc: IRC
       skype: Skype
 
