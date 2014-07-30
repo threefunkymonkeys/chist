@@ -1,7 +1,7 @@
-%h2=I18n.t('chists.edit')
-
-%form{action: "/chists/#{chist.id}/edit", method: 'post'}
-  %input{type: 'hidden', name: '_method', value: 'PUT'}
-  = partial 'chists/_form', params: params, chist: chist
-  %input{type: 'submit', value: I18n.t('chists.edit')}
+%form.form-horizontal{action: "/chists/#{chist.id}", method: 'post'}
+  %fieldset
+    %input{type: 'hidden', name: '_method', value: 'PUT'}
+    = partial 'chists/_form', params: params, chist: chist
+    .actions.col-lg-11
+      %input.btn.btn-primary.btn-sm{type: 'submit', value: I18n.t('.chists.actions.save')}
 

@@ -1,12 +1,12 @@
-%header.navbar.navbar-inverse{ :role => "navigation" }
+%header.navbar.navbar-default{ :role => "navigation" }
   .container
     .navbar-header
       %a.navbar-brand{ :href => "/" }
         Chist
     .navbar-collapse.collapse.navbar-inverse-collapse
       %ul.nav.navbar-nav.col-lg-7
-        %li{ :style => "width: 100%" }
-          %form.search-form.navbar-left.col-lg-12{ :style => "margin: 5px -15px" }
+        %li.col-lg-12
+          %form.search-form.navbar-left.col-lg-12{ :style => "margin: 10px -15px" }
             %input.form-control.col-lg-12{ :type => :text, :placeholder => I18n.t('.layout.search') }
       - if authenticated(User)
         %ul.nav.navbar-nav.navbar-right
@@ -21,9 +21,13 @@
                 %a{href: '/users/connections'}=I18n.t('user.manage_connections')
               %li
                 %a{href: '/users/password'}=I18n.t('user.change_password')
+              %li.divider
+              %li
+                %a{href: '/users/logout'}=I18n.t('.layout.logout')
+
 
           %li
             %a{ :href => "/chists/new" }= I18n.t('.layout.new_chist')
 
           %li
-            %a{href: '/users/logout'}=I18n.t('.layout.logout')
+            %a{href: '/dashboard'}=I18n.t('.chists.your_chists')

@@ -12,8 +12,12 @@ en:
     chist_edited: Chist edited
     delete: Delete
     chist_deleted: Chist deleted
+    your_chists: Your Chists
 
     format:
       none: None
       irc: IRC
       skype: Skype
+
+    actions:
+      save: Save

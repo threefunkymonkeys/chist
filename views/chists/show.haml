@@ -1,14 +1,15 @@
-%h2.chist-header
-  ="#{current_user.name}/#{chist.title}"
+.row.top-bar
+  %h2.chist-header.col-md-8
+    - unless chist.public
+      %img{src: "/img/private.png", alt: I18n.t('chists.private_chist'), title: I18n.t('chists.private_chist')}
+    ="#{current_user.name}/#{chist.title}"
   - if current_user && current_user.id == chist.user_id
-    %form{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST', class: 'pull-right'}
-      %input{type: 'hidden', name: '_method', value: 'DELETE'}
-      %button{type: 'submit', class: "btn btn-danger"}=I18n.t('chists.delete')
-    %a{href: "/chists/#{chist.id}/edit", class: "btn btn-primary pull-right"}=I18n.t('chists.edit')
-%h3.chist-title
-  - unless chist.public
-    %img{src: "/img/private.png", alt: I18n.t('chists.private_chist'), title: I18n.t('chists.private_chist')}
-  = chist.title
+    .col-md-4.h2
+      %form{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST', class: 'pull-right'}
+        %input{type: 'hidden', name: '_method', value: 'DELETE'}
+        %button{type: 'submit', class: "btn btn-danger"}=I18n.t('chists.delete')
+      %a{href: "/chists/#{chist.id}/edit", class: "btn btn-primary pull-right"}=I18n.t('chists.edit')
 
-%div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
-  =chist.chist
+.row
+  %div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
+    =chist.chist
