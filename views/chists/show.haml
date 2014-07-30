@@ -1,15 +1,19 @@
-.row.top-bar
-  %h2.chist-header.col-md-8
+.row.chist-top-bar
+  %h3.chist-header.col-md-8
     - unless chist.public
       %img{src: "/img/private.png", alt: I18n.t('chists.private_chist'), title: I18n.t('chists.private_chist')}
     ="#{current_user.name}/#{chist.title}"
   - if current_user && current_user.id == chist.user_id
     .col-md-4.h2
       %form{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST', class: 'pull-right'}
+        %button.btn.btn-danger.btn-sm{type: 'submit', :style => "position: relative; top: -5px;"}=I18n.t('chists.delete')
         %input{type: 'hidden', name: '_method', value: 'DELETE'}
-        %button{type: 'submit', class: "btn btn-danger"}=I18n.t('chists.delete')
-      %a{href: "/chists/#{chist.id}/edit", class: "btn btn-primary pull-right"}=I18n.t('chists.edit')
+      %a.btn.btn-primary.btn-sm.pull-right{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
 
 .row
-  %div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
-    =chist.chist
+  .panel.panel-info
+    .panel-heading
+      %h3.panel-title=chist.title
+    .panel-body
+      %div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
+        =chist.chist
