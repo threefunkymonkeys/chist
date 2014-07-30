@@ -16,6 +16,10 @@ module ChistApp
         on ':id/edit' do |chist_id|
           on authenticated(User) do
             chist = Chist[chist_id]
+
+            #nasty trick for correct display in text area
+            chist.chist_raw = chist.chist_raw.gsub("\r\n", "\r")
+
             if chist && chist.user_id == current_user.id
               res.write render("./views/layouts/app.haml") {
                 render("./views/chists/edit.haml", chist: chist, params: session.delete('chist.chist_params') || {})
