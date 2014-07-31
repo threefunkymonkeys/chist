@@ -109,7 +109,7 @@ Cuba.define do
   on get do
     on root do
       if current_user
-        res.redirect('/dashboard')
+        res.redirect('/chists/new')
       else
         res.write render("./views/layouts/home.haml") {
           render("./views/home/home.haml")

@@ -13,14 +13,14 @@ module ChistApp
           case result
           when :provider_duplicated
             flash[:warning] = I18n.t("auth.duplicated")
-            res.redirect '/dashboard'
+            res.redirect '/chists/new'
 
           when :provided_added
             flash[:success] = I18n.t("auth.#{provider}")
             res.redirect '/users/connections'
 
           when :user_authenticated
-            res.redirect '/dashboard'
+            res.redirect '/chists/new'
           when :empty_email
             session['chist.auth'] = @env['omniauth.auth'].to_signup_hash
             flash[:warning] = I18n.t("auth.missing_email")
