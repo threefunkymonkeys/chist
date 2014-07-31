@@ -6,6 +6,7 @@ module ChistApp::Context
       @user = context.current_user
       @provider = provider
       @auth_info = auth_info
+      @context = context
     end
 
     def call
@@ -13,7 +14,7 @@ module ChistApp::Context
         return :provider_duplicated if @user.has_provider?(@provider)
         return :provider_added if @user.add_provider(@provider, @auth_info.uid)
       elsif @user = User.find(:"#{@provider}_user" => @auth_info.uid)
-        authenticate(@user)
+        @context.authenticate(@user)
         return :user_authenticated
       else
         auth_hash = @auth_info.to_signup_hash
