@@ -6,4 +6,8 @@ class Chist < Sequel::Model
     self.id ||= SecureRandom.hex
     super
   end
+
+  def id
+    super.gsub("-", "")
+  end
 end
