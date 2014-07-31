@@ -23,9 +23,11 @@ Sequel.migration do
       String :title, :text=>true, :null=>false
       String :chist, :text=>true, :null=>false
       String :chist_raw, :text=>true, :null=>false
-      TrueClass :public, :default=>true
+      TrueClass :public, :default=>false
       String :format, :default=>"none", :text=>true, :null=>false
       String :id, :null=>false
+      DateTime :created_at
+      DateTime :updated_at
       
       primary_key [:id]
     end
