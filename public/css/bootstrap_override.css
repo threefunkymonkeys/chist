@@ -11,6 +11,7 @@
 
 .navbar input[type="text"] {
   height: 33px;
+  padding: 2px 5px;
 }
 
 .navbar-nav > li > a, .navbar-header a {
