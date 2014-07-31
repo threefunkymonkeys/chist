@@ -6,7 +6,7 @@ module ChistApp
         on 'new' do
           on authenticated(User) do
             res.write render("./views/layouts/app.haml") {
-              render("./views/chists/new.haml", params: session.delete('chist.chist_params') || {})
+              render("./views/chists/new.haml", chists: current_user.latest_chists, params: session.delete('chist.chist_params') || {})
             }
           end
 

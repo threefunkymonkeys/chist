@@ -14,6 +14,7 @@ en:
     chist_deleted: Chist deleted
     your_chists: Your Chists
     lines: Chist Lines
+    last_update: Last Update
 
     format:
       none: Select Format
@@ -23,3 +24,4 @@ en:
     actions:
       save: Save
       download: Download Chist
+      editing: Editing

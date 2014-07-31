@@ -23,4 +23,8 @@ class User < Sequel::Model
     return false unless ALLOWED_PROVIDERS.include? provider.to_sym
     self.update(:"#{provider}_user" => user_id)
   end
+
+  def latest_chists
+    Chist.where(:user_id => self.id).order(Sequel.desc(:created_at)).limit(5)
+  end
 end

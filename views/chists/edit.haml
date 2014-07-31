@@ -1,3 +1,13 @@
+#edit-top-bar.chist-top-bar
+  .col-md-1
+    %label.label{ :class => (chist.public) ? 'label-success' : 'label-warning' }
+      = chist.public ? I18n.t('.chists.public_chist') : I18n.t('.chists.private_chist')
+  .col-md-5
+    ="#{I18n.t('.chists.actions.editing')}"
+    %span.text-info= chist.title
+    .timestamp
+      = "#{I18n.t('.chists.last_update')} #{chist.updated_at.strftime('%Y-%m-%d %H:%M')}"
+
 %form.form-horizontal{action: "/chists/#{chist.id}", method: 'post'}
   %fieldset
     %input{type: 'hidden', name: '_method', value: 'PUT'}
