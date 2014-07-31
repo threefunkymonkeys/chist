@@ -16,6 +16,7 @@ settings_file = File.join(File.dirname(__FILE__), "config/settings.yml")
 
 ChistApp::Settings.load(settings_file, ENV["RACK_ENV"])
 DB = ChistApp::Database.connect ChistApp::Settings.get('db')
+Sequel::Model.plugin :timestamps
 
 I18n.enforce_available_locales = false
 I18n.locale = :en
