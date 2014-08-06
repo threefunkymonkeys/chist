@@ -4,6 +4,9 @@ class User < Sequel::Model
   one_to_many :chists
 
   ALLOWED_PROVIDERS = [:facebook, :twitter, :github]
+  @@sel_ds = self.db[:user_favorites].where(:user_id => :$u, :chist_id => :$c)
+  @@ins_ds = self.db["INSERT INTO user_favorites (user_id, chist_id) VALUES (?, ?)", :$u, :$c]
+  @@del_ds = self.db["DELETE FROM user_favorites WHERE user_id = ? AND chist_id = ?", :$u, :$c]
 
   def self.fetch(email)
     find(:email => email)
@@ -26,5 +29,17 @@ class User < Sequel::Model
 
   def latest_chists
     Chist.where(:user_id => self.id).order(Sequel.desc(:created_at)).limit(5)
+  end
+
+  def favorited?(chist)
+    @@sel_ds.call(:select, :u => self.id, :c => chist.id).any?
+  end
+
+  def toggle_favorite(chist)
+    if self.favorited?(chist)
+      puts @@del_ds.call(:delete, :u => self.id, :c => chist.id)
+    else
+      @@ins_ds.call(:insert, :u => self.id, :c => chist.id)
+    end
   end
 end

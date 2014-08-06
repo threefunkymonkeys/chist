@@ -23,3 +23,18 @@ ul#latest-chists li .timestamp, #edit-top-bar .timestamp {
   font-size: 0.7em;
   color: #A8A8A8;
 }
+
+#favorite-wrapper {
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: solid 1px #E5E5E5;
+}
+
+#favorite-wrapper button {
+  position: relative;
+  top: -5px;
+}
+
+#favorite-wrapper span.favorited {
+  color: #00FF00;
+}

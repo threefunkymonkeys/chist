@@ -9,6 +9,11 @@
         %button.btn.btn-danger.btn-sm{type: 'submit', :style => "position: relative; top: -5px;"}=I18n.t('chists.delete')
         %input{type: 'hidden', name: '_method', value: 'DELETE'}
       %a.btn.btn-primary.btn-sm.pull-right{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
+      %form.form-horizontal#favorite-wrapper.pull-right{ action: "/chists/#{chist.id}/favorite", method: "POST" }
+        %input{ type: "hidden", name: "_method", value: "PUT" }
+        %button.btn.btn-info.btn-sm{ type: "submit" }
+          %span.glyphicon.glyphicon-star{ :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
+          Favorite
 
 .row
   .col-md-9
