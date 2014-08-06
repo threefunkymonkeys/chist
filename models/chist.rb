@@ -8,6 +8,10 @@ class Chist < Sequel::Model
   end
 
   def id
-    super.gsub("-", "")
+    if values[:id]
+      super.gsub("-", "")
+    else
+      super
+    end
   end
 end
