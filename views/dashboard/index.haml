@@ -1,14 +1,17 @@
-%h2=I18n.t('dashboard.dashboard')
+%h3.title= ::I18n.t('.chists.your_chists')
 
-%a{href: '/chists/new'}=I18n.t('dashboard.create_chist')
-- if chists.any?
-  - chists.each do |chist|
-    %div
-      %h3
-        %a{href: "/chists/#{chist.id}"}=chist.title
-        (
-        %a{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
-        )
-      %form{method: 'post', action: "/chists/#{chist.id}"}
-        %input{type: 'hidden', name: '_method', value: 'DELETE'}
-        %input{type: 'submit', value: I18n.t('chists.delete')}
+-chists.each do |chist|
+  .row
+    .panel.panel-primary
+      .panel-heading
+
+        %h3.panel-title
+          %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
+
+          .actions
+            %form{method: 'post', action: "/chists/#{chist.id}"}
+              %input{type: 'hidden', name: '_method', value: 'DELETE'}
+              %input.btn.btn-danger.btn-xs{type: 'submit', value: I18n.t('chists.delete')}
+      .panel-body.chist-preview
+        %pre.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
+          =chist.chist.lines[0,5].join
