@@ -25,5 +25,10 @@ class Cuba
 
       markup.join("<br/>")
     end
+
+    def chist_last_update(chist)
+      last_update = chist.updated_at ? chist.updated_at : chist.created_at
+      last_update.strftime('%Y-%m-%d %H:%M') if last_update
+    end
   end
 end

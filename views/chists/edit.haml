@@ -6,7 +6,7 @@
     ="#{I18n.t('.chists.actions.editing')}"
     %span.text-info= chist.title
     .timestamp
-      = "#{I18n.t('.chists.last_update')} #{chist.updated_at.strftime('%Y-%m-%d %H:%M')}"
+      = "#{I18n.t('.chists.last_update')} #{chist_last_update(chist)}"
 
 %form.form-horizontal{action: "/chists/#{chist.id}", method: 'post'}
   %fieldset
