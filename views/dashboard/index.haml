@@ -9,9 +9,16 @@
           %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
 
           .actions
+            %form.fav-form{ action: "/chists/#{chist.id}/favorite", method: "POST" }
+              %input{ type: "hidden", name: "_method", value: "PUT" }
+              %button.btn.btn-info.btn-xs{ type: "submit" }
+                %span.glyphicon.glyphicon-star{ :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
+                Favorite
+            %a.btn.btn-success.btn-xs{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
             %form{method: 'post', action: "/chists/#{chist.id}"}
               %input{type: 'hidden', name: '_method', value: 'DELETE'}
               %input.btn.btn-danger.btn-xs{type: 'submit', value: I18n.t('chists.delete')}
+
       .panel-body.chist-preview
         %pre.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
           =chist.chist.lines[0,5].join

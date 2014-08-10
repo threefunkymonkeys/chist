@@ -7,3 +7,7 @@
   text-align: right;
   padding-right: 0px;
 }
+
+.actions form {
+  display: inline-block;
+}

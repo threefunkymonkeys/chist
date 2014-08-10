@@ -35,6 +35,6 @@ ul#latest-chists li .timestamp, #edit-top-bar .timestamp {
   top: -5px;
 }
 
-#favorite-wrapper span.favorited {
+#favorite-wrapper span.favorited, .fav-form span.favorited {
   color: #00FF00;
 }
