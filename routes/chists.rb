@@ -1,3 +1,5 @@
+require 'json'
+
 module ChistApp
   class Chists < Cuba
     define do
@@ -8,7 +10,13 @@ module ChistApp
 
           current_user.toggle_favorite(chist)
 
-          res.redirect("/chists/#{chist.id}")
+          if req.xhr?
+            res.write(
+              {:id => chist.id, :favorite => current_user.favorited?(chist)}.to_json
+            )
+          else
+            res.redirect("/chists/#{chist.id}")
+          end
 
         end
 

@@ -9,10 +9,10 @@
           %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
 
           .actions
-            %form.fav-form{ action: "/chists/#{chist.id}/favorite", method: "POST" }
+            %form.fav-form{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
               %input{ type: "hidden", name: "_method", value: "PUT" }
-              %button.btn.btn-info.btn-xs{ type: "submit" }
-                %span.glyphicon.glyphicon-star{ :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
+              %button.fav-button.btn.btn-info.btn-xs{ type: "submit" }
+                %span.fav-icon.glyphicon.glyphicon-star{ :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
                 Favorite
             %a.btn.btn-success.btn-xs{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
             %form{method: 'post', action: "/chists/#{chist.id}"}

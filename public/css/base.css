@@ -38,3 +38,13 @@ ul#latest-chists li .timestamp, #edit-top-bar .timestamp {
 #favorite-wrapper span.favorited, .fav-form span.favorited {
   color: #00FF00;
 }
+
+.fav-form .fav-button:hover {
+  background-color: #217dbb;
+  background-color: #2077b2;
+}
+
+.fav-form .fav-button {
+  background-color: #3498db;
+  border-color: #3498db;
+}
