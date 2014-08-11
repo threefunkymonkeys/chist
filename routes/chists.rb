@@ -47,7 +47,7 @@ module ChistApp
 
       on post do
         on root do
-          #begin
+          begin
             chist = req.params['chist'].strip
             chist_form = ChistApp::Validators::ChistForm.hatch(chist)
 
@@ -64,12 +64,12 @@ module ChistApp
 
             flash[:success] = I18n.t('chists.chists_created')
             res.redirect '/dashboard'
-          #rescue => e
-            #flash[:error] = e.message
-            #chist.delete('chist')
-            #session['chist.chist_params'] = chist
-            #res.redirect '/chists/new'
-          #end
+          rescue => e
+            flash[:error] = e.message
+            chist.delete('chist')
+            session['chist.chist_params'] = chist
+            res.redirect '/chists/new'
+          end
         end
 
         not_found!
