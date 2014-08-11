@@ -9,6 +9,9 @@
   background-color: inherit;
   color: inherit;
   border: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overflow-wrap: normal;
 }
 
 .chist-preview {
@@ -17,6 +20,10 @@
 
 .chist-preview .chist-chat {
   max-height: 230px;
+}
+
+.chist-chat .line {
+  overflow-wrap: normal;
 }
 
 #delete-chist-form button { margin-left: 20px;}
