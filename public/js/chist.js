@@ -3,19 +3,22 @@ $("select#chat-format").chosen();
 $("form[data-remote='true']").submit(function(event) {
   event.preventDefault();
 
-  form = $(event.target);
-  data = {};
+  var form = $(event.target);
+  var formData = {};
 
-  form.find("input").each(function(element) {
-    data[$(this).attr('name')] = $(this).attr('value');
+  form.find("input").each(function() {
+    console.log($(this).val());
+    formData[$(this).attr('name')] = $(this).val();
   });
 
-  form.trigger($.Event("ajax:beforeSend"));
+  var e = $.Event("ajax:beforeSend", {request: formData});
+
+  form.trigger(e);
 
   $.ajax({
     url: form.attr("action"),
-    method: form.attr("method"),
-    data: data
+    method: form.attr("method") || "GET",
+    data: formData
   })
     .done(function(response) {
       e = $.Event("ajax:done", {response: response});
@@ -31,7 +34,7 @@ $("form.fav-form").on("ajax:beforeSend", function(event) {
 });
 
 $("form.fav-form").on("ajax:done", function(event) {
-  response = JSON.parse(event.response);
+  var response = JSON.parse(event.response);
   if (response.favorite) {
     $(this).find(".fav-icon").removeClass('no-favorited').addClass('favorited');
   } else {
@@ -43,4 +46,19 @@ $("form.fav-form").on("ajax:done", function(event) {
 $("form.fav-form").on("ajax:error", function(event) {
   console.log("ON AJAX:ERROR");
   console.log(event);
+});
+
+$("form#search-chist").on("ajax:beforeSend", function(event) {
+  console.log(event);
+  var url = "/search?query=" + event.request.query;
+  history.pushState(null, null, url);
+  $("#search-box").blur();
+});
+
+$("form#search-chist").on("ajax:done", function(event) {
+  $("#container").html(event.response);
+});
+
+window.addEventListener("popstate", function(event) {
+  window.location = location.pathname;
 });

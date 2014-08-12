@@ -42,4 +42,8 @@ class User < Sequel::Model
       @@ins_ds.call(:insert, :u => self.id, :c => chist.id)
     end
   end
+
+  def search_chists(query)
+    Chist.where("user_id = ? AND chist ILIKE ?", self.id, "%#{query}%")
+  end
 end

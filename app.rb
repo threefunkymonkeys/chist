@@ -123,6 +123,19 @@ Cuba.define do
       }
     end
 
+    on authenticated(User) do
+      on "search" do
+        chists = current_user.search_chists(req.params["query"])
+        if req.xhr?
+          res.write render("./views/dashboard/index.haml", :chists => chists)
+        else
+          res.write render("./views/layouts/app.haml") {
+            render("./views/dashboard/index.haml", chists: chists)
+          }
+        end
+      end
+    end
+
     not_found!
   end
 

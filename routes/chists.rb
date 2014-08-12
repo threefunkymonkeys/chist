@@ -84,7 +84,6 @@ module ChistApp
       end
 
       on get do
-
         on 'new' do
           on authenticated(User) do
             res.write render("./views/layouts/app.haml") {

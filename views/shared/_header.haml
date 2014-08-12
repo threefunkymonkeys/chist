@@ -6,8 +6,8 @@
     .navbar-collapse.collapse.navbar-inverse-collapse
       %ul.nav.navbar-nav.col-lg-7
         %li.col-lg-12
-          %form.search-form.navbar-left.col-lg-12{ :style => "margin: 10px -15px" }
-            %input#search-box.form-control.col-lg-6{ :type => :text, :placeholder => I18n.t('.layout.search') }
+          %form#search-chist.search-form.navbar-left.col-lg-12{ :style => "margin: 10px -15px", :action => "/search", :'data-remote' => 'true' }
+            %input#search-box.form-control.col-lg-6{ :type => :text, :placeholder => I18n.t('.layout.search'), :name => :query }
       - if authenticated(User)
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
