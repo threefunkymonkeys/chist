@@ -7,7 +7,7 @@
       %ul.nav.navbar-nav.col-lg-7
         %li.col-lg-12
           %form.search-form.navbar-left.col-lg-12{ :style => "margin: 10px -15px" }
-            %input.form-control.col-lg-12{ :type => :text, :placeholder => I18n.t('.layout.search') }
+            %input#search-box.form-control.col-lg-6{ :type => :text, :placeholder => I18n.t('.layout.search') }
       - if authenticated(User)
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
