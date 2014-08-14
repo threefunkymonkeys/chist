@@ -1,5 +1,6 @@
 en:
   layout:
     logout: Logout
+    login: Login / Sign up
     search: Search
     new_chist: New Chist
