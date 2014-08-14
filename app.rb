@@ -106,6 +106,10 @@ Cuba.define do
     run ChistApp::Chists
   end
 
+  on 'search' do
+    run ChistApp::Search
+  end
+
   on get do
     on root do
       if current_user
@@ -121,19 +125,6 @@ Cuba.define do
       res.write render("./views/layouts/app.haml") {
         render("./views/errors/404.haml")
       }
-    end
-
-    on authenticated(User) do
-      on "search" do
-        chists = current_user.search_chists(req.params["query"])
-        if req.xhr?
-          res.write render("./views/dashboard/index.haml", :chists => chists)
-        else
-          res.write render("./views/layouts/app.haml") {
-            render("./views/dashboard/index.haml", chists: chists)
-          }
-        end
-      end
     end
 
     not_found!
