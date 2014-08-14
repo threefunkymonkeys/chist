@@ -5,13 +5,23 @@ namespace :db do
   desc "Run DB migrations on db/migrate directory"
   task :migrate do
     require 'sequel'
+    require_relative 'helpers/environment_helper'
     require_relative 'lib/chist'
 
     Sequel.extension :migration
 
     env      ||= ENV['RACK_ENV'] || :development
-    ChistApp::Settings.load(File.dirname(__FILE__) + '/config/settings.yml', env)
-    DB       = ChistApp::Database.connect(ChistApp::Settings.get('db'))
+    ChistApp::Helpers.init_environment(env)
+
+    db_params = {
+      'host' => ENV["DATABASE_HOST"],
+      'port' => ENV["DATABASE_PORT"],
+      'user' => ENV["DATABASE_USER"],
+      'password' => ENV["DATABASE_PASS"],
+      'db_name' => ENV["DATABASE_NAME"]
+    }
+
+    DB       = ChistApp::Database.connect(db_params)
 
     puts 'Running migrations...'
 
