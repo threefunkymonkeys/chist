@@ -15,7 +15,7 @@ module ChistApp
             flash[:warning] = I18n.t("auth.duplicated")
             res.redirect '/chists/new'
 
-          when :provided_added
+          when :provider_added
             flash[:success] = I18n.t("auth.#{provider}")
             res.redirect '/users/connections'
 
