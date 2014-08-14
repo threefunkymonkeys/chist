@@ -3,9 +3,15 @@ module ChistApp
     def self.init_environment(env)
       self.set_env(env)
 
-      settings_file = File.join(File.dirname(__FILE__), "/../config/settings.yml")
-      ChistApp::Settings.load(settings_file, env)
-      ChistApp::Database.connect ChistApp::Settings.get('db')
+      db_params = {
+        'host' => ENV["DATABASE_HOST"],
+        'port' => ENV["DATABASE_PORT"],
+        'user' => ENV["DATABASE_USER"],
+        'password' => ENV["DATABASE_PASS"],
+        'db_name' => ENV["DATABASE_NAME"]
+      }
+
+      ChistApp::Database.connect db_params
     end
 
     def self.set_env(env)
@@ -15,7 +21,9 @@ module ChistApp
         env_vars = File.read(filename)
         env_vars.each_line do |var|
           name, value = var.split("=")
-          ENV[name.strip] = value.strip
+          if name && value
+            ENV[name.strip] = value.strip
+          end
         end
       end
     end

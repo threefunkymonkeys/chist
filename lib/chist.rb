@@ -24,9 +24,9 @@ module ChistApp
     end
 
     private
-      def self.connection_path(settings)
-        "postgres://#{settings['user']}:#{settings['password']}@#{settings['host']}:#{settings['port']}/#{settings['db_name']}"
-      end
+    def self.connection_path(settings)
+      "postgres://#{settings['user']}:#{settings['password']}@#{settings['host']}:#{settings['port']}/#{settings['db_name']}"
+    end
   end
 
   class LoginException < StandardError; end;
