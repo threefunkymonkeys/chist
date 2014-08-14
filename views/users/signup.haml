@@ -1,16 +1,18 @@
 %h2=I18n.t('home.new_user')
-%form{action: '/users', method: 'post'}
-  %label=I18n.t('home.name',)
-  %input{type: 'text', name: 'name', value: auth[:name], required: true}
-  %br
-  %label=I18n.t('home.email',)
-  %input{type: 'email', name: 'email', value: auth[:email], required: true}
-  %br
-  %label=I18n.t('home.password')
-  %input{type: 'password', name: 'password', required: true}
-  %br
-  %label=I18n.t('home.confirm_password')
-  %input{type: 'password', name: 'confirm_password', required: true}
-  %br
-  %input{type: 'hidden', name: 'origin', value: '/users/signup'}
-  %input{type: 'submit', value: I18n.t('home.signup')}
+%form.form-horizontal.col-md-5{action: '/users', method: 'post'}
+  %fieldset
+    .form-group
+      %label=I18n.t('home.name',)
+      %input.form-control{type: 'text', name: 'name', value: auth[:name], required: true}
+    .form-group
+      %label=I18n.t('home.email',)
+      %input.form-control{type: 'email', name: 'email', value: auth[:email], required: true}
+    .form-group
+      %label=I18n.t('home.password')
+      %input.form-control{type: 'password', name: 'password', required: true}
+    .form-group
+      %label=I18n.t('home.confirm_password')
+      %input.form-control{type: 'password', name: 'confirm_password', required: true}
+    .form-group
+      %input{type: 'hidden', name: 'origin', value: '/users/signup'}
+      %input.form-control.btn.btn-primary{type: 'submit', value: I18n.t('home.signup')}
