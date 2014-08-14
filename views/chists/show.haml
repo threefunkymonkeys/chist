@@ -2,7 +2,7 @@
   %h3.chist-header.col-md-8
     - unless chist.public
       %img{src: "/img/private.png", alt: I18n.t('chists.private_chist'), title: I18n.t('chists.private_chist')}
-    ="#{current_user.name}/#{chist.title}"
+    ="#{chist.user.name}/#{chist.title}"
   - if current_user && current_user.id == chist.user_id
     .col-md-4.h2
       %form{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST', class: 'pull-right'}
