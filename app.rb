@@ -10,12 +10,12 @@ require 'omniauth-github'
 require 'omniauth-twitter'
 require 'omniauth-facebook'
 require 'hatch'
+require_relative "helpers/environment_helper"
 
 ENV["RACK_ENV"] ||= :development
-settings_file = File.join(File.dirname(__FILE__), "config/settings.yml")
 
-ChistApp::Settings.load(settings_file, ENV["RACK_ENV"])
-DB = ChistApp::Database.connect ChistApp::Settings.get('db')
+ChistApp::Helpers.init_environment(ENV["RACK_ENV"])
+
 Sequel::Model.plugin :timestamps
 
 I18n.enforce_available_locales = false
@@ -23,7 +23,7 @@ I18n.locale = :en
 I18n.load_path += Dir['./locale/**/*.yml']
 
 Cuba.settings[:render]= {:template_engine => :haml}
-Cuba.use Rack::Session::Cookie, :secret => "ef9dfef977c094acfb5a642cdeb0f0be0258df5c1d58b8101aee0aae4e041ebedc02ba38d2b4a658"
+Cuba.use Rack::Session::Cookie, :secret => ENV["SESSION_SECRET"]
 Cuba.use Rack::Protection
 Cuba.use Rack::MethodOverride
 

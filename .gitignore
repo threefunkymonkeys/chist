@@ -2,3 +2,4 @@
 .ruby-version
 config/settings.yml
 tags
+*.env.sh
