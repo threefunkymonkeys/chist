@@ -1,11 +1,13 @@
 %h2=I18n.t('user.edit_user')
-%form{action: '/users', method: 'post'}
-  %input{type: 'hidden', name: '_method', value: 'PUT'}
-  %label=I18n.t('user.name',)
-  %input{type: 'text', name: 'name', value: user.name, required: true}
-  %br
-  %label=I18n.t('user.username',)
-  %input{type: 'text', name: 'username', value: user.username, required: true}
-  %br
-  %input{type: 'submit', value: I18n.t('user.save')}
+%form.form-horizontal.col-md-5{action: '/users', method: 'post'}
+  %fieldset
+    .form-group
+      %input{type: 'hidden', name: '_method', value: 'PUT'}
+      %label=I18n.t('user.name',)
+      %input.form-control{type: 'text', name: 'name', value: user.name, required: true}
+    .form-group
+      %label=I18n.t('user.username',)
+      %input.form-control{type: 'text', name: 'username', value: user.username, required: true}
+    .form-group
+      %input.btn.btn-primary{type: 'submit', value: I18n.t('user.save')}
 
