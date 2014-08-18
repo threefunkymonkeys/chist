@@ -29,7 +29,7 @@ Cuba.use Rack::MethodOverride
 
 Cuba.use Rack::Static,
           root: File.expand_path(File.dirname(__FILE__)) + "/public",
-          urls: %w[/img /css /js]
+          urls: %w[/img /css /js /fonts]
 
 OmniAuth.config.on_failure = Proc.new { |env|
   OmniAuth::FailureEndpoint.new(env).redirect_to_failure
