@@ -44,12 +44,10 @@ $("form.fav-form").on("ajax:done", function(event) {
 });
 
 $("form.fav-form").on("ajax:error", function(event) {
-  console.log("ON AJAX:ERROR");
-  console.log(event);
+  console.log(event.response);
 });
 
 $("form#search-chist").on("ajax:beforeSend", function(event) {
-  console.log(event);
   var url = "/search?query=" + event.request.query;
   history.pushState(null, null, url);
   $("#search-box").blur();
