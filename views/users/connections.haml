@@ -1,26 +1,41 @@
 %h2=I18n.t('user.edit_connections')
-%ul
-  %li
-    - if user.twitter_user.nil?
-      %a{href: '/auth/twitter'}=I18n.t('home.providers.twitter')
-    - else  
-      %span=I18n.t('home.providers.twitter')
-      %form{method: 'post', action: "/users/connections/twitter"}
-        %input{type: 'hidden', name: '_method', value: 'DELETE'}
-        %input{type: 'submit', value: I18n.t('user.delete_connection')}
-  %li
-    - if user.facebook_user.nil?
-      %a{href: '/auth/facebook'}=I18n.t('home.providers.facebook')
-    - else  
-      %span=I18n.t('home.providers.facebook')
-      %form{method: 'post', action: "/users/connections/facebook"}
-        %input{type: 'hidden', name: '_method', value: 'DELETE'}
-        %input{type: 'submit', value: I18n.t('user.delete_connection')}
-  %li
-    - if user.github_user.nil?
-      %a{href: '/auth/github'}=I18n.t('home.providers.github')
-    - else  
-      %span=I18n.t('home.providers.github')
-      %form{method: 'post', action: "/users/connections/github"}
-        %input{type: 'hidden', name: '_method', value: 'DELETE'}
-        %input{type: 'submit', value: I18n.t('user.delete_connection')}
+%div#external-connections.row
+  %div.col-lg-4
+    %div.panel.panel-info
+      %div.panel-heading
+        %h3.panel-title Twitter
+      %div.panel-body.twitter-connection
+        - if user.twitter_user.nil?
+          %p.text-center
+            %a.btn.btn-success{href: '/auth/twitter'}=I18n.t('user.add_provider')
+        - else
+          %form{method: 'post', action: "/users/connections/twitter"}
+            %input{type: 'hidden', name: '_method', value: 'DELETE'}
+            %p.text-center
+              %input.btn.btn-danger{type: 'submit', value: I18n.t('user.delete_connection')}
+  %div.col-lg-4
+    %div.panel.panel-primary
+      %div.panel-heading
+        %h3.panel-title Facebook
+      %div.panel-body.facebook-connection
+        - if user.facebook_user.nil?
+          %p.text-center
+            %a.btn.btn-success{href: '/auth/facebook'}=I18n.t('user.add_provider')
+        - else
+          %form{method: 'post', action: "/users/connections/facebook"}
+            %input{type: 'hidden', name: '_method', value: 'DELETE'}
+            %p.text-center
+              %input.btn.btn-danger{type: 'submit', value: I18n.t('user.delete_connection')}
+  %div.col-lg-4
+    %div.panel.panel-default
+      %div.panel-heading
+        %h3.panel-title Github
+      %div.panel-body.github-connection
+        - if user.github_user.nil?
+          %p.text-center
+            %a.btn.btn-success{href: '/auth/github'}=I18n.t('user.add_provider')
+        - else
+          %form{method: 'post', action: "/users/connections/github"}
+            %input{type: 'hidden', name: '_method', value: 'DELETE'}
+            %p.text-center
+              %input.btn.btn-danger{type: 'submit', value: I18n.t('user.delete_connection')}
