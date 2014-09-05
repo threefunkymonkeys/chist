@@ -62,3 +62,16 @@ ul#latest-chists li .timestamp, #edit-top-bar .timestamp {
   transition: width 2s, opacity 2s;
   -webkit-transition: width 2s, opacity 2s;
 }
+
+#external-connections {}
+  #external-connections .twitter-connection {
+    background: url(/img/twitter_bg.png) transparent no-repeat -2px 18px;
+  }
+
+  #external-connections .facebook-connection {
+    background: url(/img/facebook_bg.png) transparent no-repeat -5px 16px;
+  }
+
+  #external-connections .github-connection {
+    background: url(/img/github_bg.png) transparent no-repeat -5px 2px;
+  }
