@@ -46,4 +46,14 @@ class User < Sequel::Model
   def search_chists(query)
     Chist.where("user_id = ? AND chist ILIKE ?", self.id, "%#{query}%")
   end
+
+  def favorite_chists
+    Chist.join(:user_favorites, :chist_id => :id).order(Sequel.desc(:created_at))
+  end
+
+  def ordered_chists
+    favs = favorite_chists
+    reg_chists = Chist.where("user_id = ? AND id NOT IN ?", self.id, favs.map(&:id)).order(Sequel.desc(:created_at))
+    favs.to_a + reg_chists.to_a
+  end
 end
