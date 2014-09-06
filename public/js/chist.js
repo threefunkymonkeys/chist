@@ -7,7 +7,6 @@ $("form[data-remote='true']").submit(function(event) {
   var formData = {};
 
   form.find("input").each(function() {
-    console.log($(this).val());
     formData[$(this).attr('name')] = $(this).val();
   });
 
@@ -44,14 +43,15 @@ $("form.fav-form").on("ajax:done", function(event) {
 });
 
 $("form.fav-form").on("ajax:error", function(event) {
-  console.log("ON AJAX:ERROR");
-  console.log(event);
+  console.log(event.response);
 });
 
 $("form#search-chist").on("ajax:beforeSend", function(event) {
-  console.log(event);
   var url = "/search?query=" + event.request.query;
-  history.pushState(null, null, url);
+
+  history.pushState(null, "Search", url);
+  sessionStorage.setItem("restoreLocation", 1);
+
   $("#search-box").blur();
 });
 
@@ -60,5 +60,8 @@ $("form#search-chist").on("ajax:done", function(event) {
 });
 
 window.addEventListener("popstate", function(event) {
-  window.location = location.pathname;
+  if (sessionStorage.restoreLocation) {
+    sessionStorage.removeItem("restoreLocation");
+    window.location = location.pathname;
+  }
 });
