@@ -5,7 +5,7 @@ module ChistApp
         on get do
           on root do
             res.write render("./views/layouts/app.haml") {
-              render("./views/dashboard/index.haml", chists: current_user.chists.reverse)
+              render("./views/dashboard/index.haml", chists: current_user.ordered_chists)
             }
           end
 
