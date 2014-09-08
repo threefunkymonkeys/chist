@@ -26,9 +26,6 @@
 .chist-chat .line {
   overflow-wrap: normal;
 }
-.chist-chat .line:nth-child(2n+1) {
-  /*striped chat using backgroun-color*/
-}
 
 #delete-chist-form button { margin-left: 20px;}
 
