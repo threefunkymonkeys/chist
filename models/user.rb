@@ -44,7 +44,7 @@ class User < Sequel::Model
   end
 
   def search_chists(query)
-    Chist.where("user_id = ? AND chist ILIKE ?", self.id, "%#{query}%")
+    Chist.where("user_id = ? AND (chist ILIKE ? OR title ILIKE ?)", self.id, "%#{query}%", "%#{query}%")
   end
 
   def favorite_chists
