@@ -48,12 +48,13 @@ class User < Sequel::Model
   end
 
   def favorite_chists
-    Chist.join(:user_favorites, :chist_id => :id).order(Sequel.desc(:created_at))
+    Chist.join(:user_favorites, :chist_id => :id).where("user_favorites.user_id = ?", self.id).order(Sequel.desc(:created_at))
   end
 
   def ordered_chists
     favs = favorite_chists
-    reg_chists = Chist.where("user_id = ? AND id NOT IN ?", self.id, favs.map(&:id)).order(Sequel.desc(:created_at))
+    reg_chists = Chist.where("user_id = ?", self.id).order(Sequel.desc(:created_at))
+    reg_chists = reg_chists.where("id NOT IN ?", favs.map(&:id)) if favs.any?
     favs.to_a + reg_chists.to_a
   end
 end
