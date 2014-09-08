@@ -31,7 +31,7 @@
         .form-group
           %label.control-label
             Chist URL
-          %input.form-control.input-sm{ value: "http://chist.io/chists/#{chist.id}" }
+          %input.form-control.input-sm{ value: "#{ENV['SITE_URL']}/chists/#{chist.id}" }
         .form-group
           %label.control-label
             =I18n.t('.chists.lines')
