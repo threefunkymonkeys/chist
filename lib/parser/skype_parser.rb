@@ -23,7 +23,7 @@ class ChistApp::SkypeParser
       message.gsub! /(https?:\/\/[^\s]*)/, '<a href="\1" target="_blank">\1</a>'
 
       #construct chat line into div
-      output += "<div class=\"line\"><span class=\"time\">#{time.first || ''}</span><span class=\"message\">#{message}</span></div>"
+      output += "<div class=\"line\"><span class=\"time\">#{time.first || ''}</span><span class=\"message\">#{message.strip}</span></div>\r\n"
     end
 
     output
