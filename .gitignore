@@ -3,3 +3,5 @@
 config/settings.yml
 tags
 *.env.sh
+log/*.log
+log/*.pid

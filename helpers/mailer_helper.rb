@@ -1,6 +1,6 @@
 require 'haml'
 
-module ChistApp::Helpers
+histApp::Settings.get
   class Mailer
     FROM_EMAIL = ENV['MAILER_FROM_EMAIL'] || "info@example.com"
     FROM_NAME  = ENV['MAILER_FROM_NAME']  || "Example"
@@ -8,7 +8,7 @@ module ChistApp::Helpers
     def self.send_validation_code(user)
       template = File.read('views/emails/account_validation.haml')
       subject  = I18n.t('emails.subject.validation')
-      body = ::Haml::Engine.new(template).render(Object.new, {user: user})
+      body = self.load_body(template, {user: user, environment: ENV})
       user.name = user.email if user.name.empty?
 
       self.enqueue(user, subject, body, :urgent)
@@ -24,6 +24,10 @@ module ChistApp::Helpers
         subject: subject,
         body: body
       })
+    end
+
+    def self.load_body(template, locals = {})
+      ::Haml::Engine.new(template).render(Object.new, locals)
     end
   end
 end

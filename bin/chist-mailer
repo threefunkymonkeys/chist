@@ -1,0 +1,13 @@
+#! /usr/bin/env ruby
+
+require_relative "../jobs/chist-mailer"
+
+case Clap.run(ARGV, ChistMailer.cli).first
+
+when "start"
+  ChistMailer.start!
+when "stop"
+  ChistMailer.stop!
+when "usage", "help"
+  puts ChistMailer.fallen_usage
+end
