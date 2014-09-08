@@ -5,13 +5,14 @@
   width: 100%;
   padding: 10px;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 12px;
   background-color: inherit;
   color: inherit;
   border: none;
   overflow-x: auto;
   overflow-y: hidden;
   overflow-wrap: normal;
+  font-family: "Oxygen Mono";
 }
 
 .chist-preview {
