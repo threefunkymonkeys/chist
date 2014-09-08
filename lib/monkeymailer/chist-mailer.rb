@@ -1,7 +1,7 @@
 require 'monkey-mailer'
-require_relative '../lib/monkeymailer/mm-sequel'
-require_relative "../lib/chist"
-require_relative "../helpers/environment_helper"
+require_relative 'mm-sequel'
+require_relative "../chist"
+require_relative "../../helpers/environment_helper"
 
 ENV["RACK_ENV"] ||= :development
 
@@ -51,4 +51,4 @@ module ChistMailer
   end
 end
 
-require_relative '../lib/monkeymailer/models'
+require_relative 'models'

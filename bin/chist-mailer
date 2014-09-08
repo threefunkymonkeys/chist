@@ -1,6 +1,6 @@
 #! /usr/bin/env ruby
 
-require_relative "../jobs/chist-mailer"
+require_relative "../lib/monkeymailer/chist-mailer"
 
 case Clap.run(ARGV, ChistMailer.cli).first
 
