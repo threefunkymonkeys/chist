@@ -2,21 +2,28 @@ require 'haml'
 
 module ChistApp::Helpers
   class Mailer
+    FROM_EMAIL = ENV['MAILER_FROM_EMAIL'] || "info@example.com"
+    FROM_NAME  = ENV['MAILER_FROM_NAME']  || "Example"
+
     def self.send_validation_code(user)
       template = File.read('views/emails/account_validation.haml')
-      mail = Mail.new do
-        from     'no-reply@chist.com'
-        to       user.email
-        subject  I18n.t('emails.subject.validation')
-        body     ::Haml::Engine.new(template).render(Object.new, {user: user})
-      end
+      subject  = I18n.t('emails.subject.validation')
+      body = ::Haml::Engine.new(template).render(Object.new, {user: user})
+      user.name = user.email if user.name.empty?
 
-      send(mail)
+      self.enqueue(user, subject, body, :urgent)
     end
 
-    def self.send(mail)
-      return unless ENV['RACK_ENV'] == :production
-      mail.deliver
+    def self.enqueue(user, subject = '', body = '', priority = :normal)
+      ::MailQueue.create({
+        priority: priority.to_s,
+        from_email: FROM_EMAIL,
+        from_name: FROM_NAME,
+        to_email: user.email,
+        to_name: user.name,
+        subject: subject,
+        body: body
+      })
     end
   end
 end
