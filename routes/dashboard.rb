@@ -6,11 +6,7 @@ module ChistApp
           on root do
             res.write render("./views/layouts/app.haml") {
               chists = current_user.ordered_chists
-              if chists.any?
-                render("./views/dashboard/index.haml", chists: chists)
-              else
-                res.redirect '/chists/new'
-              end
+              render("./views/dashboard/index.haml", chists: chists)
             }
           end
 

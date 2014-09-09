@@ -21,3 +21,8 @@
 
       .panel-body.chist-preview
         = partial("chists/_chist", :chist => chist, :short => true)
+
+- unless chists.any?
+  %p=I18n.t('.dashboard.no_chists')
+  %a.btn.btn-primary{href: "/chists/new"}=I18n.t('chists.new')
+
