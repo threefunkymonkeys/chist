@@ -1,0 +1,8 @@
+%div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
+  %table.table.table-striped
+    - lines = locals[:short] ? chist.chist.lines[0,5] : chist.chist.lines
+    - lines.each_with_index do |line, idx|
+      %tr
+        %td.number{ :id => "L#{idx + 1}" }
+          %a{ :href => "/chists/#{chist.id}#L#{idx + 1}" }= idx + 1
+        %td.line= line

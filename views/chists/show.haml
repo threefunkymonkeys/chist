@@ -17,12 +17,11 @@
 
 .row
   .col-md-9
-    .panel.panel-primary
+    .panel.panel-primary.chist-panel
       .panel-heading
         %h3.panel-title=chist.title
       .panel-body
-        %div.chist-chat{class: "chist-format-#{chist.format} chist-theme-default"}
-          =chist.chist
+        = partial("chists/_chist", :chist => chist)
   .col-md-3
     .panel.panel-info
       .panel-heading

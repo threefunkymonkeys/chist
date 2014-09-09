@@ -17,7 +17,7 @@ class ChistApp::IRCParser
     #add outter div and identify channel info lines
     output = ""
     log.split(/\n\r?/).each do |line|
-      output += "<div class=\"line\">" + line.gsub(/^(\*.+)$/, '<span class="channel-info">\1</span>') + "</div>"
+      output += "<div class=\"line\">" + line.gsub(/^(\*.+)$/, '<span class="channel-info">\1</span>') + "</div>\r\n"
     end
 
     output

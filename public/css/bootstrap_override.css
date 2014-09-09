@@ -17,3 +17,7 @@
 .navbar-nav > li > a, .navbar-header a {
   line-height: 13px;
 }
+
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+  background-color: #F0F0F0;
+}

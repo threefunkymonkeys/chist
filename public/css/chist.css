@@ -1,9 +1,13 @@
+.chist-panel .panel-body {
+  padding: 0px;
+}
+
 .chist-title {
   padding: 10px 10px 0;
 }
+
 .chist-chat {
   width: 100%;
-  padding: 10px;
   font-family: inherit;
   font-size: 12px;
   background-color: inherit;
@@ -13,6 +17,24 @@
   overflow-y: hidden;
   overflow-wrap: normal;
   font-family: "Oxygen Mono";
+  padding: 0.5em;
+}
+
+.chist-chat table tr td {
+  padding: 3px 0px;
+  height: 1em;
+  line-height: 1em;
+}
+
+.chist-chat table td.number {
+  text-align: right;
+}
+
+.chist-chat table td.number a {
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #95A5A6;
+  margin: 0 0.5em 0 0.5em;
 }
 
 .chist-preview {
