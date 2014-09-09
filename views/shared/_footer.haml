@@ -1,0 +1,12 @@
+%footer.container
+  .row
+    .col-lg-12
+      %ul.list-unstyled
+        %li.log-3fm
+          ="3funkymonkeys &copy; #{Time.now.year}"
+        %li
+          %a{href: "http://threefunkymonkeys.com/"}= I18n.t('.layout.footer.about_us')
+        %li
+          %a{href: "/terms"}= I18n.t('.layout.footer.terms')
+        %li
+          %a{href: "/privacy"}= I18n.t('.layout.footer.privacy')
