@@ -15,6 +15,7 @@ en:
     your_chists: Your Chists
     lines: Chist Lines
     last_update: Last Update
+    deleted: Chist Deleted
 
     format:
       none: Select Format
@@ -25,3 +26,8 @@ en:
       save: Save
       download: Download Chist
       editing: Editing
+    modal:
+      delete: Delete Chist
+      delete_text: Are you sure you want to delete this chist?
+      cancel: Cancel
+      delete_it: Delete

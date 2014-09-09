@@ -6,7 +6,7 @@
   - if current_user && current_user.id == chist.user_id
     .col-md-4.h2
       %form{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST', class: 'pull-right'}
-        %button.btn.btn-danger.btn-sm{type: 'submit', :style => "position: relative; top: -5px;"}=I18n.t('chists.delete')
+        %button.btn.btn-danger.btn-sm.delete-chist{type: 'submit', :style => "position: relative; top: -5px;"}=I18n.t('chists.delete')
         %input{type: 'hidden', name: '_method', value: 'DELETE'}
       %a.btn.btn-primary.btn-sm.pull-right{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
       %form.form-horizontal#favorite-wrapper.pull-right{ action: "/chists/#{chist.id}/favorite", method: "POST" }

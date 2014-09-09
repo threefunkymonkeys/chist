@@ -17,7 +17,7 @@
             %a.btn.btn-success.btn-xs{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
             %form{method: 'post', action: "/chists/#{chist.id}"}
               %input{type: 'hidden', name: '_method', value: 'DELETE'}
-              %input.btn.btn-danger.btn-xs{type: 'submit', value: I18n.t('chists.delete')}
+              %input.btn.btn-danger.btn-xs.delete-chist{type: 'submit', value: I18n.t('chists.delete')}
 
       .panel-body.chist-preview
         = partial("chists/_chist", :chist => chist, :short => true)
