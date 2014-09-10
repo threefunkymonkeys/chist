@@ -110,6 +110,18 @@ Cuba.define do
     run ChistApp::Search
   end
 
+  on 'terms' do
+    res.write render("./views/layouts/public.haml") {
+      render("./views/public/terms.haml")
+    }
+  end
+
+  on 'privacy' do
+    res.write render("./views/layouts/public.haml") {
+      render("./views/public/privacy.haml")
+    }
+  end
+
   on get do
     on root do
       if current_user

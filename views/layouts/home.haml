@@ -8,13 +8,13 @@
       %meta{ :name => "referrer", :content => "never"}
     %link{ :href => "css/bootstrap.min.css", :rel => "stylesheet" }
     %link{ :href => "css/home.css", :rel => "stylesheet" }
+    %link{ :href => "css/layout.css", :rel => "stylesheet" }
     %link{ :href => "http://fonts.googleapis.com/css?family=Inconsolata", :rel => "stylesheet", :type => "text/css" }
   %body
     #wrapper
-      %header.navbar.navbar-default
-
       #container.container
         .flash-messages
           =show_flash_message
         = yield
+      = partial 'shared/_footer'
 

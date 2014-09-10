@@ -114,13 +114,20 @@ module ChistApp
         end
 
         on ":id" do |chist_id|
-          if chist = Chist[chist_id]
+          chist = Chist[chist_id]
+          not_found! unless chist
+
+          on root do
             res.write render("./views/layouts/app.haml", is_public: chist.public) {
               render("./views/chists/show.haml", chist: chist)
             }
-          else
-            not_found!
           end
+
+          on 'raw' do
+            res.write render("./views/chists/raw.haml", chist: chist.chist_raw.gsub('\r\n', '\r'))
+          end
+
+          not_found!
         end
 
         not_found!

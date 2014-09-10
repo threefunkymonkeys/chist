@@ -11,3 +11,23 @@
 .actions form {
   display: inline-block;
 }
+
+footer {
+  margin-top: 30px;
+}
+
+footer ul {
+  width: auto;
+  height: 20px;
+  display: inline-block;
+}
+
+footer li {
+  float: left;
+  margin-right: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+footer .col-lg-12 {
+  text-align: center;
+}
