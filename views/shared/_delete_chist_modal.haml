@@ -1,0 +1,13 @@
+#modal-chist-delete.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close.modal-close{type: 'button', :"data-dismiss" => 'modal', :"aria-hidden" => "true"} &times;
+        %h4.modal-title= I18n.t('.chists.modal.delete')
+      .modal-body
+        %p=I18n.t('.chists.modal.delete_text')
+      .modal-footer
+        %button.btn.btn-default.modal-close.pull-left{type: 'button', :"data-dismiss" => 'modal'}= I18n.t('.chists.modal.cancel')
+        %form{method: 'post', action: "", role: 'form'}
+          %input{type: 'hidden', name: '_method', value: 'delete'}
+          %button.btn.btn-danger.pull-right{type: 'submit'}= I18n.t('.chists.modal.delete_it')

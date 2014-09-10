@@ -2,3 +2,4 @@ en:
   dashboard:
     create_chist: 'Create Chist'
     dashboard: 'Dashboard'
+    no_chists: There aren't any chists to show.

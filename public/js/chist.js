@@ -65,3 +65,14 @@ window.addEventListener("popstate", function(event) {
     window.location = location.pathname;
   }
 });
+
+$("body").on('click', ".delete-chist", function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  var _this = $(this),
+      action = _this.parent('form').attr('action');
+
+  modal = $("#modal-chist-delete");
+  modal.find('form').attr('action', action);
+  modal.modal("show");
+});
