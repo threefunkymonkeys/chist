@@ -10,6 +10,8 @@ class ChistApp::Parser
       ChistApp::IRCParser.parse(text)
     when :skype, "skype"
       ChistApp::SkypeParser.parse(text)
+    when :limechat, "limechat"
+      ChistApp::Limechat.parse(text)
     when :none, "none"
       text
     else
