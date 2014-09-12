@@ -48,7 +48,7 @@ class User < Sequel::Model
   end
 
   def favorite_chists
-    Chist.join(:user_favorites, :chist_id => :id).where("user_favorites.user_id = ?", self.id).order(Sequel.desc(:created_at))
+    Chist.select_all(:chists).join(:user_favorites, :chist_id => :id).where("user_favorites.user_id = ?", self.id).order(Sequel.desc(:created_at))
   end
 
   def ordered_chists

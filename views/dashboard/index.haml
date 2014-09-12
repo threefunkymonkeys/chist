@@ -6,7 +6,10 @@
       .panel-heading
 
         %h3.panel-title
-          %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
+          - if chist.user_id == current_user.id
+            %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
+          - else
+            %a.col-md-4{href: "/chists/#{chist.id}"}="#{chist.user.name}/#{chist.title}"
 
           .actions
             %form.fav-form{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
@@ -14,10 +17,11 @@
               %button.fav-button.btn.btn-info.btn-xs{ type: "submit" }
                 %span.fav-icon.glyphicon.glyphicon-star{ :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
                 Favorite
-            %a.btn.btn-success.btn-xs{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
-            %form{method: 'post', action: "/chists/#{chist.id}"}
-              %input{type: 'hidden', name: '_method', value: 'DELETE'}
-              %input.btn.btn-danger.btn-xs.delete-chist{type: 'submit', value: I18n.t('chists.delete')}
+            - if chist.user_id == current_user.id
+              %a.btn.btn-success.btn-xs{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
+              %form{method: 'post', action: "/chists/#{chist.id}"}
+                %input{type: 'hidden', name: '_method', value: 'DELETE'}
+                %input.btn.btn-danger.btn-xs.delete-chist{type: 'submit', value: I18n.t('chists.delete')}
 
       .panel-body.chist-preview
         = partial("chists/_chist", :chist => chist, :short => true)
