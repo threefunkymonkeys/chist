@@ -19,8 +19,9 @@ en:
 
     format:
       none: Select Format
-      irc: IRC
+      irc: IRC - Default
       skype: Skype
+      limechat: IRC - Limechat
 
     actions:
       save: Save

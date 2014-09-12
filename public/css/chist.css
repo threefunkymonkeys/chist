@@ -69,21 +69,21 @@
   .chist-format-skype.chist-theme-default .line .username_10  { color: #9c6e7f; }
 
 .chist-format-irc .chist-theme-default { }
-  .chist-format-irc.chist-theme-default .line .open-close {
+  .chist-theme-default .line .open-close {
     color: #cc9900;
   }
-  .chist-format-irc.chist-theme-default .line .channel-info {
+  .chist-theme-default .line .channel-info {
     color: #553355;
   }
 
-  .chist-format-irc.chist-theme-default .line .username_0   { color: #f6917f; }
-  .chist-format-irc.chist-theme-default .line .username_1   { color: #3f7b48; }
-  .chist-format-irc.chist-theme-default .line .username_2   { color: #669988; }
-  .chist-format-irc.chist-theme-default .line .username_3   { color: #cc7ef6; }
-  .chist-format-irc.chist-theme-default .line .username_4   { color: #2255aa; }
-  .chist-format-irc.chist-theme-default .line .username_5   { color: #cc32b2; }
-  .chist-format-irc.chist-theme-default .line .username_6   { color: #907ef6; }
-  .chist-format-irc.chist-theme-default .line .username_7   { color: #cc6666; }
-  .chist-format-irc.chist-theme-default .line .username_8   { color: #7b3f55; }
-  .chist-format-irc.chist-theme-default .line .username_9   { color: #3f7b65; }
-  .chist-format-irc.chist-theme-default .line .username_10  { color: #9c6e7f; }
+  .chist-theme-default .line .username_0   { color: #f6917f; }
+  .chist-theme-default .line .username_1   { color: #3f7b48; }
+  .chist-theme-default .line .username_2   { color: #669988; }
+  .chist-theme-default .line .username_3   { color: #cc7ef6; }
+  .chist-theme-default .line .username_4   { color: #2255aa; }
+  .chist-theme-default .line .username_5   { color: #cc32b2; }
+  .chist-theme-default .line .username_6   { color: #907ef6; }
+  .chist-theme-default .line .username_7   { color: #cc6666; }
+  .chist-theme-default .line .username_8   { color: #7b3f55; }
+  .chist-theme-default .line .username_9   { color: #3f7b65; }
+  .chist-theme-default .line .username_10  { color: #9c6e7f; }
