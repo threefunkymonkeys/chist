@@ -6,6 +6,9 @@ en:
     new_user: 'Sign up'
     signup: 'Sign up'
     user_created: 'Account created. Check your email to validate your account.'
+    more_than_5_chars: "Password must be at least 5 characters long"
+    match: "Password confirmation doesn't match"
+    unique: "Email is already registered"
     user_activated: 'Account activated.'
     login_omniauth: 'Or login with:'
     name: 'Name'

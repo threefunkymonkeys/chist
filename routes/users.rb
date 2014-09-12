@@ -104,7 +104,7 @@ module ChistApp
             flash[:success] = I18n.t('home.user_created')
             res.redirect '/'
           rescue SignupException => e
-            flash[:error] = signup.errors
+            flash[:error] = signup.errors.collect { |k,v| I18n.t("home.#{v.first}") }.flatten.join("; ")
             res.status = 400
             res.redirect req.params.has_key?('origin') ? req.params['origin'] : '/'
           end
