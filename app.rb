@@ -38,7 +38,7 @@ OmniAuth.config.on_failure = Proc.new { |env|
 omniauth = ChistApp::Settings.get('omniauth')
 
 Cuba.use OmniAuth::Builder do
-  provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], :scope => "user,repo"
+  provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], :scope => "user"
   provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET']
   provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
 end
