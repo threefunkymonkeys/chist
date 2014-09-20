@@ -21,7 +21,8 @@ en:
       none: Select Format
       irc: IRC - Default
       skype: Skype
-      limechat: IRC - Limechat
+      limechat: Limechat - Default
+      colloquy: Colloquy - Default
 
     actions:
       save: Save
