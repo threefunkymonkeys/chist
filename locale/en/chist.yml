@@ -22,6 +22,7 @@ en:
       irc: IRC - Default
       skype: Skype
       limechat: Limechat - Default
+      limechatsample: Limechat - Sample
       colloquy: Colloquy - Default
 
     actions:

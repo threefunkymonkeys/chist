@@ -15,6 +15,10 @@
         %option{value: 'limechat', selected: 'selected'}=I18n.t('chists.format.limechat')
       - else
         %option{value: 'limechat'}=I18n.t('chists.format.limechat')
+      - if (defined?(chist) && chist.format == 'limechatsample') || (params.has_key?('format') && params['format'] == 'limechatsample')
+        %option{value: 'limechatsample', selected: 'selected'}=I18n.t('chists.format.limechatsample')
+      - else
+        %option{value: 'limechatsample'}=I18n.t('chists.format.limechatsample')
       - if (defined?(chist) && chist.format == 'colloquy') || (params.has_key?('format') && params['format'] == 'colloquy')
         %option{value: 'colloquy', selected: 'selected'}=I18n.t('chists.format.colloquy')
       - else

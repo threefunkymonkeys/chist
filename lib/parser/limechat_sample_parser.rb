@@ -1,4 +1,4 @@
-class ChistApp::Limechat2
+class ChistApp::Limechat::Sample
 
   def self.parse(log)
     #scan for participants
