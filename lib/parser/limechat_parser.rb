@@ -1,5 +1,5 @@
 class ChistApp::Limechat
-  COMMANDS = ['Mode', 'Created at']
+  COMMANDS = ['Mode', 'Created at', '***']
 
   def self.parse(log)
     output = ""
