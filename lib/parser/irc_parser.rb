@@ -12,7 +12,7 @@ class ChistApp::IRCParser
     log.gsub! /(<[^>]+>)(.*)/, '\1<span class="message">\2</span>'
     #apply class to usernames
     classes.each do |k,v|
-      log.gsub! /(<)#{k}(>)/, '<span class="open-close">\1</span>' + v + '<span class="open-close">\2</span>'
+      log.gsub! /(<)#{Regexp.escape(k)}(>)/, '<span class="open-close">\1</span>' + v + '<span class="open-close">\2</span>'
     end
     #add outter div and identify channel info lines
     output = ""

@@ -23,7 +23,7 @@ class ChistApp::Limechat
     members.each_with_index { |username, key| classes[username] = "<span class=\"username_#{key}\">#{username}</span>"}
 
     classes.each do |k,v|
-      output.gsub! /#{k}/, v
+      output.gsub! /#{Regexp.escape(k)}/, v
     end
     output.gsub! /(https?:\/\/[^\s\n]*)/, '<a href="\1" target="_blank">\1</a>'
 
