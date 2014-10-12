@@ -61,7 +61,7 @@ module ChistApp
 
             raise ArgumentError.new(chist_form.errors.full_messages.join(', ')) unless chist_form.valid?
 
-            Chist.create({
+            new_chist = Chist.create({
               title:     chist['title'],
               chist_raw: chist['chist'].dup,
               chist:     ChistApp::Parser.parse(chist['format'], chist['chist']),
@@ -71,7 +71,7 @@ module ChistApp
             })
 
             flash[:success] = I18n.t('chists.chists_created')
-            res.redirect '/dashboard'
+            res.redirect "/chists/#{new_chist.id}"
           rescue => e
             flash[:error] = e.message
             chist.delete('chist')
