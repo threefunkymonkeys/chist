@@ -76,3 +76,12 @@ $("body").on('click', ".delete-chist", function(event) {
   modal.find('form').attr('action', action);
   modal.modal("show");
 });
+
+$("#delete-key-modal").on('show.bs.modal', function(event) {
+  var button = $(event.relatedTarget);
+  key_id = button.data('key-id');
+
+  var modal = $(this);
+
+  modal.find("#delete-form").attr("action", "/users/keys/" + key_id);
+});

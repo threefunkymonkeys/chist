@@ -20,3 +20,14 @@ en:
     same_password: 'Please choose a different password'
     password_doesnt_match: 'New password does not match confirmation'
     add_provider: 'Connect'
+    keys: 'Your API Keys'
+    new_key: 'Create New Key'
+    delete_key: 'Delete key?'
+    create_key_error: 'The key cannot be created'
+    delete_key_error: 'The key cannot be deleted'
+
+    actions:
+      new_key: 'Generate new key'
+      save_key: 'Create Key'
+      cancel: 'Cancel'
+      confirm_delete_key: 'Confirm key deletion'
