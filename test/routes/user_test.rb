@@ -30,6 +30,22 @@ describe ChistApp::Users do
       user = User.find(:email => params['email'])
       assert_equal nil, user
     end
+
+    it 'should create default API key' do
+      password = Faker::Internet.password
+      params = {
+        'email' => Faker::Internet.safe_unique_email,
+        'password' => password,
+        'confirm_password' => password
+      }
+      post '/users', params
+
+      assert_equal 302, last_response.status
+      user = User.find(:email => params['email'])
+      user.wont_be_nil
+
+      user.user_api_keys.wont_be_nil
+    end
   end
 
   describe 'User activation' do
