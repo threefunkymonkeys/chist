@@ -29,3 +29,9 @@ class MiniTest::Spec
 end
 
 OmniAuth.config.test_mode = true
+
+module Rack::Response::Helpers
+  def unauthorized?
+    @status == 401
+  end
+end
