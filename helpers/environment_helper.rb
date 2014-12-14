@@ -27,5 +27,9 @@ module ChistApp
         end
       end
     end
+
+    def api_request
+      !req.env["HTTP_X_CHIST_AUTH"].nil?
+    end
   end
 end

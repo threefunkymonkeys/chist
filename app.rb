@@ -60,6 +60,11 @@ Cuba.plugin ChistApp::Validators
 include Cuba::Render::Helper
 
 Cuba.define do
+
+  on api_request do
+    run ChistApp::ApiRoutes
+  end
+
   on 'password/reset' do
     on authenticated(User) do
       on get do
