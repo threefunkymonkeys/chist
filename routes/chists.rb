@@ -55,29 +55,33 @@ module ChistApp
 
       on post do
         on root do
-          begin
-            chist = req.params['chist'].strip
-            chist_form = ChistApp::Validators::ChistForm.hatch(chist)
+          on authenticated(User) do
+            begin
+              chist = req.params['chist'].strip
+              chist_form = ChistApp::Validators::ChistForm.hatch(chist)
 
-            raise ArgumentError.new(chist_form.errors.full_messages.join(', ')) unless chist_form.valid?
+              raise ArgumentError.new(chist_form.errors.full_messages.join(', ')) unless chist_form.valid?
 
-            new_chist = Chist.create({
-              title:     chist['title'],
-              chist_raw: chist['chist'].dup,
-              chist:     ChistApp::Parser.parse(chist['format'], chist['chist']),
-              public:    chist.has_key?('public'),
-              format:    chist['format'],
-              user:      current_user
-            })
+              new_chist = Chist.create({
+                title:     chist['title'],
+                chist_raw: chist['chist'].dup,
+                chist:     ChistApp::Parser.parse(chist['format'], chist['chist']),
+                public:    chist.has_key?('public'),
+                format:    chist['format'],
+                user:      current_user
+              })
 
-            flash[:success] = I18n.t('chists.chists_created')
-            res.redirect "/chists/#{new_chist.id}"
-          rescue => e
-            flash[:error] = e.message
-            chist.delete('chist')
-            session['chist.chist_params'] = chist
-            res.redirect '/chists/new'
+              flash[:success] = I18n.t('chists.chists_created')
+              res.redirect "/chists/#{new_chist.id}"
+            rescue => e
+              flash[:error] = e.message
+              chist.delete('chist')
+              session['chist.chist_params'] = chist
+              res.redirect '/chists/new'
+            end
           end
+
+          res.redirect "/login"
         end
 
         not_found!
