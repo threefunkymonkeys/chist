@@ -56,26 +56,14 @@ module ChistApp
       on post do
         on root do
           on authenticated(User) do
-            begin
-              chist = req.params['chist'].strip
-              chist_form = ChistApp::Validators::ChistForm.hatch(chist)
-
-              raise ArgumentError.new(chist_form.errors.full_messages.join(', ')) unless chist_form.valid?
-
-              new_chist = Chist.create({
-                title:     chist['title'],
-                chist_raw: chist['chist'].dup,
-                chist:     ChistApp::Parser.parse(chist['format'], chist['chist']),
-                public:    chist.has_key?('public'),
-                format:    chist['format'],
-                user:      current_user
-              })
-
+            chist_params = req.params['chist'].strip
+            ctx = ChistApp::Context::ChistCreation.new(chist_params, self)
+            case ctx.call
+            when :success
               flash[:success] = I18n.t('chists.chists_created')
-              res.redirect "/chists/#{new_chist.id}"
-            rescue => e
-              flash[:error] = e.message
-              chist.delete('chist')
+              res.redirect "/chists/#{ctx.chist.id}"
+            when :error
+              flash[:error] = ctx.error_message
               session['chist.chist_params'] = chist
               res.redirect '/chists/new'
             end
