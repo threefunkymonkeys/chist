@@ -7,11 +7,11 @@ module ChistApp::Helpers
     halt([401,
           {"Content-type" => "text/plain",
            "WWW-Authenticate" => "Token"},
-          ["You're not authorized to perform this reuqest"]])
+          ["You're not authorized to perform this request"]])
   end
 
   def authenticated_request
-    api_key = UserApiKey.find(:key => req.env["HTTP_X_CHIST_AUTH"])
+    api_key = UserApiKey.find(:key => req.env["HTTP_AUTHORIZATION"])
 
     if api_key && api_key.user
       authenticate(api_key.user)

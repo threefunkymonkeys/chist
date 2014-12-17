@@ -13,12 +13,18 @@ describe 'ChistApp::ApiRoutes' do
   it 'should create chist from request body' do
     params = { :title => "Test", :format => "irc", :chist => "19:22 <nickname> message"}
 
-    post "/chists", params.to_json, "HTTP_X_CHIST_AUTH" => @user.user_api_keys[0].key
+    headers = {
+      "CONTENT_TYPE" => "application/json",
+      "HTTP_ACCEPT" => "application/json",
+      "HTTP_AUTHORIZATION" => @user.user_api_keys[0].key
+    }
 
-    response = JSON.parse(last_response.body)
+    post "/chists", params.to_json, headers
 
     
     last_response.status.must_equal 201
+
+    response = JSON.parse(last_response.body)
 
     last_response["Location"].wont_be_nil
     last_response["Content-type"].must_equal "application/json"
