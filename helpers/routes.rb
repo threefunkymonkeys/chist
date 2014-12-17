@@ -19,4 +19,9 @@ module ChistApp::Helpers
       false
     end
   end
+
+  def chist_params_from_request
+    body = req.body.read
+    (body == "" ? {} : JSON.parse(body))
+  end
 end
