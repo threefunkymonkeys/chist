@@ -12,13 +12,14 @@ describe ChistApp::Chists do
       }
     }
 
+    login user, 'test'
     post '/chists', params
 
-    #chist = Chist.find(:title => params['chist']['title'])
-    #chist.wont_be_nil
-    #assert_equal true, chist.public
-    #assert_equal params['chist']['title'], chist.title
-    #assert_equal params['chist']['chist'], chist.chist
+    chist = Chist.find(:title => params['chist']['title'])
+    chist.wont_be_nil
+    assert_equal true, chist.public
+    assert_equal params['chist']['title'], chist.title
+    assert_equal params['chist']['chist'], chist.chist
   end
 
   it 'should create private chist (201)' do
