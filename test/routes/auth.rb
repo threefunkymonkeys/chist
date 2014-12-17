@@ -11,9 +11,11 @@ describe ChistApp::Auth do
         :email => 'test@email.com'
       }
     })
+
+    User.dataset.destroy
   end
 
-  it 'should create an account using external provider' do
+  it 'should create an account with default API keys using external provider' do
     get '/auth/github/callback', {}, headers: {'omniauth.auth' => OmniAuth.config.mock_auth[:github]}
 
     user = User.find(email: 'test@email.com')
@@ -21,6 +23,7 @@ describe ChistApp::Auth do
     assert_equal('test@email.com', user.email)
     assert_equal('Test', user.name)
     assert_equal('123545', user.github_user)
+    assert(!user.user_api_keys.empty?)
   end
 
   it 'should add external provider to existing user' do

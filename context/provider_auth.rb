@@ -32,6 +32,10 @@ module ChistApp::Context
               :update_password => true,
               :"#{@provider}_user" => @auth_info.uid
             )
+
+            UserApiKey.create(:user_id => @user.id,
+                              :name => "Default",
+                              :key => SecureRandom.hex(24))
             return :user_created
           end
         end

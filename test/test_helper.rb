@@ -20,7 +20,7 @@ class MiniTest::Spec
 
   def setup
     Chist.dataset.delete
-    User.dataset.delete
+    User.dataset.destroy
   end
 
   def login(user, password)

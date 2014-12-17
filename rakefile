@@ -34,11 +34,12 @@ namespace :db do
     desc "Dump the DB schema to db/schema.rb"
     task :dump do
       require 'sequel'
+      require_relative 'helpers/environment_helper'
       require_relative 'lib/chist'
 
       env      ||= ENV['RACK_ENV'] || :development
-      ChistApp::Settings.load( File.dirname(__FILE__) + '/config/settings.yml', env)
-      db       = ChistApp::Database.connect(ChistApp::Settings.get('db'))
+
+      db = ChistApp::Helpers.init_environment(env)
 
       db.extension :schema_dumper
 
@@ -54,14 +55,15 @@ namespace :db do
     desc "Load the DB schema defined in db/schema.rb"
     task :load do
       require 'sequel'
+      require_relative 'helpers/environment_helper'
       require_relative 'lib/chist'
 
       Sequel.extension :migration
 
       puts "Loading schema..."
       env      ||= ENV['RACK_ENV'] || :test
-      ChistApp::Settings.load(  File.dirname(__FILE__) + '/config/settings.yml', env)
-      db       = ChistApp::Database.connect(ChistApp::Settings.get('db'))
+
+      db = ChistApp::Helpers.init_environment(env)
 
       migration = eval(File.read('./db/schema.rb'))
 

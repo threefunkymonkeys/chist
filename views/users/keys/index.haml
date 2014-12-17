@@ -1,0 +1,56 @@
+%h3.title= ::I18n.t('.user.keys')
+
+.row
+  .col-md-6
+    %table.table.table-hover.table-stripped.table-bordered
+      %thead
+        %tr
+          %th Name
+          %th Key
+
+      %tbody
+        - keys.each do |api_key|
+          %tr
+            %td= api_key.name
+            %td= api_key.key
+            %td 
+              %button.btn.btn-xs.btn-danger.glyphicon.glyphicon-remove-sign{ :'data-toggle' => :modal, :'data-target' => '#delete-key-modal', :'data-key-id' => api_key.key }
+        %tr
+          %td{ :colspan => 3 }
+            %button.btn.btn-primary{ :'data-toggle' => :modal, :'data-target' => "#new-key-modal" }
+              = ::I18n.t('.user.actions.new_key')
+
+#delete-key-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{:type => :button, :'data-dismiss' => :modal, :'aria-hidden' => :true } &times
+        %h4.modal-title= ::I18n.t('.user.delete_key')
+      .modal-body
+        %form#delete-form{ :action => "/users/keys", :method => "POST" }
+          %fieldset
+            .form-group
+              %input{:type => :hidden, :name => "_method", :value => "DELETE"}
+              %input.btn.btn-primary{ :type => :submit, :value => ::I18n.t('.user.actions.confirm_delete_key') }
+      .modal-footer
+        %button.btn.btn-default.btn-danger{ :type => :button, :'data-dismiss' => :modal }
+          = ::I18n.t('.user.actions.cancel')
+
+#new-key-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{:type => :button, :'data-dismiss' => :modal, :'aria-hidden' => :true } &times
+        %h4.modal-title= ::I18n.t('.user.new_key')
+      .modal-body
+        %form{ :action => "/users/keys", :method => "POST" }
+          %fieldset
+            .form-group
+              %label{:for => :name } Key Name
+              %input.form-control{ :type => :text, :name => :name }
+            .form-group
+              %input.btn.btn-primary{ :type => :submit, :value => ::I18n.t('.user.actions.save_key') }
+      .modal-footer
+        %button.btn.btn-default.btn-danger{ :type => :button, :'data-dismiss' => :modal }
+          = ::I18n.t('.user.actions.cancel')
+

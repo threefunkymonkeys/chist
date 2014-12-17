@@ -2,11 +2,17 @@ class User < Sequel::Model
   include Shield::Model
 
   one_to_many :chists
+  one_to_many :user_api_keys
 
   ALLOWED_PROVIDERS = [:facebook, :twitter, :github]
   @@sel_ds = self.db[:user_favorites].where(:user_id => :$u, :chist_id => :$c)
   @@ins_ds = self.db["INSERT INTO user_favorites (user_id, chist_id) VALUES (?, ?)", :$u, :$c]
   @@del_ds = self.db["DELETE FROM user_favorites WHERE user_id = ? AND chist_id = ?", :$u, :$c]
+
+  def before_destroy
+    self.user_api_keys.map(&:destroy)
+    super
+  end
 
   def self.fetch(email)
     find(:email => email)

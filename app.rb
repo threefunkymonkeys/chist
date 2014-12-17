@@ -95,6 +95,10 @@ Cuba.define do
   end
 
   on 'users' do
+    on 'keys' do
+      run ChistApp::UserApiKeys
+    end
+
     run ChistApp::Users
   end
 
