@@ -19,9 +19,20 @@ describe 'Chist Route Helpers' do
                                 :name => "Default",
                                 :key => SecureRandom.hex(24))
 
-    post '/chists', {}, 'HTTP_X_CHIST_AUTH' => api_key.key
+    headers = {
+      'CONTENT_TYPE' => 'application/json',
+      'HTTP_ACCEPT' => 'application/json',
+      'HTTP_AUTHORIZATION' => api_key.key
+    }
+
+    params = { :chist => {
+                    :title => "Test",
+                    :chist => "12:00 <nickname> message",
+                    :format => "irc" }}
+
+    post '/chists', params.to_json, headers
     
-    assert last_response.ok?
+    assert_equal 201, last_response.status
   end
 
   it 'should not authenticate an API request with another key' do
@@ -30,8 +41,15 @@ describe 'Chist Route Helpers' do
                                 :name => "Default",
                                 :key => SecureRandom.hex(24))
 
-    post '/chists', {}, 'HTTP_X_CHIST_AUTH' => "ABCDEFGHIJKL"
+    headers = {
+      'CONTENT_TYPE' => 'application/json',
+      'HTTP_ACCEPT' => 'application/json',
+      'HTTP_AUTHORIZATION' => 'ABCDEFGHIJKL'
+    }
+
+    post '/chists', {}, headers
 
     assert last_response.unauthorized?
+    assert last_response.header["WWW-Authenticate"].include? "Digest"
   end
 end

@@ -6,7 +6,7 @@ module ChistApp
           on 'chists' do
             attrs = chist_params_from_request
 
-            ctx = ChistApp::Context::ChistCreation.new(attrs, self)
+            ctx = ChistApp::Context::ChistCreation.new(attrs["chist"], self)
 
             result = ctx.call
 

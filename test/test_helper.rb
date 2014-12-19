@@ -4,6 +4,7 @@ require 'pp'
 require 'faker'
 require 'spawn'
 require 'rack/test'
+require 'pry-debugger'
 
 ENV["RACK_ENV"]  = "test"
 
@@ -20,6 +21,7 @@ class MiniTest::Spec
 
   def setup
     Chist.dataset.delete
+    UserApiKey.dataset.destroy
     User.dataset.destroy
   end
 

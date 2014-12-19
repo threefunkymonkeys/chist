@@ -3,6 +3,8 @@ require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 describe ChistApp::Chists do
 
   it 'should create public chist (201)' do
+    user = User.spawn(:password => 'test')
+
     params = {
       'chist' => {
         'title' => Faker::Lorem.sentence(1),

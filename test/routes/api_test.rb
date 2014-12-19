@@ -11,7 +11,7 @@ describe 'ChistApp::ApiRoutes' do
   end
 
   it 'should create chist from request body' do
-    params = { :title => "Test", :format => "irc", :chist => "19:22 <nickname> message"}
+    params = {:chist => { :title => "Test", :format => "irc", :chist => "19:22 <nickname> message"}}
 
     headers = {
       "CONTENT_TYPE" => "application/json",
@@ -34,9 +34,9 @@ describe 'ChistApp::ApiRoutes' do
 
     last_response["Location"].must_equal response["chist"]["url"]
 
-    @user.chists.first.title.must_equal params[:title]
-    @user.chists.first.format.must_equal params[:format]
-    @user.chists.first.chist_raw.must_equal params[:chist]
+    @user.chists.first.title.must_equal params[:chist][:title]
+    @user.chists.first.format.must_equal params[:chist][:format]
+    @user.chists.first.chist_raw.must_equal params[:chist][:chist]
 
   end
 end
