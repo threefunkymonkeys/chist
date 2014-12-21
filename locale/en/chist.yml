@@ -24,6 +24,7 @@ en:
       limechat: Limechat - Default
       limechatsample: Limechat - Sample
       colloquy: Colloquy - Default
+      slack: Slack - Web
 
     actions:
       save: Save

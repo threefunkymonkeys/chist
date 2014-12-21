@@ -16,6 +16,8 @@ class ChistApp::Parser
       ChistApp::Limechat.parse(text)
     when :limechatsample, "limechatsample"
       ChistApp::Limechat::Sample.parse(text)
+    when :slack, "slack"
+      ChistApp::SlackParser.parse(text)
     when :none, "none"
       text
     else
