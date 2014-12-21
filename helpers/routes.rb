@@ -5,9 +5,15 @@ module ChistApp::Helpers
 
   def unauthorized!
     halt([401,
-          {"Content-type" => "text/plain",
-           "WWW-Authenticate" => "Token"},
-          ["You're not authorized to perform this request"]])
+          {"Content-type" => "application/json",
+           "WWW-Authenticate" => 'Digest realm="214af5b3da3c6b06e851496d7903a150"'},
+          [{:message => "You're not authorized to perform this request"}]])
+  end
+
+  def api_request
+    !!(req.env["CONTENT_TYPE"] == "application/json" &&
+      req.env["HTTP_ACCEPT"] == "application/json" &&
+      !req.env["HTTP_AUTHORIZATION"].nil?)
   end
 
   def authenticated_request

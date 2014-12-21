@@ -1,55 +1,34 @@
 require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
+include ChistApp::Helpers
 
 describe 'Chist Route Helpers' do
   before do
-    UserApiKey.dataset.delete
-    User.dataset.delete
+    UserApiKey.dataset.destroy
+    User.dataset.destroy
   end
 
-  it 'should not take an API request without the auth header' do
-    post '/chists', {}
+  it 'should detect API request via headers' do
+    env = { "CONTENT_TYPE" => "application/json",
+            "HTTP_ACCEPT" => "application/json",
+            "HTTP_AUTHORIZATION" => "ABCDE" }
 
-    assert last_response.redirect?
-    last_response["Location"].must_equal "/login"
-  end
-
-  it 'shoud authenticate API request' do
-    user = User.spawn
-    api_key = UserApiKey.create(:user_id => user.id,
-                                :name => "Default",
-                                :key => SecureRandom.hex(24))
-
-    headers = {
-      'CONTENT_TYPE' => 'application/json',
-      'HTTP_ACCEPT' => 'application/json',
-      'HTTP_AUTHORIZATION' => api_key.key
-    }
-
-    params = { :chist => {
-                    :title => "Test",
-                    :chist => "12:00 <nickname> message",
-                    :format => "irc" }}
-
-    post '/chists', params.to_json, headers
+    req = Rack::Request.new(env)
+    req.stubs(:env).returns(env)
     
-    assert_equal 201, last_response.status
+    self.stubs(:req).returns(req)
+
+    assert api_request
   end
 
-  it 'should not authenticate an API request with another key' do
+  it 'should authenticate request from header' do
     user = User.spawn
-    api_key = UserApiKey.create(:user_id => user.id,
-                                :name => "Default",
-                                :key => SecureRandom.hex(24))
+    api_key = UserApiKey.create(:name => "Default", :key => SecureRandom.hex(24), :user_id => user.id)
 
-    headers = {
-      'CONTENT_TYPE' => 'application/json',
-      'HTTP_ACCEPT' => 'application/json',
-      'HTTP_AUTHORIZATION' => 'ABCDEFGHIJKL'
-    }
+    env = { "HTTP_AUTHORIZATION" => api_key.key }
+    req = Rack::Request.new(env)
 
-    post '/chists', {}, headers
+    self.stubs(:req).returns(req)
 
-    assert last_response.unauthorized?
-    assert last_response.header["WWW-Authenticate"].include? "Digest"
+    self.expects(:authenticate).with(user)
   end
 end

@@ -10,6 +10,13 @@ describe 'ChistApp::ApiRoutes' do
     UserApiKey.create(:user_id => @user.id, :name => "Default", :key => "1234")
   end
 
+  it 'should not take an API request without the auth header' do
+    post '/chists', {}
+
+    assert last_response.redirect?
+    last_response["Location"].must_equal "/login"
+  end
+
   it 'should create chist from request body' do
     params = {:chist => { :title => "Test", :format => "irc", :chist => "19:22 <nickname> message"}}
 
@@ -20,7 +27,6 @@ describe 'ChistApp::ApiRoutes' do
     }
 
     post "/chists", params.to_json, headers
-
     
     last_response.status.must_equal 201
 
@@ -37,6 +43,21 @@ describe 'ChistApp::ApiRoutes' do
     @user.chists.first.title.must_equal params[:chist][:title]
     @user.chists.first.format.must_equal params[:chist][:format]
     @user.chists.first.chist_raw.must_equal params[:chist][:chist]
+  end
+
+  it 'should request digest authentication with WWW-Authenticate Header' do
+    params = {:chist => { :title => "Test", :format => "irc", :chist => "19:22 <nickname> message"}}
+
+    headers = {
+      "CONTENT_TYPE" => "application/json",
+      "HTTP_ACCEPT" => "application/json",
+      "HTTP_AUTHORIZATION" => "ABCDEFG"
+    }
+
+    post "/chists", params.to_json, headers
+
+    assert last_response.unauthorized?
+    assert last_response.header["WWW-Authenticate"].include? "Digest"
 
   end
 end
