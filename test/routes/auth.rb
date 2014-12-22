@@ -12,7 +12,9 @@ describe ChistApp::Auth do
       }
     })
 
-    User.dataset.destroy
+    Chist.dataset.delete
+    UserApiKey.dataset.delete
+    User.dataset.delete
   end
 
   it 'should create an account with default API keys using external provider' do

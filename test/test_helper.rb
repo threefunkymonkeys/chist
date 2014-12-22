@@ -4,6 +4,8 @@ require 'pp'
 require 'faker'
 require 'spawn'
 require 'rack/test'
+require 'mocha/test_unit'
+require 'pry-debugger'
 
 ENV["RACK_ENV"]  = "test"
 
@@ -20,6 +22,7 @@ class MiniTest::Spec
 
   def setup
     Chist.dataset.delete
+    UserApiKey.dataset.destroy
     User.dataset.destroy
   end
 
@@ -29,3 +32,9 @@ class MiniTest::Spec
 end
 
 OmniAuth.config.test_mode = true
+
+module Rack::Response::Helpers
+  def unauthorized?
+    @status == 401
+  end
+end

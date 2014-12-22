@@ -3,6 +3,8 @@ require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
 describe ChistApp::Chists do
 
   it 'should create public chist (201)' do
+    user = User.spawn(:password => 'test')
+
     params = {
       'chist' => {
         'title' => Faker::Lorem.sentence(1),
@@ -11,6 +13,8 @@ describe ChistApp::Chists do
         'public' => "true"
       }
     }
+
+    login user, 'test'
     post '/chists', params
 
     chist = Chist.find(:title => params['chist']['title'])
@@ -21,6 +25,8 @@ describe ChistApp::Chists do
   end
 
   it 'should create private chist (201)' do
+    user = User.spawn(:password => 'test')
+
     params = {
       'chist' => {
         'title' => Faker::Lorem.sentence(1),
@@ -28,6 +34,8 @@ describe ChistApp::Chists do
         'format' => 'none'
       }
     }
+
+    login user, 'test'
     post '/chists', params
 
     chist = Chist.find(:title => params['chist']['title'])
