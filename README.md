@@ -3,6 +3,9 @@ Chist
 
 Share your chat with a unified style
 
+[![Code Climate](https://codeclimate.com/github/threefunkymonkeys/chist/badges/gpa.svg)](https://codeclimate.com/github/threefunkymonkeys/chist)
+
+
 ## Setup
 
 1. Copy `config/settings.yml.sample` to `config/settings.yml` and add database parameters
