@@ -40,8 +40,6 @@ class ChistApp::SlackParser
 
       #construct chat line into div
       output += "<div class=\"line\"><span class=\"message\">#{message.strip}</span></div>\r\n"
-
-      return if force_exit
     end
 
     output
