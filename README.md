@@ -4,6 +4,7 @@ Chist
 Share your chat with a unified style
 
 [![Code Climate](https://codeclimate.com/github/threefunkymonkeys/chist/badges/gpa.svg)](https://codeclimate.com/github/threefunkymonkeys/chist)
+[![Build Status](https://travis-ci.org/threefunkymonkeys/chist.svg)](https://travis-ci.org/threefunkymonkeys/chist)
 
 
 ## Setup
