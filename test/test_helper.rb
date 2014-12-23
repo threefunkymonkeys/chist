@@ -5,7 +5,6 @@ require 'faker'
 require 'spawn'
 require 'rack/test'
 require 'mocha/test_unit'
-require 'pry-debugger'
 
 ENV["RACK_ENV"]  = "test"
 
