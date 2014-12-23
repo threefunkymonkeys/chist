@@ -1,5 +1,5 @@
 language: ruby
 rvm:
   - "2.1.0"
-script: rake test:all
+script: sh travis.sh
 install: gem install dep && dep install && dep install -f .gems-test
