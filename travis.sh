@@ -2,8 +2,7 @@ export SESSION_SECRET="78ed3d745964e4e9be0c4b61f9ab36869d8e911a7048fb0f357c31eed
 export DATABASE_HOST=localhost
 export DATABASE_PORT=5432
 export DATABASE_NAME=chist_test
-export DATABASE_USER=chist
-export DATABASE_PASS=chist
+export DATABASE_USER=postgres
 export SITE_URL=http://localhost:9292
 export MAILER_FROM_EMAIL=[example@example.com]
 export MAILER_FROM_NAME=[Example]
@@ -17,4 +16,5 @@ export MAILER_ADAPTER=smtp
 export MANDRIL_API_KEY="12345"
 export RACK_ENV=test
 
+rake db:migrate
 rake test:all

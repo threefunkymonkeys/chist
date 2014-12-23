@@ -1,5 +1,7 @@
 language: ruby
 rvm:
   - "2.1.0"
+before_script:
+  - psql -c "CREATE DATABASE chist_test;" -U postgres
 script: sh travis.sh
 install: gem install dep && dep install && dep install -f .gems-test
