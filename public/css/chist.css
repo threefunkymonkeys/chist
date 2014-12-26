@@ -87,3 +87,5 @@
   .chist-theme-default .line .username_8   { color: #7b3f55; }
   .chist-theme-default .line .username_9   { color: #3f7b65; }
   .chist-theme-default .line .username_10  { color: #9c6e7f; }
+
+  .chist-theme-default .system-message { color: #7B878C; font-style: italic; }

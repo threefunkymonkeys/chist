@@ -27,6 +27,10 @@
         %option{value: 'skype', selected: 'selected'}=I18n.t('chists.format.skype')
       - else
         %option{value: 'skype'}=I18n.t('chists.format.skype')
+      - if (defined?(chist) && chist.format == 'slack') || (params.has_key?('format') && params['format'] == 'slack')
+        %option{value: 'slack', selected: 'selected'}=I18n.t('chists.format.slack')
+      - else
+        %option{value: 'slack'}=I18n.t('chists.format.slack')
 
     %span{ style: 'margin-left: 2em;' }
       %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: (defined?(chist) && chist.public) || params.has_key?('public')}
