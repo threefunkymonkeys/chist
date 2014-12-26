@@ -11,8 +11,11 @@
     %link{ :href => "css/home.css", :rel => "stylesheet" }
     %link{ :href => "css/layout.css", :rel => "stylesheet" }
     %link{ :href => "http://fonts.googleapis.com/css?family=Inconsolata", :rel => "stylesheet", :type => "text/css" }
-    %meta{ :property => "og:source", :content => "Chist" }
     %meta{ :property => "og:title", :content => "Chist: Share your chat with style" }
+    %meta{ :property => "og:type", :content => "website" }
+    %meta{ :property => "og:url", :content => "#{ENV['SITE_URL']}" }
+    %meta{ :property => "og:image", :content => "#{ENV['SITE_URL']}/img/favicon.ico" }
+    %meta{ :property => "og:site_name", :content => "Chist" }
   %body
     #wrapper
       #container.container
