@@ -16,11 +16,7 @@
     %link{ :href => "/css/bootstrap_override.css", :rel => "stylesheet" }
     %link{ :href => 'http://fonts.googleapis.com/css?family=Oxygen+Mono', :rel => 'stylesheet', :type => 'text/css' }
     - if defined?(chist)
-      %meta{ :property => "og:title", :content => "#{chist.user.name}/#{chist.title}" }
-      %meta{ :property => "og:type", :content => "website" }
-      %meta{ :property => "og:url", :content => "#{ENV['SITE_URL']}/chists/#{chist.id}" }
-      %meta{ :property => "og:image", :content => "#{ENV['SITE_URL']}/img/favicon.ico" }
-      %meta{ :property => "og:site_name", :content => "Chist" }
+      %link{ :rel => "alternate", :type => "application/json+oembed", :href => "#{ENV['SITE_URL']}/services/oembed?url=#{URI.encode_www_form_component("#{ENV['SITE_URL']}/chists/#{chist.id}")}&format=json", :title => "#{chist.user.name}/#{chist.title}"}
       %meta{ :property => "og:description", :content => chist.chist.lines[0..4].join("\n") }
   %body
     #wrap

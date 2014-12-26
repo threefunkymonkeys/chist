@@ -20,3 +20,10 @@ User.extend(Spawn).spawner do |user|
   user.validation_code = SecureRandom.hex(24)
   user.update_password = false
 end
+
+Chist.extend(Spawn).spawner do |chist|
+  chist.user_id ||= User.spawn.id
+  chist.title ||= Faker::Name.name
+  chist.chist_raw ||= Faker::Lorem.paragraph(2)
+  chist.chist ||= Faker::Lorem.paragraph(2)
+end

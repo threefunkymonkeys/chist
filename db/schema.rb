@@ -14,7 +14,7 @@ Sequel.migration do
     create_table(:schema_info) do
       Integer :version, :default=>0, :null=>false
     end
-    
+
     create_table(:user_favorites) do
       Integer :user_id, :null=>false
       String :chist_id, :null=>false
@@ -35,7 +35,7 @@ Sequel.migration do
       String :validation_code, :text=>true
       TrueClass :update_password, :default=>false
     end
-    
+
     create_table(:attachments) do
       primary_key :id
       foreign_key :mail_queue_id, :mail_queues, :key=>[:id]
@@ -48,12 +48,12 @@ Sequel.migration do
       String :title, :text=>true, :null=>false
       String :chist, :text=>true, :null=>false
       String :chist_raw, :text=>true, :null=>false
-      TrueClass :public, :default=>false
+      TrueClass :public, :default=>true
       String :format, :default=>"none", :text=>true, :null=>false
       String :id, :null=>false
       DateTime :created_at
       DateTime :updated_at
-      
+
       primary_key [:id]
     end
 

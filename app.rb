@@ -10,6 +10,7 @@ require 'omniauth-github'
 require 'omniauth-twitter'
 require 'omniauth-facebook'
 require 'hatch'
+require 'uri'
 require_relative "helpers/environment_helper"
 
 ENV["RACK_ENV"] ||= :development
@@ -60,6 +61,28 @@ Cuba.plugin ChistApp::Validators
 include Cuba::Render::Helper
 
 Cuba.define do
+
+  on get, 'services/oembed' do
+    not_found! if req.params["url"].nil?
+    not_implemented! if req.params["format"].nil? ||  req.params["format"] != 'json'
+
+    match = /\/chists\/(.+)$/.match(req.params["url"])
+    not_found! unless match
+    chist = Chist[match[1]]
+    not_found! unless chist
+    headers = { "Content-type" => "application/json" }
+    body = {
+      version: "1.0",
+      type: "rich",
+      provider_name: 'iChist',
+      provider_url: 'http://ichist.com',
+      title: "#{chist.user.name}/#{chist.title}",
+      author_name: "#{chist.user.name}",
+      html: chist.chist.lines[0..4].join("\n")
+    }
+
+    halt [200, headers, body.to_json]
+  end
 
   on api_request do
     run ChistApp::ApiRoutes
