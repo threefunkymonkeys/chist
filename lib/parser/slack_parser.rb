@@ -43,7 +43,11 @@ class ChistApp::SlackParser
       message.gsub! /(https?:\/\/[^\s]*)/, '<a href="\1" target="_blank">\1</a>'
 
       #construct chat line into div
-      output += "<div class=\"line\"><span class=\"message\">#{message.strip}</span></div>\r\n"
+      if username.empty?
+        output += "<div class=\"system-message line\"><span class=\"message\">#{message.strip}</span></div>\r\n"
+      else
+        output += "<div class=\"line\"><span class=\"message\">#{message.strip}</span></div>\r\n"
+      end
     end
 
     output
