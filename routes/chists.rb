@@ -110,7 +110,7 @@ module ChistApp
           not_found! unless chist
 
           on root do
-            res.write render("./views/layouts/app.haml", is_public: chist.public) {
+            res.write render("./views/layouts/app.haml", is_public: chist.public, chist: chist) {
               render("./views/chists/show.haml", chist: chist)
             }
           end
