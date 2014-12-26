@@ -16,9 +16,9 @@
     %link{ :href => "/css/bootstrap_override.css", :rel => "stylesheet" }
     %link{ :href => 'http://fonts.googleapis.com/css?family=Oxygen+Mono', :rel => 'stylesheet', :type => 'text/css' }
     - if defined?(chist)
-      %link{ :property => "og:source", :content => "Chist" }
-      %link{ :property => "og:title", :content => "#{chist.user.name}/#{chist.title}" }
-      %link{ :property => "og:description", :content => chist.chist.lines[0..4].join("\n") }
+      %meta{ :property => "og:source", :content => "Chist" }
+      %meta{ :property => "og:title", :content => "#{chist.user.name}/#{chist.title}" }
+      %meta{ :property => "og:description", :content => chist.chist.lines[0..4].join("\n") }
   %body
     #wrap
       = partial 'shared/_header'
