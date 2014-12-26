@@ -28,7 +28,11 @@ class ChistApp::SlackParser
         next
       end
 
-      message = "#{username}: #{line}"
+      if username.empty?
+        message = line
+      else
+        message = "#{username}: #{line}"
+      end
 
       #apply class to usernames
       classes.each do |k,v|
