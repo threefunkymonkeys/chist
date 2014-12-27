@@ -10,6 +10,10 @@ module ChistApp::Helpers
           [{:message => "You're not authorized to perform this request"}]])
   end
 
+  def not_implemented!
+    halt([501,{"Content-type" => "application/json"},[{:message => "Format not supported"}].to_json])
+  end
+
   def api_request
     !!(req.env["CONTENT_TYPE"] == "application/json" &&
       req.env["HTTP_ACCEPT"] == "application/json" &&
