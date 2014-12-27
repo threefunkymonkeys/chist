@@ -78,7 +78,9 @@ Cuba.define do
       provider_url: 'http://ichist.com',
       title: "#{chist.user.name}/#{chist.title}",
       author_name: "#{chist.user.name}",
-      html: chist.chist.lines[0..4].join("\n")
+      html: chist.chist.lines[0..4].join("\n"),
+      width: 600,
+      height: 200
     }
 
     halt [200, headers, body.to_json]
