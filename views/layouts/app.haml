@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 %html{ :lang => :en }
   %head
+    - if defined?(chist)
+      %link{ :rel => "alternate", :type => "application/json+oembed", :href => "#{ENV['SITE_URL']}/services/oembed?url=#{URI.encode_www_form_component("#{ENV['SITE_URL']}/chists/#{chist.id}")}&format=json", :title => "#{chist.user.name}/#{chist.title}"}
     %title Chist
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     - if defined?(is_public) && !is_public
@@ -15,8 +17,6 @@
     %link{ :href => "/css/base.css", :rel => "stylesheet" }
     %link{ :href => "/css/bootstrap_override.css", :rel => "stylesheet" }
     %link{ :href => 'http://fonts.googleapis.com/css?family=Oxygen+Mono', :rel => 'stylesheet', :type => 'text/css' }
-    - if defined?(chist)
-      %link{ :rel => "alternate", :type => "application/json+oembed", :href => "#{ENV['SITE_URL']}/services/oembed?url=#{URI.encode_www_form_component("#{ENV['SITE_URL']}/chists/#{chist.id}")}&format=json", :title => "#{chist.user.name}/#{chist.title}"}
   %body
     #wrap
       = partial 'shared/_header'
