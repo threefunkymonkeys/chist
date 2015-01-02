@@ -2,20 +2,22 @@
 %html{ :lang => :en }
   %head
     - if defined?(chist)
-      %link{ :rel => "alternate", :type => "application/json+oembed", :href => "#{ENV['SITE_URL']}/services/oembed?url=#{URI.encode_www_form_component("#{ENV['SITE_URL']}/chists/#{chist.id}")}&format=json", :title => "#{chist.user.name}/#{chist.title}"}
-      -# Twitter Card
-      %meta{ name: "twitter:card", content: "summary"}
-      %meta{ name: "twitter:site", content:"iChist"}
-      %meta{ name: "twitter:title", content:"#{chist.title}"}
-      %meta{ name: "twitter:description", content:"#{chist.title}"}
-      %meta{ name: "twitter:creator", content:""}
-      %meta{ name: "twitter:image:src", content:"#{ENV['SITE_URL']}/img/favicon.ico"}
-      %meta{ name: "twitter:domain", content: "ichist.com"}
       -# Open Graph
       %meta{ name: "og:type", content:"article"}
-      %meta{ name: "og:title", content:"#{chist.title}"}
+      %meta{ name: "og:title", content:"Chist | #{chist.title}"}
       %meta{ name: "og:description", content:"#{chist.chist.lines[0..4].join("\n")}"}
       %meta{ name: "og:url", content:"#{ENV['SITE_URL']}/chists/#{chist.id}"}
+      %meta{ name: "og:site_name", content:"Chist"}
+      %meta{ name: "twitter:card", content: "summary"}
+      %meta{ name: "twitter:site", content:"iChist"}
+      %meta{ name: "twitter:title", content:"Chist | #{chist.title}"}
+      %meta{ name: "twitter:description", content:"#{chist.chist.lines[0..4].join("\n")}"}
+      %meta{ name: "twitter:creator", content:"@3funkymonkeys"}
+      %meta{ name: "twitter:image:src", content:"#{ENV['SITE_URL']}/img/favicon.ico"}
+      %meta{ name: "twitter:domain", content: "ichist.com"}
+      %link{ :rel => "canonical", :href => "#{ENV['SITE_URL']}/chists/#{chist.id}" }
+      %link{ :rel => "alternate", :type => "application/json+oembed", :href => "#{ENV['SITE_URL']}/services/oembed?url=#{URI.encode_www_form_component("#{ENV['SITE_URL']}/chists/#{chist.id}")}&format=json", :title => "#{chist.user.name}/#{chist.title}"}
+      -# Twitter Card
     %title Chist
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     - if defined?(is_public) && !is_public

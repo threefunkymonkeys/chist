@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 %html{ :lang => :en }
   %head
-    %title Chist
+    = partial 'shared/_basic_meta'
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     - if defined?(is_public) && !is_public
       %meta{ :name => "robots", :content => "noindex, nofollow"}
