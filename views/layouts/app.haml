@@ -11,6 +11,11 @@
       %meta{ name: "twitter:creator", content:""}
       %meta{ name: "twitter:image:src", content:"#{ENV['SITE_URL']}/img/favicon.ico"}
       %meta{ name: "twitter:domain", content: "ichist.com"}
+      -# Open Graph
+      %meta{ name: "og:type", content:"article"}
+      %meta{ name: "og:title", content:"#{chist.title}"}
+      %meta{ name: "og:description", content:"#{chist.chist.lines[0..4].join("\n")}"}
+      %meta{ name: "og:url", content:"#{ENV['SITE_URL']}/chists/#{chist.id}"}
     %title Chist
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     - if defined?(is_public) && !is_public
