@@ -12,4 +12,4 @@ omniauth-twitter -v 1.0.1
 omniauth-github -v 1.1.1
 hatch -v 0.1.3
 monkey-mailer -v 0.0.5
-sass-3.4.13
+sass -v 3.4.13
