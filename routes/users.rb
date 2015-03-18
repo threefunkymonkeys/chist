@@ -1,6 +1,10 @@
 module ChistApp
   class Users < Cuba
     define do
+      on 'keys' do
+        run ChistApp::UserApiKeys
+      end
+
       on get do
         on 'logout' do
           logout(User)
