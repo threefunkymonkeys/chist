@@ -1,8 +1,8 @@
 %footer.container
   .row
-    .col-lg-12
-      %ul.list-unstyled
-        %li.log-3fm
+    .col-lg-12{:style=> 'text-align: center;'}
+      %ul.nav.nav-pills{:style=> 'display: inline-block;'}
+        %li
           ="3funkymonkeys &copy; #{Time.now.year}"
         %li
           %a{href: "http://threefunkymonkeys.com/"}= I18n.t('.layout.footer.about_us')

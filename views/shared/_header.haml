@@ -1,20 +1,26 @@
-%header.navbar.navbar-default{ :role => "navigation" }
+%header.navbar.navbar-default{ :role => 'navigation' }
   .container
     .navbar-header
+      %button.navbar-toggle.collapsed{ :type => 'button', :'data-toggle' => 'collapse', :'data-target' => '#navbar-collapse-menu' }
+        %span.sr-only
+          Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
       %a.navbar-brand{ :href => "/" }
-        Chist
-    .navbar-collapse.collapse.navbar-inverse-collapse
-      %ul.nav.navbar-nav.col-lg-7
-        %li.col-lg-12
-          - if current_user
-            %form#search-chist.search-form.navbar-left.col-lg-12{ :style => "margin: 10px -15px", :action => "/search", :'data-remote' => 'true' }
-              %input#search-box.form-control.col-lg-6{ :type => :text, :placeholder => I18n.t('.layout.search'), :name => :query }
+        %img{ :src => "/img/header-logo.svg", :alt => "Home" }
+    .navbar-collapse.collapse#navbar-collapse-menu
       - if current_user
         %ul.nav.navbar-nav.navbar-right
+          %li
+            %a{ :href => "/chists/new" }
+              %img{ :src => "/img/header-new.svg", :alt => "I18n.t('.layout.new_chist')" }
+          %li
+            %a{href: '/dashboard'}
+              %img{ :src => "/img/header-your.svg", :alt => "I18n.t('.chists.your_chists')" }
           %li.dropdown
             %a.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
-              =current_user.email
-              %b.caret
+              %img{ :src => "/img/header-profile.svg", :alt => "I18n.t('.chists.your_chists')" }
             %ul.dropdown-menu
               %li
                 %a{href: '/users/edit'}=I18n.t('user.edit_user')
@@ -27,14 +33,12 @@
               %li.divider
               %li
                 %a{href: '/users/logout'}=I18n.t('.layout.logout')
-
-
-          %li
-            %a{ :href => "/chists/new" }= I18n.t('.layout.new_chist')
-
-          %li
-            %a{href: '/dashboard'}=I18n.t('.chists.your_chists')
       - else
         %ul.nav.navbar-nav.navbar-right
           %li
             %a{ :href => "/" }= I18n.t('.layout.login')
+      %form#search-chist.search-form.navbar-right.navbar-form{ :action => "/search", :'data-remote' => 'true', :role => 'search' }
+        .form-group
+          %input#search-box.form-control{ :type => :text, :name => :query }
+        %button.btn{ :type => :submit }
+          %img{ :src => "/img/header-find.svg", :alt => "Submit" }
