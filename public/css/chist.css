@@ -1,20 +1,20 @@
-// New Layout
-.search-form {
+/* New Layout */
+header .search-form {
     margin-top: 0;
     margin-bottom: 0;
 }
 
-.search-form .btn{
+header .search-form .btn{
     border: 0;
     padding: 0;
     background-color: transparent;
 }
 
-.search-form .btn:focus{
+header .search-form .btn:focus{
     outline-width: 0;
 }
 
-.search-form input{
+header .search-form input{
     -webkit-box-shadow: 0px 0px 0px 0px transparent !important;
     box-shadow: 0px 0px 0px transparent !important;
     -webkit-transition: 0;
@@ -37,7 +37,7 @@ footer .nav-pills > li > a:hover {
   background-color: transparent;
 }
 
-// Old
+/* Old */
 .chist-panel .panel-body {
   padding: 0px;
 }
