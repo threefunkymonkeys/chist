@@ -7,20 +7,20 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{ :href => "/" }
-        %img{ :src => "/img/header-logo.svg", :alt => "Home" }
+      %a.navbar-brand{ :href => "/", :title => "Home" }
+        CHIST
     .navbar-collapse.collapse#navbar-collapse-menu
       - if current_user
         %ul.nav.navbar-nav.navbar-right
           %li
             %a{ :href => "/chists/new" }
-              %img{ :src => "/img/header-new.svg", :alt => "I18n.t('.layout.new_chist')" }
+              %img{ :src => "/img/header-new.svg", :alt => I18n.t('.layout.new_chist') }
           %li
             %a{href: '/dashboard'}
-              %img{ :src => "/img/header-your.svg", :alt => "I18n.t('.chists.your_chists')" }
+              %img{ :src => "/img/header-your.svg", :alt => I18n.t('.chists.your_chists') }
           %li.dropdown
             %a.dropdown-toggle{href: '#', :'data-toggle' => 'dropdown'}
-              %img{ :src => "/img/header-profile.svg", :alt => "I18n.t('.chists.your_chists')" }
+              %img{ :src => "/img/header-profile.svg", :alt => I18n.t('.chists.profile') }
             %ul.dropdown-menu
               %li
                 %a{href: '/users/edit'}=I18n.t('user.edit_user')
@@ -39,6 +39,6 @@
             %a{ :href => "/" }= I18n.t('.layout.login')
       %form#search-chist.search-form.navbar-right.navbar-form{ :action => "/search", :'data-remote' => 'true', :role => 'search' }
         .form-group
-          %input#search-box.form-control{ :type => :text, :name => :query }
+          %input#search-box.form-control{ :type => :text, :name => :query, :placeholder => I18n.t('.layout.search') }
         %button.btn{ :type => :submit }
           %img{ :src => "/img/header-find.svg", :alt => "Submit" }

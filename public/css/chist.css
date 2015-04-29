@@ -4,6 +4,14 @@ header .search-form {
     margin-bottom: 0;
 }
 
+a.navbar-brand {
+    font-family: 'GothamBlack';
+    color: #fff;
+    padding: 14px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
 header .search-form .btn{
     border: 0;
     padding: 0;
@@ -35,6 +43,12 @@ footer .nav-pills > li {
 
 footer .nav-pills > li > a:hover {
   background-color: transparent;
+}
+
+footer .footer {
+  text-align: center;
+  margin-top: 85px;
+  margin-bottom: 44px;
 }
 
 /* Old */
