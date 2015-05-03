@@ -4,7 +4,7 @@ class ChistApp::SlackParser
     time_regexp = /^.+\s\[\d+:\d{2}\s[AMP]{2}\]\s*/
 
     #scan for participants
-    participants = log.scan(/(^.+\s\[\d+:\d{2}\s[AMP]{2}\])\s*$/).collect! {|scan| scan.first.split(" ").first }.uniq
+    participants = log.scan(/(^.+\s\[\d+:\d{2}\s[AMP]{2}\])\s*$/).collect! {|scan| scan.first.split(" [").first }.uniq
 
     #map classes for participants
     classes = Hash.new
@@ -18,7 +18,7 @@ class ChistApp::SlackParser
       time = line.scan(time_regexp)
 
       if time.any?
-        parsed = time.first.scan(/(^\w+)(\s\[\d+:\d{2}\s[AMP]{2}\])/).first
+        parsed = time.first.scan(/(^.+)(\s\[\d+:\d{2}\s[AMP]{2}\])/).first
         username = "#{parsed.last.strip} #{parsed.first.strip}"
         next
       end
