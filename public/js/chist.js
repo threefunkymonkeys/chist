@@ -85,3 +85,14 @@ $("#delete-key-modal").on('show.bs.modal', function(event) {
 
   modal.find("#delete-form").attr("action", "/users/keys/" + key_id);
 });
+
+$('span.private_chist span').on('click', function() {
+  var _this = $(this);
+  if (_this.hasClass('private')){
+      _this.removeClass('private').addClass('public').html('Public');
+      $('#public_chist').val(1);
+  } else {
+      _this.removeClass('public').addClass('private').html('Private');
+      $('#public_chist').val(0);
+  }
+});

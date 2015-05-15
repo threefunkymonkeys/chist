@@ -1,4 +1,15 @@
-.chist-top-bar
+%h3.title.new
+  = ::I18n.t('.chists.new')
+  %span=::I18n.t('.chists.chist')
+%form.form-horizontal{action: '/chists', method: 'post'}
+  %fieldset
+    = partial 'chists/_form', params: params
+    .actions.col-lg-12
+      %span.col-md-8
+        0 Lines
+      %input.btn.btn-primary.btn-sm.col-md-2{type: 'button', value: I18n.t('chists.create')}
+      %input.btn.btn-primary.btn-sm.col-md-2{type: 'submit', value: I18n.t('chists.create')}
+.chist-bottom-bar
   %ul#latest-chists
     - chists.each do |chist|
       %li
@@ -8,8 +19,3 @@
         .chist-data
           %a{ href: "/chists/#{chist.id}"}= chist.title
           .timestamp= chist.created_at.strftime("%Y-%m-%d: %H:%M")
-%form.form-horizontal{action: '/chists', method: 'post'}
-  %fieldset
-    = partial 'chists/_form', params: params
-    .actions.col-lg-11
-      %input.btn.btn-primary.btn-sm{type: 'submit', value: I18n.t('chists.create')}

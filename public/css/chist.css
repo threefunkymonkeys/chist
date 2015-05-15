@@ -51,6 +51,42 @@ footer .footer {
   margin-bottom: 44px;
 }
 
+h3.title {
+  font-family: GothamBook;
+  font-size: 15px;
+  margin-bottom: 43px;
+  margin-top: 0;
+}
+
+h3.title span{
+  font-family: GothamBold;
+}
+
+h3.title.new {
+  padding-left: 43px;
+  background: url('../img/title-chist-new.svg') -1% 0% no-repeat;
+  height: 43px;
+  padding-top: 15px;
+}
+
+.private_chist span {
+  font-weight: normal;
+  color: #adb5bc;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 10px 0px 0px 43px;
+  height: 40px;
+  display: inline-block;
+}
+
+.private_chist span.private {
+  background: url('../img/new-private.svg') 0% 100% no-repeat;
+}
+
+.private_chist span.public {
+  background: url('../img/new-public.svg') 0% 100% no-repeat;
+}
+
 /* Old */
 .chist-panel .panel-body {
   padding: 0px;

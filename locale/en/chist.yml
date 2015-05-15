@@ -2,9 +2,10 @@ en:
   chists:
     title: Title
     chat: Paste your chat here
-    public: Make it public
+    #public: Make it public
     create: Create Chist
-    new: New Chist
+    chist: CHIST
+    new: NEW
     chists_created: Chist created
     public_chist: Public
     private_chist: Private
@@ -18,7 +19,7 @@ en:
     deleted: Chist Deleted
 
     format:
-      none: Select Format
+      none: Format
       irc: IRC - Default
       skype: Skype
       limechat: Limechat - Default

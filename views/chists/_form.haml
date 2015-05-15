@@ -1,8 +1,8 @@
 .form-group
-  .col-lg-7
+  .col-md-7
     %input.form-control{type: 'text', name: 'chist[title]', value: defined?(chist) ? chist.title : (params['title'] || ''), required: true, placeholder: I18n.t('chists.title',)}
-  .col-lg-4
-    %select.col-lg-5#chat-format{name: 'chist[format]'}
+  .col-md-5
+    %select.col-md-5#chat-format{name: 'chist[format]'}
       - if (defined?(chist) && chist.format == 'none') || (params.has_key?('format') && params['format'] == 'none')
         %option{value: 'none', selected: 'selected'}=I18n.t('chists.format.none')
       - else
@@ -32,11 +32,12 @@
       - else
         %option{value: 'slack'}=I18n.t('chists.format.slack')
 
-    %span{ style: 'margin-left: 2em;' }
-      %input{type: 'checkbox', name: 'chist[public]', value: 1, checked: (defined?(chist) && chist.public) || params.has_key?('public')}
-      =I18n.t('chists.public')
+    %span.private_chist
+      %input#public_chist{type: 'hidden', name: 'chist[public]', value: 0, checked: (defined?(chist) && chist.public) || params.has_key?('public')}
+      %span.private
+        =I18n.t('chists.private_chist')
 
 .form-group
-  .col-lg-11
+  .col-md-12
     %textarea.form-control{name: 'chist[chist]', required: true, placeholder: I18n.t('chists.chat'), :rows => "15"}
       =defined?(chist) ? chist.chist_raw : (params['chist'] || '')
