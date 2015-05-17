@@ -4,11 +4,12 @@
 %form.form-horizontal{action: '/chists', method: 'post'}
   %fieldset
     = partial 'chists/_form', params: params
-    .actions.col-lg-12
-      %span.col-md-8
+    .col-md-12.bottom-bar
+      %span.lines
         0 Lines
-      %input.btn.btn-primary.btn-sm.col-md-2{type: 'button', value: I18n.t('chists.create')}
-      %input.btn.btn-primary.btn-sm.col-md-2{type: 'submit', value: I18n.t('chists.create')}
+      .actions
+        %input.btn.btn-cancel{type: 'button', title: I18n.t('chists.cancel')}
+        %input.btn.btn-confirm{type: 'submit', title: I18n.t('chists.create'), value: ''}
 .chist-bottom-bar
   %ul#latest-chists
     - chists.each do |chist|

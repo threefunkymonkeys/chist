@@ -7,6 +7,9 @@
 @font-face {
   font-family: 'GothamBold';
   src: url("../fonts/Gotham-Bold.ttf") format("truetype"); }
+@font-face {
+  font-family: 'GothamMedium';
+  src: url("../fonts/Gotham-Medium.TTF") format("truetype"); }
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;

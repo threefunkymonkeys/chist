@@ -4,6 +4,7 @@ en:
     chat: Paste your chat here
     #public: Make it public
     create: Create Chist
+    cancel: Cancel
     chist: CHIST
     new: NEW
     chists_created: Chist created
