@@ -1,61 +1,12 @@
-/* New Layout */
-header .search-form {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-a.navbar-brand {
-    font-family: 'GothamBlack';
-    color: #fff;
-    padding: 14px;
-    font-size: 24px;
-    text-decoration: none;
-}
-
-header .search-form .btn{
-    border: 0;
-    padding: 0;
-    background-color: transparent;
-}
-
-header .search-form .btn:focus{
-    outline-width: 0;
-}
-
-header .search-form input{
-    -webkit-box-shadow: 0px 0px 0px 0px transparent !important;
-    box-shadow: 0px 0px 0px transparent !important;
-    -webkit-transition: 0;
-    -o-transition: none;
-    transition: none;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 3px solid #bdc4c9;
-    border-left: 0;
-    background-color: transparent;
-    color: #fff;
-}
-
-footer .nav-pills > li {
-  float: left;
-  padding: 10px;
-}
-
-footer .nav-pills > li > a:hover {
-  background-color: transparent;
-}
-
-footer .footer {
-  text-align: center;
-  margin-top: 85px;
-  margin-bottom: 44px;
-}
-
+/* New chist design */
 h3.title {
   font-family: GothamBook;
   font-size: 15px;
   margin-bottom: 43px;
   margin-top: 0;
+  height: 43px;
+  padding-top: 15px;
+  padding-left: 43px;
 }
 
 h3.title span{
@@ -63,10 +14,7 @@ h3.title span{
 }
 
 h3.title.new {
-  padding-left: 43px;
   background: url('../img/title-chist-new.svg') -1% 0% no-repeat;
-  height: 43px;
-  padding-top: 15px;
 }
 
 .private_chist span {
@@ -90,6 +38,7 @@ h3.title.new {
 .bottom-bar {
     padding: 0;
     background-color: #2c3e50;
+    height: 38px;
 }
 
 span.lines {
@@ -106,7 +55,6 @@ span.lines {
   background-color: #fff;
   padding-left: 7px;
 }
-
 
 .btn-cancel {
     background: url('../img/new-cancel.svg') 0% 100% no-repeat;
@@ -125,7 +73,37 @@ span.lines {
     margin-left: 3px;
 }
 
+#latest-chists {
+    margin-top: 35px;
+    padding: 0;
+}
+
+#latest-chists a {
+    font-family: GothamMedium;
+    color: #2c3e50;
+}
+
+#latest-chists a:hover {
+    text-decoration: none;
+}
+
+#latest-chists li{
+    display: inline-block;
+}
+
+#latest-chists .chist-data.public{
+    background: url('../img/new-public.svg') 0% 100% no-repeat;
+    padding-left: 43px;
+}
+
+#latest-chists .chist-data.private{
+    background: url('../img/new-private.svg') 0% 100% no-repeat;
+    padding-left: 43px;
+}
+
 /* Old */
+
+/*
 .chist-panel .panel-body {
   padding: 0px;
 }
@@ -217,3 +195,4 @@ span.lines {
   .chist-theme-default .line .username_10  { color: #9c6e7f; }
 
   .chist-theme-default .system-message { color: #7B878C; font-style: italic; }
+*/

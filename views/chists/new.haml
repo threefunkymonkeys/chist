@@ -14,9 +14,7 @@
   %ul#latest-chists
     - chists.each do |chist|
       %li
-        .chist-visibility
-          %label.label{:class => (chist.public) ? 'label-success' : 'label-warning'}
-            =(chist.public) ? I18n.t('.chists.public_chist') : I18n.t('.chists.private_chist')
-        .chist-data
+        .chist-data{:class => (chist.public) ? 'public' : 'private'}
           %a{ href: "/chists/#{chist.id}"}= chist.title
-          .timestamp= chist.created_at.strftime("%Y-%m-%d: %H:%M")
+          .timestamp= chist.created_at.strftime("%d-%m-%y")
+          .timestamp= chist.created_at.strftime("%H:%M")

@@ -96,3 +96,7 @@ $('span.private_chist span').on('click', function() {
       $('#public_chist').val(0);
   }
 });
+
+$("body").on('click', '.btn-cancel',function(event) {
+  window.history.back();
+});
