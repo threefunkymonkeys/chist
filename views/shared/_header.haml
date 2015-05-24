@@ -34,7 +34,7 @@
               %li
                 %a{href: '/users/logout'}=I18n.t('.layout.logout')
       - else
-        %ul.nav.navbar-nav.navbar-right
+        %ul.nav.navbar-nav.navbar-right.login-public
           %li
             %a{ :href => "/" }= I18n.t('.layout.login')
       %form#search-chist.search-form.navbar-right.navbar-form{ :action => "/search", :'data-remote' => 'true', :role => 'search' }

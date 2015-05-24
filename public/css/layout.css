@@ -36,6 +36,11 @@ header .search-form input{
     color: #fff;
 }
 
+header .login-public {
+  font-family: GothamBook;
+  margin-top: 17px;
+}
+
 footer .nav-pills > li {
   float: left;
   padding: 10px;

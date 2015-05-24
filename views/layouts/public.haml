@@ -7,18 +7,18 @@
       %meta{ :name => "robots", :content => "noindex, nofollow"}
       %meta{ :name => "referrer", :content => "never"}
     %link{ :href => "/img/favicon.ico", :rel => "shortcut icon"}
-    %link{ :href => "/css/bootstrap.min.css", :rel => "stylesheet" }
+    %link{ :href => "/css/bootstrap.css", :rel => "stylesheet" }
     %link{ :href => "/css/chosen.min.css", :rel => "stylesheet" }
     %link{ :href => "/css/chosen_select_extend.css", :rel => "stylesheet" }
     %link{ :href => "/css/layout.css", :rel => "stylesheet" }
     %link{ :href => "/css/chist.css", :rel => "stylesheet" }
-    %link{ :href => "/css/base.css", :rel => "stylesheet" }
+    /%link{ :href => "/css/base.css", :rel => "stylesheet" }
     %link{ :href => "/css/bootstrap_override.css", :rel => "stylesheet" }
     %link{ :href => 'http://fonts.googleapis.com/css?family=Oxygen+Mono', :rel => 'stylesheet', :type => 'text/css' }
   %body
     #wrap
       = partial 'shared/_header'
-      #container.container
+      #container.container.col-md-8.col-md-offset-2
         .flash-messages
           =show_flash_message
         = yield
