@@ -17,7 +17,7 @@ module ChistApp::Context
           title:     @chist_params['title'],
           chist_raw: @chist_params['chist'].dup,
           chist:     ChistApp::Parser.parse(@chist_params['format'], @chist_params['chist']),
-          public:    @chist_params.has_key?('public'),
+          public:    @chist_params['public'],
           format:    @chist_params['format'],
           user:      @ctx.current_user
         })

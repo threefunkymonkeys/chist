@@ -89,6 +89,8 @@ span.lines {
 
 #latest-chists li{
     display: inline-block;
+    width: 200px;
+    margin-bottom: 15px;
 }
 
 #latest-chists .chist-data.public{
