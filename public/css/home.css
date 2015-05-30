@@ -54,6 +54,7 @@ h4.moto span{
 ul#login-providers {
   list-style: none;
   margin-bottom: 21px;
+  padding-left: 62px;
 }
 
 ul#login-providers li {
