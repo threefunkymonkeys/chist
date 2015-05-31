@@ -10,13 +10,13 @@ en:
     match: "Password confirmation doesn't match"
     unique: "Email is already registered"
     user_activated: 'Account activated.'
-    login_omniauth: 'Or login with:'
+    login_omniauth: 'Get started absolutely <span>FREE</span>'
     name: 'Name'
     providers:
       facebook: 'Facebook'
       twitter: 'Twitter'
       github: 'Github'
     login:
-      login: 'Sign In'
+      login: 'START'
       login_error: 'Your email or password were incorrect.'
       account_not_validated: 'You must validate your account first. Check your email.'

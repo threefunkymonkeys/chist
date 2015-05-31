@@ -1,3 +1,83 @@
+.home_logo {
+  text-align: center;
+  margin-top: 80px;
+}
+
+div#carousel-home {
+  margin-top: 30px;
+  margin-bottom: 90px;
+  height: 200px;
+}
+
+ol.carousel-indicators {
+  bottom: -55px;
+  margin-bottom: 0;
+}
+
+ol.carousel-indicators li.active {
+  background: transparent url('../img/carrousel-on.svg') no-repeat;
+}
+
+ol.carousel-indicators li {
+  background: transparent url('../img/carrousel-off.svg') no-repeat;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background: none;
+}
+
+.carousel .item h2{  
+  font-family: GothamBold;
+}
+
+.carousel .item{
+  text-align: center;
+}
+
+.carousel .item .btn{
+  background-color: #18c99d;
+  border-color: #18c99d;
+}
+
+h4.moto {
+  text-align: center;
+  font-family: GothamBook;
+  font-size: 14px;
+  margin-bottom: 21px;
+}
+
+h4.moto span{
+  color: #18c99d;
+  font-family: GothamBold;
+}
+
+ul#login-providers {
+  list-style: none;
+  margin-bottom: 21px;
+  padding-left: 62px;
+}
+
+ul#login-providers li {
+  display: inline;
+  margin-right: 10px;
+}
+
+ul#login-providers li img {
+  width: 30px;
+  height: 30px;
+}
+
+#home input.btn {
+  width: 100%;
+  background-color: #18c99d;
+  color: #fff;
+  font-family: GothamBold;
+}
+
+#home .form-horizontal{
+    margin-bottom: 45px;
+}
+/*
 #logo-container {
   min-height: 400px;
   height: 100%;
@@ -12,19 +92,8 @@
   color: #006687;
 }
 
-ul#login-providers {
-  list-style: none;
-}
-
-ul#login-providers li {
-  display: inline;
-}
-
-ul#login-providers li img {
-  width: 32px;
-  height: 32px;
-}
 
 .left-separator {
   border-left: solid 1px #DDDDDD;
 }
+*/

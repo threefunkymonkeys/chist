@@ -9,6 +9,16 @@
     src: url('../fonts/Gotham-Book.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'GothamBold';
+    src: url('../fonts/Gotham-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'GothamMedium';
+    src: url('../fonts/Gotham-Medium.TTF') format('truetype');
+}
+
 $bootstrap-sass-asset-helper: false !default;
 //
 // Variables
@@ -216,7 +226,7 @@ $input-border-radius-small:      $border-radius-small !default;
 $input-border-focus:             #66afe9 !default;
 
 //** Placeholder text color
-$input-color-placeholder:        #fff !default;
+$input-color-placeholder:        #AEAEAE !default;
 
 //** Default `.form-control` height
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
