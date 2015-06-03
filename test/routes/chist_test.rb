@@ -10,7 +10,7 @@ describe ChistApp::Chists do
         'title' => Faker::Lorem.sentence(1),
         'chist' => Faker::Lorem.paragraph,
         'format' => 'none',
-        'public' => "true"
+        'public' => "1"
       }
     }
 
