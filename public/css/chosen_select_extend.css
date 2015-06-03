@@ -31,7 +31,8 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     background-clip: padding-box;
     margin: 2px 0 0;
- 
+    width: auto;
+    display: block; 
 }
  
 .chosen-container .chosen-search input[type=text] {

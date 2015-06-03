@@ -15,6 +15,6 @@
     - chists.each do |chist|
       %li
         .chist-data{:class => (chist.public) ? 'public' : 'private'}
-          %a{ href: "/chists/#{chist.id}"}= chist.title
+          %a{ href: "/chists/#{chist.id}"}= chist.title.length > 20 ? chist.title[0..17] + "..." : chist.title
           .timestamp= chist.created_at.strftime("%d-%m-%y")
           .timestamp= chist.created_at.strftime("%H:%M")

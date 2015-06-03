@@ -100,3 +100,15 @@ $('span.private_chist span').on('click', function() {
 $("body").on('click', '.btn-cancel',function(event) {
   window.history.back();
 });
+
+$('body').on('keyup', 'textarea.form-control',function(){
+  var count = 0;
+  if ($(this).val().length > 0){
+    var count = $(this).val().split("\n").length;
+  }
+  var text = "Line";
+  if (count > 1){
+    text += "s";
+  }
+  $('span.lines').html(count+' '+text);
+});
