@@ -34,7 +34,7 @@ class User < Sequel::Model
   end
 
   def latest_chists
-    Chist.where(:user_id => self.id).order(Sequel.desc(:created_at)).limit(5)
+    Chist.where(:user_id => self.id).order(Sequel.desc(:created_at)).limit(4)
   end
 
   def favorited?(chist)
