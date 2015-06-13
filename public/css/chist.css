@@ -1,22 +1,6 @@
 /* New chist design */
-h3.title {
-  font-family: GothamBook;
-  font-size: 15px;
-  margin-bottom: 43px;
-  margin-top: 0;
-  height: 43px;
-  padding-top: 15px;
-  padding-left: 43px;
-}
 
-h3.title span{
-  font-family: GothamBold;
-}
-
-h3.title.new {
-  background: url('../img/title-chist-new.svg') -1% 0% no-repeat;
-}
-
+/* New chist design */
 .private_chist span {
   font-weight: normal;
   color: #adb5bc;
