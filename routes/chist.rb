@@ -54,13 +54,13 @@ class ChistApp::Routes < Cuba
       end
 
       on 'terms' do
-        res.write render("./views/layouts/public.haml") {
+        res.write render("./views/layouts/app.haml") {
           render("./views/public/terms.haml")
         }
       end
 
       on 'privacy' do
-        res.write render("./views/layouts/public.haml") {
+        res.write render("./views/layouts/app.haml") {
           render("./views/public/privacy.haml")
         }
       end
