@@ -79,7 +79,6 @@ h1 {
   font-family: GothamBold;
   font-size: 15px;
   margin-bottom: 23px;
-  margin-top: 40;
   height: 43px;
   padding-top: 15px;
   padding-left: 43px;
@@ -88,6 +87,11 @@ h1 {
 
 h1.policy {
   background: url('../img/title-chist-privacy.svg') -1% 0% no-repeat;
+}
+
+h1.tos {
+  background: url('../img/title-chist-terms.svg') 0% 0% no-repeat;
+  padding-left: 50px;
 }
 
 h2 {
