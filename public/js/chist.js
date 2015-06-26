@@ -35,9 +35,9 @@ $("form.fav-form").on("ajax:beforeSend", function(event) {
 $("form.fav-form").on("ajax:done", function(event) {
   var response = JSON.parse(event.response);
   if (response.favorite) {
-    $(this).find(".fav-icon").removeClass('no-favorited').addClass('favorited');
+    $(this).find(".fav-button").removeClass('no-favorited').addClass('favorited');
   } else {
-    $(this).find(".fav-icon").removeClass('favorited').addClass('no-favorited');
+    $(this).find(".fav-button").removeClass('favorited').addClass('no-favorited');
   }
   $(this).find("button.fav-icon").fadeTo(500, 1);
 });
@@ -66,7 +66,7 @@ window.addEventListener("popstate", function(event) {
   }
 });
 
-$("body").on('click', ".delete-chist", function(event) {
+$("body").on('click', ".delete-button", function(event) {
   event.preventDefault();
   event.stopPropagation();
   var _this = $(this),
