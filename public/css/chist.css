@@ -92,7 +92,12 @@ h3.panel-title {
 }
 
 .row.your-chists{
-  padding-left: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.chist-panel{
+  margin-bottom: 38px;
 }
 
 .chist-panel .action-fav{
