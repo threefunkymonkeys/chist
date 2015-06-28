@@ -107,6 +107,10 @@ h3.panel-title {
   margin-top: -20px;
 }
 
+.chist-panel input, .chist-panel button{
+  outline: none !important;
+}
+
 .delete-button{
   background: url('../img/your-delete.svg') 0% 100% no-repeat;
   width: 22px;
@@ -114,13 +118,13 @@ h3.panel-title {
 }
 
 .fav-button{
-  background: none;
+  background: transparent;
   width: 25px;
   height: 25px;
 }
 
 .fav-button.favorited{
-  background: url('../img/your-delete.svg') 47% 59% no-repeat;
+  background: url('../img/your-favorite.png') 47% 59% no-repeat;
 }
 
 .fav-button.no-favorited{

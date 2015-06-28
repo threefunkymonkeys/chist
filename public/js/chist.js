@@ -39,7 +39,7 @@ $("form.fav-form").on("ajax:done", function(event) {
   } else {
     $(this).find(".fav-button").removeClass('favorited').addClass('no-favorited');
   }
-  $(this).find("button.fav-icon").fadeTo(500, 1);
+  $(this).find("button.fav-button").fadeTo(500, 1);
 });
 
 $("form.fav-form").on("ajax:error", function(event) {
