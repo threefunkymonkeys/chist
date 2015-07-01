@@ -34,7 +34,7 @@ span.lines {
   margin-top: 9px;
 }
 
-.actions {
+.bottom-bar .actions {
   float: right;
   background-color: #fff;
   padding-left: 7px;
@@ -86,6 +86,64 @@ span.lines {
     background: url('../img/new-private.svg') 0% 100% no-repeat;
     padding-left: 43px;
 }
+
+h3.panel-title {
+  height: 14px;
+}
+
+.row.your-chists{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.chist-panel{
+  margin-bottom: 38px;
+}
+
+.chist-panel .action-fav{
+  float: right;
+  margin-top: -5px;
+  margin-right: -10px;
+}
+
+.chist-panel .action-del{
+  float: left;
+  margin-left: -25px;
+  margin-top: -20px;
+}
+
+.chist-panel input, .chist-panel button{
+  outline: none !important;
+}
+
+.delete-button{
+  background: url('../img/your-delete.svg') 0% 100% no-repeat;
+  width: 22px;
+  height: 22px;
+}
+
+.fav-button{
+  background: transparent;
+  width: 25px;
+  height: 25px;
+}
+
+.fav-button.favorited{
+  background: url('../img/your-favorite.png') 47% 59% no-repeat;
+}
+
+.fav-button.no-favorited{
+  background: url('../img/your-favorite.svg') 47% 59% no-repeat;
+}
+
+.chist-panel .panel-body.public{
+  border-bottom: 4px solid #18D99C;
+}
+
+.chist-panel .panel-body.private{
+  border-bottom: 4px solid #E33e45;
+}
+
 
 /* Old */
 

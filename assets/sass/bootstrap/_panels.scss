@@ -7,9 +7,11 @@
 .panel {
   margin-bottom: $line-height-computed;
   background-color: $panel-bg;
+  /*
   border: 1px solid transparent;
   border-radius: $panel-border-radius;
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
+  */
 }
 
 // Panel contents
@@ -21,6 +23,7 @@
 // Optional heading
 .panel-heading {
   padding: $panel-heading-padding;
+  font-family: GothamBold;
   border-bottom: 1px solid transparent;
   @include border-top-radius(($panel-border-radius - 1));
 
@@ -218,6 +221,7 @@
 
   // Tighten up margin so it's only between panels
   .panel {
+    padding: 10px 10px 0 10px;
     margin-bottom: 0;
     border-radius: $panel-border-radius;
 

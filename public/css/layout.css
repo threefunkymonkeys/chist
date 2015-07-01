@@ -75,6 +75,10 @@ h3.title.new {
   background: url('../img/title-chist-new.svg') -1% 0% no-repeat;
 }
 
+h3.title.your {
+  background: url('../img/title-chist-your.svg') -1% 0% no-repeat;
+}
+
 h1 {
   font-family: GothamBold;
   font-size: 15px;

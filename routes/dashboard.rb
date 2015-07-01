@@ -4,6 +4,7 @@ module ChistApp
       on authenticated(User) do
         on get do
           on root do
+
             res.write render("./views/layouts/app.haml") {
               chists = current_user.ordered_chists
               render("./views/dashboard/index.haml", chists: chists)
