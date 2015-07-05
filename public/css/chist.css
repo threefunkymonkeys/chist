@@ -116,7 +116,7 @@ h3.panel-title {
   outline: none !important;
 }
 
-.delete-button{
+.delete-button, .delete-button:active{
   background: url('../img/your-delete.svg') 0% 100% no-repeat;
   width: 22px;
   height: 22px;
