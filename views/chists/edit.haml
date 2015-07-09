@@ -1,17 +1,21 @@
-#edit-top-bar.chist-top-bar
-  .col-md-1
-    %label.label{ :class => (chist.public) ? 'label-success' : 'label-warning' }
-      = chist.public ? I18n.t('.chists.public_chist') : I18n.t('.chists.private_chist')
-  .col-md-5
-    ="#{I18n.t('.chists.actions.editing')}"
-    %span.text-info= chist.title
-    .timestamp
-      = "#{I18n.t('.chists.last_update')} #{chist_last_update(chist)}"
-
+%h3.title.new
+  = ::I18n.t('.chists.new')
+  %span=::I18n.t('.chists.chist')
 %form.form-horizontal{action: "/chists/#{chist.id}", method: 'post'}
   %fieldset
     %input{type: 'hidden', name: '_method', value: 'PUT'}
     = partial 'chists/_form', params: params, chist: chist
-    .actions.col-lg-11
-      %input.btn.btn-primary.btn-sm{type: 'submit', value: I18n.t('.chists.actions.save')}
-
+    .col-md-12.bottom-bar
+      %span.lines
+        0 Lines
+      .actions
+        %input.btn.btn-cancel{type: 'button', title: I18n.t('chists.cancel')}
+        %input.btn.btn-confirm{type: 'submit', title: I18n.t('chists.create'), value: ''}
+.chist-bottom-bar
+  %ul#latest-chists
+    - chists.each do |chist|
+      %li
+        .chist-data{:class => (chist.public) ? 'public' : 'private'}
+          %a{ href: "/chists/#{chist.id}"}= chist.title.length > 20 ? chist.title[0..17] + "..." : chist.title
+          .timestamp= chist.created_at.strftime("%d-%m-%y")
+          .timestamp= chist.created_at.strftime("%H:%M")

@@ -33,7 +33,7 @@ module ChistApp
                 chist.title = chist_params['title']
                 chist.chist_raw = chist_params['chist'].dup
                 chist.chist = ChistApp::Parser.parse(chist_params['format'], chist_params['chist'])
-                chist.public = chist_params.has_key?('public')
+                chist.public = chist_params['public'].to_i == 1
                 chist.format = chist_params['format']
                 chist.save
                 flash[:success] = I18n.t('chists.chist_edited')
@@ -95,7 +95,7 @@ module ChistApp
 
             if chist && chist.user_id == current_user.id
               res.write render("./views/layouts/app.haml") {
-                render("./views/chists/edit.haml", chist: chist, params: session.delete('chist.chist_params') || {})
+                render("./views/chists/edit.haml", chists: current_user.latest_chists, chist: chist, params: session.delete('chist.chist_params') || {})
               }
             else
               not_found!
