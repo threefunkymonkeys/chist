@@ -33,9 +33,14 @@
         %option{value: 'slack'}=I18n.t('chists.format.slack')
 
     %span.private_chist
-      %input#public_chist{type: 'hidden', name: 'chist[public]', value: 0, checked: (defined?(chist) && chist.public) || params.has_key?('public')}
-      %span.private
-        =I18n.t('chists.private_chist')
+      - if (defined?(chist) && chist.public == true)
+        %input#public_chist{type: 'hidden', name: 'chist[public]', value: 1}
+          %span.public
+            =I18n.t('chists.public_chist')
+      - else
+        %input#public_chist{type: 'hidden', name: 'chist[public]', value: 0}
+          %span.private
+            =I18n.t('chists.private_chist')
 
 .form-group
   .col-md-12
