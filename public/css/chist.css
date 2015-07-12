@@ -116,7 +116,7 @@ h3.panel-title {
   outline: none !important;
 }
 
-.delete-button{
+.delete-button, .delete-button:active{
   background: url('../img/your-delete.svg') 0% 100% no-repeat;
   width: 22px;
   height: 22px;
@@ -145,16 +145,7 @@ h3.panel-title {
 }
 
 
-/* Old */
-
-/*
-.chist-panel .panel-body {
-  padding: 0px;
-}
-
-.chist-title {
-  padding: 10px 10px 0;
-}
+/* Themes */
 
 .chist-chat {
   width: 100%;
@@ -199,8 +190,6 @@ h3.panel-title {
   overflow-wrap: normal;
 }
 
-#delete-chist-form button { margin-left: 20px;}
-
 .chist-format-skype .chist-theme-default { }
   .chist-format-skype.chist-theme-default .line .time {
     color: #003300;
@@ -239,4 +228,3 @@ h3.panel-title {
   .chist-theme-default .line .username_10  { color: #9c6e7f; }
 
   .chist-theme-default .system-message { color: #7B878C; font-style: italic; }
-*/
