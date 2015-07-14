@@ -1,8 +1,41 @@
+- if chist.public
+  %h3.title.show-public
+    = "#{chist.user.name} | "
+    %span="#{chist.title}"
+- else
+  %h3.title.show-private
+    = "#{chist.user.name} | "
+    %span="#{chist.title}"
+
+.chist-show
+  .row.your-chists
+    .panel.panel-primary.chist-panel
+      .panel-heading
+        .action-fav
+          %form.fav-form{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
+            %input{ type: "hidden", name: "_method", value: "PUT" }
+            %button.btn.fav-button{ type: "submit", :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
+        %h3.panel-title
+          - if chist.user_id == current_user.id
+            %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
+          - else
+            %a.col-md-4{href: "/chists/#{chist.id}"}="#{chist.user.name}/#{chist.title}"
+      .panel-body
+        = partial("chists/_chist", :chist => chist, :short => true)
+  .row.your-chists
+    .col-md-12.bottom-bar
+      %span.lines
+        0 Lines
+.chist-bottom-bar
+  %ul#latest-chists
+    - chists.each do |chist|
+      %li
+        .chist-data{:class => (chist.public) ? 'public' : 'private'}
+          %a{ href: "/chists/#{chist.id}"}= chist.title.length > 20 ? chist.title[0..17] + "..." : chist.title
+          .timestamp= chist.created_at.strftime("%d-%m-%y")
+          .timestamp= chist.created_at.strftime("%H:%M")
+
 .row.chist-top-bar
-  %h3.chist-header.col-md-8
-    - unless chist.public
-      %img{src: "/img/private.png", alt: I18n.t('chists.private_chist'), title: I18n.t('chists.private_chist')}
-    ="#{chist.user.name}/#{chist.title}"
   - if current_user
     .col-md-4.h2
       - if current_user.id == chist.user_id
@@ -17,13 +50,7 @@
           Favorite
 
 .row
-  .col-md-9
-    .panel.panel-primary.chist-panel
-      .panel-heading
-        %h3.panel-title=chist.title
-      .panel-body
-        = partial("chists/_chist", :chist => chist)
-  .col-md-3
+  .col-md-4
     .panel.panel-info
       .panel-heading
         %h3

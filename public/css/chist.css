@@ -144,6 +144,17 @@ h3.panel-title {
   border-bottom: 4px solid #E33e45;
 }
 
+.chist-show .chist-panel {
+  margin-bottom: 0;
+}
+
+.chist-show .panel-title a{
+  padding: 0;
+}
+
+.chist-show .bottom-bar {
+  background-color: #808B96;
+}
 
 /* Themes */
 
