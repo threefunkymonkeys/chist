@@ -201,6 +201,74 @@ h3.panel-title {
   overflow-wrap: normal;
 }
 
+.chist-show .bottom-bar .actions {
+  float: right;
+  background-color: transparent;
+  padding-left: 7px;
+}
+
+.chist-show .btn-share {
+  background: url('../img/chist-share.svg') 0% 100% no-repeat;
+  height: 38px;
+  width: 40px;
+  padding: 0;
+  border: 0;
+  float: left;
+}
+
+.chist-show .btn-download {
+  background: url('../img/chist-download.svg') 0% 100% no-repeat;
+  height: 38px;
+  width: 40px;
+  padding: 0;
+}
+
+.chist-show .row.your-chists {
+  padding-right: 47px;
+}
+
+button, button:target {
+  outline: none;
+}
+
+.chist-show-actions {
+  width: 32px;
+  height: auto;
+  float: right;
+  margin-top: 35px;
+}
+
+.chist-show-actions .btn-edit{
+  background: url('../img/chist-edit-edit.svg') 0% 100% no-repeat;
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  display: block;
+  float: left;
+}
+
+.chist-show-actions .btn-fav{
+  background: url('../img/chist-edit-favorite.svg') 0% 100% no-repeat;
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  display: block;
+  border: 0;
+  float: left;
+  margin-top: 2px;
+}
+
+.chist-show-actions .btn-delete{
+  background: url('../img/chist-edit-delete.svg') 0% 100% no-repeat;
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  display: block;
+  border: 0;
+  float: left;
+  margin-top: 2px;
+}
+
 .chist-format-skype .chist-theme-default { }
   .chist-format-skype.chist-theme-default .line .time {
     color: #003300;

@@ -8,6 +8,16 @@
     %span="#{chist.title}"
 
 .chist-show
+  .chist-show-actions
+    - if current_user.id == chist.user_id
+      %a.btn-edit{href: "/chists/#{chist.id}/edit"}
+    %form.fav-form.form-horizontal#favorite-wrapper.pull-right{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
+      %input{ type: "hidden", name: "_method", value: "PUT" }
+      %button.btn-fav{ type: "submit"}
+    - if current_user.id == chist.user_id
+      %form.del-for{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST'}
+        %button.btn-delete{type: 'submit'}
+        %input{type: 'hidden', name: '_method', value: 'DELETE'}
   .row.your-chists
     .panel.panel-primary.chist-panel
       .panel-heading
@@ -25,7 +35,12 @@
   .row.your-chists
     .col-md-12.bottom-bar
       %span.lines
-        0 Lines
+        =chist.chist_raw.lines.count
+        Lines
+      .actions
+        %button.btn-share{type: 'button', title: "#{ENV['SITE_URL']}/chists/#{chist.id}", :'data-toggle' => 'tooltip', :'data-placement' => 'bottom', :'title' => 'Copy URL to clipboard'}
+        %a.btn.btn-download{ href: "/chists/#{chist.id}/raw", :'target' => '_blank', :'data-toggle' => 'tooltip', :'data-placement' => 'bottom', :'title' => 'Download'}
+
 .chist-bottom-bar
   %ul#latest-chists
     - chists.each do |chist|
@@ -34,36 +49,3 @@
           %a{ href: "/chists/#{chist.id}"}= chist.title.length > 20 ? chist.title[0..17] + "..." : chist.title
           .timestamp= chist.created_at.strftime("%d-%m-%y")
           .timestamp= chist.created_at.strftime("%H:%M")
-
-.row.chist-top-bar
-  - if current_user
-    .col-md-4.h2
-      - if current_user.id == chist.user_id
-        %form{action: "/chists/#{chist.id}", id: "delete-chist-form", method: 'POST', class: 'pull-right'}
-          %button.btn.btn-danger.btn-sm.delete-chist{type: 'submit', :style => "position: relative; top: -5px;"}=I18n.t('chists.delete')
-          %input{type: 'hidden', name: '_method', value: 'DELETE'}
-        %a.btn.btn-primary.btn-sm.pull-right{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
-      %form.form-horizontal#favorite-wrapper.pull-right{ action: "/chists/#{chist.id}/favorite", method: "POST", class: current_user.id == chist.user_id ? 'with-border' : '' }
-        %input{ type: "hidden", name: "_method", value: "PUT" }
-        %button.btn.btn-info.btn-sm{ type: "submit" }
-          %span.glyphicon.glyphicon-star{ :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
-          Favorite
-
-.row
-  .col-md-4
-    .panel.panel-info
-      .panel-heading
-        %h3
-      .panel-body
-        .form-group
-          %label.control-label
-            Chist URL
-          %input.form-control.input-sm{ value: "#{ENV['SITE_URL']}/chists/#{chist.id}" }
-        .form-group
-          %label.control-label
-            =I18n.t('.chists.lines')
-          .form-control= chist.chist_raw.lines.count
-        %br
-        .form-group
-          %a.form-control.btn.btn-sm.btn-success{ href: "/chists/#{chist.id}/raw" }
-            =I18n.t('.chists.actions.download')
