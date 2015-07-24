@@ -35,11 +35,11 @@ $("form.fav-form").on("ajax:beforeSend", function(event) {
 $("form.fav-form").on("ajax:done", function(event) {
   var response = JSON.parse(event.response);
   if (response.favorite) {
-    $(this).find(".fav-button").removeClass('no-favorited').addClass('favorited');
+    $('.container').find(".fav-button").removeClass('no-favorited').addClass('favorited');
   } else {
-    $(this).find(".fav-button").removeClass('favorited').addClass('no-favorited');
+    $('.container').find(".fav-button").removeClass('favorited').addClass('no-favorited');
   }
-  $(this).find("button.fav-button").fadeTo(500, 1);
+  $('.container').find("button.fav-button").fadeTo(500, 1);
 });
 
 $("form.fav-form").on("ajax:error", function(event) {
@@ -66,11 +66,11 @@ window.addEventListener("popstate", function(event) {
   }
 });
 
-$("body").on('click', ".delete-button", function(event) {
+$("body").on('click', ".delete-button, .btn-delete", function(event) {
   event.preventDefault();
   event.stopPropagation();
-  var _this = $(this),
-      action = _this.parent('form').attr('action');
+  var _this = $('.container'),
+      action = _this.parent('.del-for').attr('action');
 
   modal = $("#modal-chist-delete");
   modal.find('form').attr('action', action);
@@ -84,6 +84,14 @@ $("#delete-key-modal").on('show.bs.modal', function(event) {
   var modal = $(this);
 
   modal.find("#delete-form").attr("action", "/users/keys/" + key_id);
+});
+
+$(".container").on('click', '.btn-share', function(event) {
+  $("body").append("<input type='text' id='temp' style='position:absolute;opacity:0;'>");
+  $("#temp").val(location.href).select();
+  document.execCommand("copy");
+  $("#temp").remove();
+  alert('copiado!!!');
 });
 
 $('span.private_chist span').on('click', function() {
@@ -125,3 +133,5 @@ function update_form_chist_bar(textarea){
   }
   $('span.lines').html(count+' '+text);
 }
+
+$('[data-toggle="tooltip"]').tooltip();
