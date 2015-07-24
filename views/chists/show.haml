@@ -31,7 +31,7 @@
           - else
             %a.col-md-4{href: "/chists/#{chist.id}"}="#{chist.user.name}/#{chist.title}"
       .panel-body
-        = partial("chists/_chist", :chist => chist, :short => true)
+        = partial("chists/_chist", :chist => chist)
   .row.your-chists
     .col-md-12.bottom-bar
       %span.lines
