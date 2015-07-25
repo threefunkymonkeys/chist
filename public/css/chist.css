@@ -307,3 +307,16 @@ button, button:target {
   .chist-theme-default .line .username_10  { color: #9c6e7f; }
 
   .chist-theme-default .system-message { color: #7B878C; font-style: italic; }
+
+.new-chist-atributes select{
+  height: 40px;
+  padding: 10px;
+}
+
+.new-chist-atributes {
+  margin-top: 19px; }
+
+@media (min-width: 768px) {
+  .new-chist-atributes {
+  margin-top: 0px; }
+}

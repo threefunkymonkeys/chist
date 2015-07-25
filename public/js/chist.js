@@ -69,9 +69,8 @@ window.addEventListener("popstate", function(event) {
 $("body").on('click', ".delete-button, .btn-delete", function(event) {
   event.preventDefault();
   event.stopPropagation();
-  var _this = $('.container'),
-      action = _this.parent('.del-for').attr('action');
-
+  var _this = $('.container');
+  var action = _this.find('.del-for').attr('action');
   modal = $("#modal-chist-delete");
   modal.find('form').attr('action', action);
   modal.modal("show");
@@ -91,7 +90,8 @@ $(".container").on('click', '.btn-share', function(event) {
   $("#temp").val(location.href).select();
   document.execCommand("copy");
   $("#temp").remove();
-  alert('copiado!!!');
+  var texto = "<div class='alert alert-dismissable alert-warning'><button type='button' class='close' data-dismiss='alert'>×</button><p>"+location.href+"</p></div>";
+  $('.flash-messages').html(texto);
 });
 
 $('span.private_chist span').on('click', function() {
