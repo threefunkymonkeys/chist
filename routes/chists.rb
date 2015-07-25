@@ -135,10 +135,8 @@ module ChistApp
             not_found!
           end
         end
-
         not_found!
       end
-
       not_found!
     end
   end

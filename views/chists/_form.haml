@@ -1,7 +1,7 @@
 .form-group
   .col-md-7
     %input.form-control{type: 'text', name: 'chist[title]', value: defined?(chist) ? chist.title : (params['title'] || ''), required: true, placeholder: I18n.t('chists.title',)}
-  .col-md-5
+  .col-md-5.new-chist-atributes
     %select.col-md-5#chat-format{name: 'chist[format]'}
       - if (defined?(chist) && chist.format == 'none') || (params.has_key?('format') && params['format'] == 'none')
         %option{value: 'none', selected: 'selected'}=I18n.t('chists.format.none')
