@@ -92,6 +92,7 @@ $(".container").on('click', '.btn-share', function(event) {
   $("#temp").remove();
   var texto = "<div class='alert alert-dismissable alert-warning'><button type='button' class='close' data-dismiss='alert'>×</button><p>"+location.href+"</p></div>";
   $('.flash-messages').html(texto);
+  $(document).scrollTop( $("body").offset().top );
 });
 
 $('span.private_chist span').on('click', function() {

@@ -231,6 +231,10 @@ button, button:target {
   outline: none;
 }
 
+.actions input{
+  outline: none;
+}
+
 .chist-show-actions {
   width: 32px;
   height: auto;

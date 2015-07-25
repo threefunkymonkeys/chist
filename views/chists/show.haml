@@ -16,7 +16,7 @@
       %button.btn-fav{ type: "submit"}
     - if current_user.id == chist.user_id
       %form.del-for{method: 'post', action: "/chists/#{chist.id}"}
-        %input.btn-delete{type: 'submit', value: ''}
+        %button.btn-delete{type: 'submit', value: ''}
         %input{type: 'hidden', name: '_method', value: 'DELETE'}
   .row.your-chists
     .panel.panel-primary.chist-panel
