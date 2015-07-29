@@ -3,6 +3,11 @@ module ChistApp::Helpers
     res.redirect '/404'
   end
 
+  def redirect!(location)
+    res.redirect(location)
+    halt res.finish
+  end
+
   def unauthorized!
     halt([401,
           {"Content-type" => "application/json",
