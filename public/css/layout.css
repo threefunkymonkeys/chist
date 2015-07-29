@@ -79,6 +79,14 @@ h3.title.your {
   background: url('../img/title-chist-your.svg') -1% 0% no-repeat;
 }
 
+h3.title.show-private {
+  background: url('../img/title-chist-private.svg') -1% 0% no-repeat;
+}
+
+h3.title.show-public {
+  background: url('../img/title-chist-public.svg') -1% 0% no-repeat;
+}
+
 h1 {
   font-family: GothamBold;
   font-size: 15px;
