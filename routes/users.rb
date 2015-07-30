@@ -99,7 +99,7 @@ module ChistApp
               :password => req.params['password'],
               :validation_code => SecureRandom.hex(24)
             )
-            if auth = session['chist.auth']
+            if auth = session['chist.auth'] && !session['chist.auth'][:uid].nil?
               user.send("#{auth[:provider]}_user=", auth[:uid])
             end
             user.save
@@ -116,6 +116,11 @@ module ChistApp
 
         on 'login' do
           begin
+            if User[email: req.params['email']].nil?
+              session['chist.auth'] = { name: "", email: req.params['email'] }
+              redirect! '/users/signup'
+            end
+
             raise LoginException.new(I18n.t('home.login.login_error')) unless login(User, req.params['email'], req.params['password'])
             user = authenticated(User)
             raise LoginException.new(I18n.t('home.login.account_not_validated')) unless user.valid
