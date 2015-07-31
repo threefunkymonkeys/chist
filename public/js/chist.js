@@ -35,15 +35,15 @@ $("form.fav-form").on("ajax:beforeSend", function(event) {
 $("form.fav-form").on("ajax:done", function(event) {
   var response = JSON.parse(event.response);
   if ($(this).parents('.chist-show').length > 0){
-    var destino = $('.container');
+    var target = $('.container');
   } else {
-    var destino = $(this);
+    var target = $(this);
   }
 
   if (response.favorite) {
-    destino.find(".fav-button").removeClass('no-favorited').addClass('favorited');
+    target.find(".fav-button").removeClass('no-favorited').addClass('favorited');
   } else {
-    destino.find(".fav-button").removeClass('favorited').addClass('no-favorited');
+    target.find(".fav-button").removeClass('favorited').addClass('no-favorited');
   }
   $('.container').find("button.fav-button").fadeTo(500, 1);
 });
