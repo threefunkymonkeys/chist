@@ -34,16 +34,18 @@ $("form.fav-form").on("ajax:beforeSend", function(event) {
 
 $("form.fav-form").on("ajax:done", function(event) {
   var response = JSON.parse(event.response);
-  if (response.favorite) {
-    $('.container').find(".fav-button").removeClass('no-favorited').addClass('favorited');
+  if ($(this).parents('.chist-show').length > 0){
+    var destino = $('.container');
   } else {
-    $('.container').find(".fav-button").removeClass('favorited').addClass('no-favorited');
+    var destino = $(this);
+  }
+
+  if (response.favorite) {
+    destino.find(".fav-button").removeClass('no-favorited').addClass('favorited');
+  } else {
+    destino.find(".fav-button").removeClass('favorited').addClass('no-favorited');
   }
   $('.container').find("button.fav-button").fadeTo(500, 1);
-});
-
-$("form.fav-form").on("ajax:error", function(event) {
-  console.log(event.response);
 });
 
 $("form#search-chist").on("ajax:beforeSend", function(event) {
