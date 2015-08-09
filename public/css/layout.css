@@ -72,19 +72,19 @@ h3.title span{
 }
 
 h3.title.new {
-  background: url('../img/title-chist-new.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-new.svg') 0% 0% no-repeat;
 }
 
 h3.title.your {
-  background: url('../img/title-chist-your.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-your.svg') 0% 0% no-repeat;
 }
 
 h3.title.show-private {
-  background: url('../img/title-chist-private.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-private.svg') 0% 0% no-repeat;
 }
 
 h3.title.show-public {
-  background: url('../img/title-chist-public.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-public.svg') 0% 0% no-repeat;
 }
 
 h1 {
@@ -98,7 +98,7 @@ h1 {
 }
 
 h1.policy {
-  background: url('../img/title-chist-privacy.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-privacy.svg') 0% 0% no-repeat;
 }
 
 h1.tos {
