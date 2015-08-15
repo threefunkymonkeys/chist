@@ -7,7 +7,6 @@
       .panel-heading
         .action-del
           - if chist.user_id == current_user.id
-            //%a.btn.btn-success.btn-xs{href: "/chists/#{chist.id}/edit"}=I18n.t('chists.edit')
             %form.del-for{method: 'post', action: "/chists/#{chist.id}"}
               %input{type: 'hidden', name: '_method', value: 'DELETE'}
               %input.btn.delete-button{type: 'submit', value: ''}
@@ -17,9 +16,9 @@
             %button.btn.fav-button{ type: "submit", :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
         %h3.panel-title
           - if chist.user_id == current_user.id
-            %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
+            %a{href: "/chists/#{chist.id}"}=chist.title
           - else
-            %a.col-md-4{href: "/chists/#{chist.id}"}="#{chist.user.name}/#{chist.title}"
+            %a{href: "/chists/#{chist.id}"}="#{chist.user.name}/#{chist.title}"
       .panel-body{ :class => chist.public == true ? 'public' : 'private'}
         = partial("chists/_chist", :chist => chist, :short => true)
 
