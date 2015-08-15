@@ -87,6 +87,25 @@ h3.title.show-public {
   background: url('../img/title-chist-public.svg') 0% 0% no-repeat;
 }
 
+h3.title.user {
+  background: url('../img/title-chist-profile.svg') -7px 0% no-repeat;
+}
+
+h3.subtitle {
+  background-color: #2C3E50;
+  border-bottom: 4px solid #18D99C;
+  margin: 0;
+  overflow: hidden;
+}
+
+h3.subtitle span{
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: "GothamBold";
+  padding: 12px 0 10px 18px;
+  float: left;
+}
+
 h1 {
   font-family: GothamBold;
   font-size: 15px;
