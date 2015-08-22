@@ -2,11 +2,6 @@ module ChistApp
   class UserApiKeys < Cuba
     define do
       on authenticated(User) do
-        on get, root do
-          res.write render("./views/layouts/app.haml") {
-            render("./views/users/keys/index.haml", :keys => current_user.user_api_keys)
-          }
-        end
 
         on post do
           on root do
@@ -19,7 +14,7 @@ module ChistApp
               flash[:error] = I18n.t('.user.create_key_error') 
             end
 
-            res.redirect "/users/keys"
+            res.redirect "/users/edit"
           end
         end
 
@@ -30,7 +25,7 @@ module ChistApp
             flash[:error] = I18n.t('.user.delete_key_error')
           end
 
-          res.redirect "/users/keys"
+          res.redirect "/users/edit"
         end
       end
     end

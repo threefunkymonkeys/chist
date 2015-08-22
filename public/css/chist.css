@@ -320,6 +320,11 @@ button, button:target {
 .new-chist-atributes {
   margin-top: 19px; }
 
+.user {
+  overflow: hidden;
+  margin: 0 0 24px 0;
+}
+
 .btn-edit {
   background: url('../img/profile-edit.svg') 0% 100% no-repeat;
   width: 38px;
@@ -330,14 +335,14 @@ button, button:target {
 }
 
 .user-label {
-  width: 200px;
+  width: 300px;
   float: left;
   font-family: GothamBook;
   font-size: 13px;
   font-weight: normal;
   color: #2C3E50;
   margin: 0;
-  padding: 13px 0 0 18px;
+  padding: 3px 0 0 18px;
 }
 
 .user-field {
@@ -345,6 +350,18 @@ button, button:target {
   float: left;
   border: 0;
   border-bottom: 1px solid #ADB5BC;
+  padding: 0 0 3px 0;
+  height: 21px;
+}
+
+.user-field-api{
+  width: 274px;
+  float: left;
+  border: 0;
+  border-bottom: 1px solid #ADB5BC;
+  padding: 0 0 3px 0;
+  height: 21px;
+  margin: 0 0 0 18px;
 }
 
 .user .form-group {
@@ -353,7 +370,7 @@ button, button:target {
 }
 
 .user .btn-conection-enable, .user .btn-conection-disable {
-  padding: 13px 0;
+  padding: 2px 0 0 0;
   font-family: GothamBook;
   font-size: 14px;
   float: left;
@@ -365,9 +382,46 @@ button, button:target {
 
 .user .btn-conection-disable {
   color: #E33E45;
+  border: 0;
+  background-color: transparent;
+}
+
+.btn-delete-api-key {
+  background: url('../img/profile-edit-api-delete.svg') 50% 50% no-repeat;
+  height: 16px;
+  width: 16px;
+  border: 0;
+  float: right;
+  margin-right: 80px;
+}
+
+.btn-add-api-key {
+  background: url('../img/profile-edit-api-add.svg') 50% 50% no-repeat;
+  height: 16px;
+  width: 16px;
+  border: 0;
+  margin-left: 10px;
+}
+
+.keys {
+    padding: 0;
 }
 
 @media (min-width: 768px) {
   .new-chist-atributes {
   margin-top: 0px; }
+}
+
+@media (max-width: 767px) {
+  .user-label{
+    width: 240px;
+  }
+
+  .btn-delete-api-key {
+    margin-right: 15px;
+  }
+
+  .keys {
+    padding: 0 0 0 20px;
+  }
 }
