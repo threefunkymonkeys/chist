@@ -32,6 +32,24 @@
 
 .user
   %h3.subtitle
+    %span=I18n.t('user.api_keys')
+  %fieldset
+    - keys.each do |api_key|
+      .form-group
+        %label.user-label
+          = api_key.name
+        .keys
+          = api_key.key
+          %button.btn-delete-api-key{ :'data-toggle' => :modal, :'data-target' => '#delete-key-modal', :'data-key-id' => api_key.key }
+
+  %form{ :action => "/users/keys", :method => "POST" }
+    %fieldset
+      .form-group
+        %input.form-control.user-field-api{ :type => :text, :name => :name }
+        %input.btn-add-api-key{ :type => :submit, :value => '' }
+
+.user
+  %h3.subtitle
     %span=I18n.t('user.connections')
   %fieldset
     .form-group
@@ -61,3 +79,19 @@
         %form{method: 'post', action: "/users/connections/twitter"}
           %input{type: 'hidden', name: '_method', value: 'DELETE'}
           %input.btn-conection-disable{type: 'submit', value: I18n.t('user.disable_connection')}
+
+#delete-key-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{:type => :button, :'data-dismiss' => :modal, :'aria-hidden' => :true } &times
+        %h4.modal-title= ::I18n.t('.user.delete_key')
+      .modal-body
+        %form#delete-form{ :action => "/users/keys", :method => "POST" }
+          %fieldset
+            .form-group
+              %input{:type => :hidden, :name => "_method", :value => "DELETE"}
+              %input.btn.btn-primary{ :type => :submit, :value => ::I18n.t('.user.actions.confirm_delete_key') }
+      .modal-footer
+        %button.btn.btn-default.btn-danger{ :type => :button, :'data-dismiss' => :modal }
+          = ::I18n.t('.user.actions.cancel')

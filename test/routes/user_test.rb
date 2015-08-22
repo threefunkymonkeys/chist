@@ -119,7 +119,7 @@ describe ChistApp::Users do
       end
 
       it "should list API keys" do
-        get '/users/keys'
+        get '/users/edit'
 
         assert_equal(last_response.status, 200)
         assert(last_response.body.include? "ABCDE")
@@ -136,7 +136,7 @@ describe ChistApp::Users do
         assert_equal(last_count + 1, UserApiKey.count)
         assert(last_response.redirect?)
 
-        assert_equal("/users/keys", last_response["Location"])
+        assert_equal("/users/edit", last_response["Location"])
       end
 
       it "should delete key" do

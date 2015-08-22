@@ -31,7 +31,7 @@ module ChistApp
         on authenticated(User) do
           on 'edit' do
             res.write render("./views/layouts/app.haml") {
-              render("./views/users/edit.haml", user: current_user)
+              render("./views/users/edit.haml", user: current_user, :keys => current_user.user_api_keys)
             }
           end
 

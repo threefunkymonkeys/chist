@@ -4,6 +4,7 @@ en:
     account: 'ACCOUNT'
     password: 'PASSWORD'
     connections: 'CONNECTIONS'
+    api_keys: 'API KEYS'
     enable_connection: 'Enable'
     disable_connection: 'Disable'
     edit_connections: 'Edit Connections'
@@ -30,7 +31,5 @@ en:
     delete_key_error: 'The key cannot be deleted'
 
     actions:
-      new_key: 'Generate new key'
-      save_key: 'Create Key'
       cancel: 'Cancel'
       confirm_delete_key: 'Confirm key deletion'
