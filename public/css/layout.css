@@ -72,19 +72,38 @@ h3.title span{
 }
 
 h3.title.new {
-  background: url('../img/title-chist-new.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-new.svg') 0% 0% no-repeat;
 }
 
 h3.title.your {
-  background: url('../img/title-chist-your.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-your.svg') 0% 0% no-repeat;
 }
 
 h3.title.show-private {
-  background: url('../img/title-chist-private.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-private.svg') 0% 0% no-repeat;
 }
 
 h3.title.show-public {
-  background: url('../img/title-chist-public.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-public.svg') 0% 0% no-repeat;
+}
+
+h3.title.user {
+  background: url('../img/title-chist-profile.svg') -7px 0% no-repeat;
+}
+
+h3.subtitle {
+  background-color: #2C3E50;
+  border-bottom: 4px solid #18D99C;
+  margin: 0;
+  overflow: hidden;
+}
+
+h3.subtitle span{
+  color: #FFFFFF;
+  font-size: 14px;
+  font-family: "GothamBold";
+  padding: 12px 0 10px 18px;
+  float: left;
 }
 
 h1 {
@@ -98,7 +117,7 @@ h1 {
 }
 
 h1.policy {
-  background: url('../img/title-chist-privacy.svg') -1% 0% no-repeat;
+  background: url('../img/title-chist-privacy.svg') 0% 0% no-repeat;
 }
 
 h1.tos {

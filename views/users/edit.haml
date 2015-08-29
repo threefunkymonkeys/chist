@@ -1,13 +1,97 @@
-%h2=I18n.t('user.edit_user')
-%form.form-horizontal.col-md-5{action: '/users', method: 'post'}
+%h3.title.user
+  %span=I18n.t('user.edit_user').upcase
+
+%form.form-horizontal.user{action: '/users', method: 'post'}
+  %h3.subtitle
+    %span=I18n.t('user.account')
+    %input.btn-edit{type: 'submit', value: ''}
   %fieldset
     .form-group
       %input{type: 'hidden', name: '_method', value: 'PUT'}
-      %label=I18n.t('user.name',)
-      %input.form-control{type: 'text', name: 'name', value: user.name, required: true}
+      %label.user-label=I18n.t('user.name',)
+      %input.form-control.user-field{type: 'text', name: 'name', value: user.name, required: true}
     .form-group
-      %label=I18n.t('user.username',)
-      %input.form-control{type: 'text', name: 'username', value: user.username, required: true}
-    .form-group
-      %input.btn.btn-primary{type: 'submit', value: I18n.t('user.save')}
+      %label.user-label=I18n.t('user.username',)
+      %input.form-control.user-field{type: 'text', name: 'username', value: user.username, required: true}
 
+%form.form-horizontal.user{action: '/users/password', method: 'post'}
+  %h3.subtitle
+    %span=I18n.t('user.password')
+    %input.btn-edit{type: 'submit', value: ''}
+  %fieldset
+    .form-group
+      %input{type: 'hidden', name: '_method', value: 'PUT'}
+      %label.user-label=I18n.t('user.old_password')
+      %input.form-control.user-field{type: 'password', name: 'old_password', required: true}
+    .form-group
+      %label.user-label=I18n.t('user.new_password')
+      %input.form-control.user-field{type: 'password', name: 'new_password', required: true}
+    .form-group
+      %label.user-label=I18n.t('user.confirm_password')
+      %input.form-control.user-field{type: 'password', name: 'confirm_password', required: true}
+
+.user
+  %h3.subtitle
+    %span=I18n.t('user.api_keys')
+  %fieldset
+    - keys.each do |api_key|
+      .form-group
+        %label.user-label
+          = api_key.name
+        .keys
+          = api_key.key
+          %button.btn-delete-api-key{ :'data-toggle' => :modal, :'data-target' => '#delete-key-modal', :'data-key-id' => api_key.key }
+
+  %form{ :action => "/users/keys", :method => "POST" }
+    %fieldset
+      .form-group
+        %input.form-control.user-field-api{ :type => :text, :name => :name }
+        %input.btn-add-api-key{ :type => :submit, :value => '' }
+
+.user
+  %h3.subtitle
+    %span=I18n.t('user.connections')
+  %fieldset
+    .form-group
+      %label.user-label
+        GitHub
+      - if user.github_user.nil?
+        %a.btn-conection-enable{href: '/auth/github'}=I18n.t('user.enable_connection')
+      - else
+        %form{method: 'post', action: "/users/connections/github"}
+          %input{type: 'hidden', name: '_method', value: 'DELETE'}
+          %input.btn-conection-disable{type: 'submit', value: I18n.t('user.disable_connection')}
+    .form-group
+      %label.user-label
+        Facebook
+      - if user.facebook_user.nil?
+        %a.btn-conection-enable{href: '/auth/facebook'}=I18n.t('user.enable_connection')
+      - else
+        %form{method: 'post', action: "/users/connections/facebook"}
+          %input{type: 'hidden', name: '_method', value: 'DELETE'}
+          %input.btn-conection-disable{type: 'submit', value: I18n.t('user.disable_connection')}
+    .form-group
+      %label.user-label
+        Twitter
+      - if user.twitter_user.nil?
+        %a.btn-conection-enable{href: '/auth/twitter'}=I18n.t('user.enable_connection')
+      - else
+        %form{method: 'post', action: "/users/connections/twitter"}
+          %input{type: 'hidden', name: '_method', value: 'DELETE'}
+          %input.btn-conection-disable{type: 'submit', value: I18n.t('user.disable_connection')}
+
+#delete-key-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{:type => :button, :'data-dismiss' => :modal, :'aria-hidden' => :true } &times
+        %h4.modal-title= ::I18n.t('.user.delete_key')
+      .modal-body
+        %form#delete-form{ :action => "/users/keys", :method => "POST" }
+          %fieldset
+            .form-group
+              %input{:type => :hidden, :name => "_method", :value => "DELETE"}
+              %input.btn.btn-primary{ :type => :submit, :value => ::I18n.t('.user.actions.confirm_delete_key') }
+      .modal-footer
+        %button.btn.btn-default.btn-danger{ :type => :button, :'data-dismiss' => :modal }
+          = ::I18n.t('.user.actions.cancel')
