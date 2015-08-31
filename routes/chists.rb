@@ -128,7 +128,7 @@ module ChistApp
       on delete do
         on ':chist_id' do |chist_id|
           if chist = Chist[chist_id]
-            chist.destroy
+            chist.destroy_cascade
             flash[:success] = I18n.t('chists.deleted')
             res.redirect '/dashboard'
           else

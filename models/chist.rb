@@ -14,4 +14,9 @@ class Chist < Sequel::Model
       super
     end
   end
+
+  def destroy_cascade
+    self.class.db["DELETE FROM user_favorites WHERE user_id = ? AND chist_id = ?", self.user_id, self.id].all
+    self.destroy
+  end
 end
