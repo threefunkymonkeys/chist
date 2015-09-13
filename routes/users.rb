@@ -18,6 +18,18 @@ module ChistApp
           }
         end
 
+        on 'reset_password' do
+          res.write render("./views/layouts/home.haml") {
+            render("./views/users/password_reset.haml")
+          }
+        end
+
+        on 'forgot' do
+          res.write render("./views/layouts/home.haml") {
+            render("./views/users/password_reset.haml")
+          }
+        end
+
         on ':id/activate/:code' do |id, code|
           user = User[id]
           if user && user.validation_code ==  code
@@ -36,18 +48,6 @@ module ChistApp
             }
           end
 
-          on 'connections' do
-            res.write render("./views/layouts/app.haml") {
-              render("./views/users/connections.haml", user: current_user)
-            }
-          end
-
-          on 'password' do
-            res.write render("./views/layouts/app.haml") {
-              render("./views/users/password.haml")
-            }
-          end
-
           not_found!
         end
 
@@ -61,6 +61,7 @@ module ChistApp
             current_user.username = req.params['username']
             if current_user.save
               flash[:success] = I18n.t('user.user_edited')
+              res.redirect '/users/edit'
             else
               flash[:error] = I18n.t('user.error_editing')
             end
@@ -75,10 +76,10 @@ module ChistApp
               current_user.password = req.params['new_password']
               current_user.save
               flash[:success] = I18n.t('user.password_changed')
-              redirect! '/'
+              redirect! '/users/edit'
             rescue => e
               flash[:error] = e.message
-              redirect! '/users/password'
+              redirect! '/users/edit'
             end
           end
 

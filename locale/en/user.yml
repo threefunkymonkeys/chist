@@ -5,6 +5,7 @@ en:
     password: 'PASSWORD'
     connections: 'CONNECTIONS'
     api_keys: 'API KEYS'
+    reset_password: 'RESET PASSWORD'
     enable_connection: 'Enable'
     disable_connection: 'Disable'
     edit_connections: 'Edit Connections'
