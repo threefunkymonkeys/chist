@@ -73,6 +73,11 @@ footer .nav-pills > li > a:hover {
 
 footer .footer {
   text-align: center;
+<<<<<<< dd3a05d9c31996786f405c3ec7cd8165eab42c4f
+=======
+  /*margin-top: 85px;*/
+  margin-bottom: 44px;
+>>>>>>> home
 }
 
 /* Titles */
@@ -164,12 +169,19 @@ ul.list li {
   list-style: none;
 }
 
+.forgot_box {
+  margin-top: 40px;
+}
+
+.forgot_box .form-group {
+  margin: 20px 0 0 0;
+}
+
 #not-found-page h1 {
   font-size: 54px;
   text-align: center;
   margin: 30px 0;
 }
-
 #not-found-page > p {
   text-align: center; 
 }

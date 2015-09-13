@@ -17,8 +17,7 @@ module ChistApp
 
           when :provider_added
             flash[:success] = I18n.t("auth.#{provider}")
-            redirect! '/users/connections'
-
+            redirect! '/users/edit'
           when :user_authenticated
             redirect! '/chists/new'
           when :empty_email

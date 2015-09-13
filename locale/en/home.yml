@@ -25,3 +25,4 @@ en:
       login: 'START'
       login_error: 'Your email or password were incorrect.'
       account_not_validated: 'You must validate your account first. Check your email.'
+      forgot: 'Forgot your password?'

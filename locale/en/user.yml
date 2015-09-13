@@ -5,6 +5,7 @@ en:
     password: 'PASSWORD'
     connections: 'CONNECTIONS'
     api_keys: 'API KEYS'
+    reset_password: 'RESET PASSWORD'
     enable_connection: 'Enable'
     disable_connection: 'Disable'
     edit_connections: 'Edit Connections'
@@ -30,7 +31,14 @@ en:
     create_key_error: 'The key cannot be created'
     delete_key_error: 'The key cannot be deleted'
     save: 'Save'
-
+    forgot_password: 'Find Your Account'
+    reset_password: 'Reset Your Password'
+    email: 'E-Mail'
+    send: 'SEND'
+    reset_invalid_link: 'Invalid link'
+    reset_password_updated: 'Password has been updated'
+    forgot_invalid_email: 'Wrong email'
+    forgot_email_sent: 'Email sent'
     actions:
       cancel: 'Cancel'
       confirm_delete_key: 'Confirm key deletion'

@@ -18,6 +18,24 @@ module ChistApp
           }
         end
 
+        on 'reset/:token' do |token|
+	  user = User.find( :token_reset => token)
+
+          if user.nil?
+            flash[:error] = I18n.t('user.reset_invalid_link')
+          end
+
+          res.write render("./views/layouts/home.haml") {
+            render("./views/users/password_reset.haml", token: token)
+          }
+        end
+
+        on 'forgot' do
+          res.write render("./views/layouts/home.haml") {
+            render("./views/users/password_forgot.haml")
+          }
+        end
+
         on ':id/activate/:code' do |id, code|
           user = User[id]
           if user && user.validation_code ==  code
@@ -36,18 +54,6 @@ module ChistApp
             }
           end
 
-          on 'connections' do
-            res.write render("./views/layouts/app.haml") {
-              render("./views/users/connections.haml", user: current_user)
-            }
-          end
-
-          on 'password' do
-            res.write render("./views/layouts/app.haml") {
-              render("./views/users/password.haml")
-            }
-          end
-
           not_found!
         end
 
@@ -61,6 +67,7 @@ module ChistApp
             current_user.username = req.params['username']
             if current_user.save
               flash[:success] = I18n.t('user.user_edited')
+              res.redirect '/users/edit'
             else
               flash[:error] = I18n.t('user.error_editing')
             end
@@ -75,14 +82,52 @@ module ChistApp
               current_user.password = req.params['new_password']
               current_user.save
               flash[:success] = I18n.t('user.password_changed')
-              redirect! '/'
+              redirect! '/users/edit'
             rescue => e
               flash[:error] = e.message
-              redirect! '/users/password'
+              redirect! '/users/edit'
             end
           end
 
           not_found!
+        end
+
+        on 'forgot' do
+          user = User.find( :email => req.params['email'])
+
+          if user.nil?
+            flash[:error] = I18n.t('user.forgot_invalid_email')
+            redirect! '/users/forgot'
+          end
+
+	  user.token_reset = SecureRandom.hex(24)
+          user.save
+          Mailer.send_forgot_password_link(user)
+
+          flash[:success] = I18n.t('user.forgot_email_sent')
+          res.redirect '/users/forgot'
+        end
+
+        on 'reset/:token' do |token|
+          user = User.find( :token_reset => token)
+
+          if user.nil?
+            flash[:error] = I18n.t('user.reset_invalid_link')
+          end
+
+          if req.params['new_password'] != req.params['new_password']
+            flash[:error] = 'Passwords not match'
+          end
+
+          user.password = req.params['new_password']
+          user.token_reset = nil
+
+          if user.save
+            flash[:success] = I18n.t('user.reset_password_updated')
+            res.redirect '/'
+          else
+            res.redirect '/users/reset/' + token
+          end
         end
 
         not_found!

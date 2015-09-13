@@ -14,6 +14,16 @@ module ChistApp::Helpers
       self.enqueue(user, subject, body, :urgent)
     end
 
+    def self.send_forgot_password_link(user)
+      template = File.read('views/emails/forgot_password.haml')
+      subject  = I18n.t('emails.subject.forgot_password')
+      body = self.load_body(template, {user: user, url: ENV['SITE_URL']})
+      puts body.inspect
+      user.name = user.email if user.name.empty?
+
+      self.enqueue(user, subject, body, :urgent)
+    end
+
     def self.enqueue(user, subject = '', body = '', priority = :normal)
       ::MailQueue.create({
         priority: priority.to_s,
