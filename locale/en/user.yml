@@ -31,6 +31,9 @@ en:
     create_key_error: 'The key cannot be created'
     delete_key_error: 'The key cannot be deleted'
     save: 'Save'
+    forgot_password: 'Find Your Account'
+    email: 'Email'
+    send: 'SEND'
 
     actions:
       cancel: 'Cancel'

@@ -18,7 +18,7 @@ module ChistApp
           }
         end
 
-        on 'reset_password' do
+        on 'reset' do
           res.write render("./views/layouts/home.haml") {
             render("./views/users/password_reset.haml")
           }
@@ -26,7 +26,7 @@ module ChistApp
 
         on 'forgot' do
           res.write render("./views/layouts/home.haml") {
-            render("./views/users/password_reset.haml")
+            render("./views/users/password_forgot.haml")
           }
         end
 
