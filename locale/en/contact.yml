@@ -1,0 +1,7 @@
+en:
+  contact:
+    sent: 'Message Sent! Thank you for contacting us.'
+    errors:
+      name: "Name can't be empty"
+      email: "Invalid email address"
+      message: "Message can't be empty"

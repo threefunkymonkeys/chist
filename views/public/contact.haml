@@ -1,0 +1,21 @@
+%h2=I18n.t('home.contact')
+%form.form-horizontal.col-md-5{action: '/contact', method: 'post'}
+  %fieldset
+    .form-group
+      %label=I18n.t('home.name')
+      %input.form-control{type: 'text', name: 'contact[name]', required: true, value: params['name'] || ''}
+    .form-group
+      %label=I18n.t('home.email')
+      %input.form-control{type: 'text', name: 'contact[email]', required: true, value: params['email'] || ''}
+    .form-group
+      %label=I18n.t('home.message')
+      %textarea.form-control{name: 'contact[message]', rows: 5, required: true}
+        = params['message'] || ''
+    .form-group
+      %label
+        =I18n.t('home.sample')
+        %small (optional)
+      %textarea.form-control{name: 'contact[sample]', rows: 5}
+        = params['sample'] || ''
+    .form-group
+      %input.btn.btn-primary{type: 'submit', value: I18n.t('home.send')}
