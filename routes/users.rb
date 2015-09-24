@@ -60,11 +60,10 @@ module ChistApp
             current_user.username = req.params['username']
             if current_user.save
               flash[:success] = I18n.t('user.user_edited')
-              res.redirect '/'
             else
-              flash[:success] = I18n.t('user.error_editing')
-              res.redirect '/users/edit'
+              flash[:error] = I18n.t('user.error_editing')
             end
+              res.redirect '/users/edit'
           end
 
           on 'password' do
