@@ -29,6 +29,7 @@ en:
     delete_key: 'Delete key?'
     create_key_error: 'The key cannot be created'
     delete_key_error: 'The key cannot be deleted'
+    save: 'Save'
 
     actions:
       cancel: 'Cancel'
