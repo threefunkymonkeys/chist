@@ -1,5 +1,15 @@
 Sequel.migration do
   change do
+    create_table(:contacts) do
+      primary_key :id
+      String :email, :text=>true, :null=>false
+      String :name, :text=>true, :null=>false
+      String :message, :text=>true, :null=>false
+      String :sample, :text=>true
+      TrueClass :read, :default=>false
+      DateTime :created_at
+    end
+    
     create_table(:mail_queues) do
       primary_key :id
       String :priority, :text=>true, :null=>false
