@@ -12,6 +12,10 @@ en:
     user_activated: 'Account activated.'
     login_omniauth: 'Get started absolutely <span>FREE</span>'
     name: 'Name'
+    send:  'Send'
+    contact: 'Contact Us'
+    sample: 'Chat sample'
+    message: 'Message'
     providers:
       facebook: 'Facebook'
       twitter: 'Twitter'
