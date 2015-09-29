@@ -11,6 +11,7 @@
         %a{href: "/privacy"}= I18n.t('.layout.footer.privacy')
       %li
         %a{href: "/contact"}= I18n.t('.layout.footer.contact')
+  .clearfix
 
 - if ENV['INCLUDE_ANALYTICS'] && ENV['INCLUDE_ANALYTICS'] == 'true'
   %script

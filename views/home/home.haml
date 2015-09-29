@@ -5,19 +5,29 @@
   #carousel-home.carousel.slide{ :data => {:ride => "carousel"} }
     .carousel-inner{:role=>"listbox"}
       .item.active
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec mi non lacus tempus posuere. Proin fermentum ullamcorper lectus sed sodales. Ut ac lacus vitae nibh luctus pretium. Duis eros felis, commodo eget purus nec, efficitur pulvinar lectus. Duis vel bibendum sem, sit amet rhoncus lacus. Quisque nulla erat, tempor quis imperdiet congue, aliquam eget arcu. Vivamus et dictum mi, a scelerisque velit. Suspendisse cursus metus vitae felis auctor, nec egestas urna sodales.
+        %p With this tool you can share a chat with your friends or teammates with a smooth and legible format.
+        %p 
+          %strong No more screenshots or unintelligible text!
+          Copy, paste it into
+          %strong iChist
+          and share the link!
       .item
         %h2
-          Join now!
+          Support for multiple formats!
         %p
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec mi non lacus tempus posuere. Proin fermentum ullamcorper lectus sed sodales.
+          %strong iChist
+          supports different chat formats and applications including
+          %strong IRC, Slack, Limechat, Colloquy and Skype.
+          Are we missing one? Tell us and we will work to make it real!
       .item
         %h2
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit!
+          Join for Free and start sharing now
         %p
-          Cras nec mi non lacus tempus posuere. Proin fermentum ullamcorper lectus sed sodales. Ut ac lacus vitae nibh luctus pretium.
-        %button.btn.btn-success.btn-lg{:type => "button"}
-          Free
+          It's easy! Create your account now using your
+          %strong E-mail, Facebook, Twitter or Github.
+          Don't forget to tell your teammates!
+        -#%a.btn.btn-success.btn-lg{:href => "#join-form"}
+          -#Join Now
     %ol.carousel-indicators
       %li.active{:data => {:target=>"#carousel-home",:'slide-to'=>"0"}}
       %li{:data => {:target=>"#carousel-home",:'slide-to'=>"1"}}
@@ -34,7 +44,7 @@
       %li
         %a{href: '/auth/twitter'}
           %img{ :src => "/img/provider-twitter.svg" }
-    %form.form-horizontal{action: '/users/login', method: 'post'}
+    %form#join-form.form-horizontal{action: '/users/login', method: 'post'}
       %fieldset
         .form-group
           .col-lg-12
