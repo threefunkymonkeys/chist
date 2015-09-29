@@ -6,7 +6,7 @@
 div#carousel-home {
   margin-top: 30px;
   margin-bottom: 90px;
-  height: 200px;
+  height: 140px;
 }
 
 ol.carousel-indicators {
@@ -97,3 +97,7 @@ ul#login-providers li img {
   border-left: solid 1px #DDDDDD;
 }
 */
+
+#carousel-home .item > p {
+  margin-bottom: 35px;
+}
