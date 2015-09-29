@@ -26,12 +26,12 @@
                 %a{href: '/users/edit'}=I18n.t('user.edit_user')
               %li
                 %a{href: '/users/logout'}=I18n.t('.layout.logout')
+        %form#search-chist.search-form.navbar-right.navbar-form{ :action => "/search", :'data-remote' => 'true', :role => 'search' }
+          .form-group
+            %input#search-box.form-control{ :type => :text, :name => :query, :placeholder => I18n.t('.layout.search') }
+          %button.btn{ :type => :submit }
+            %img{ :src => "/img/header-find.svg", :alt => "Submit" }
       - else
         %ul.nav.navbar-nav.navbar-right.login-public
           %li
             %a{ :href => "/" }= I18n.t('.layout.login')
-      %form#search-chist.search-form.navbar-right.navbar-form{ :action => "/search", :'data-remote' => 'true', :role => 'search' }
-        .form-group
-          %input#search-box.form-control{ :type => :text, :name => :query, :placeholder => I18n.t('.layout.search') }
-        %button.btn{ :type => :submit }
-          %img{ :src => "/img/header-find.svg", :alt => "Submit" }
