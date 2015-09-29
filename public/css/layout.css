@@ -1,4 +1,17 @@
 /* New Layout */
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+#wrapper, #wrap {
+  position: relative;
+  padding-bottom: 65px;
+}
+
 a.navbar-brand {
     font-family: 'GothamBlack';
     color: #fff;
@@ -41,6 +54,12 @@ header .login-public {
   margin-top: 17px;
 }
 
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
 footer .nav-pills > li {
   float: left;
   padding: 10px;
@@ -52,8 +71,6 @@ footer .nav-pills > li > a:hover {
 
 footer .footer {
   text-align: center;
-  margin-top: 85px;
-  margin-bottom: 44px;
 }
 
 /* Titles */
@@ -144,40 +161,3 @@ ul.list {
 ul.list li {
   list-style: none;
 }
-
-
-/*
-.header-form {
-  margin: 5px -15px;
-  padding: 10px 15px;
-}
-
-.actions {
-  text-align: right;
-  padding-right: 0px;
-}
-
-.actions form {
-  display: inline-block;
-}
-
-footer {
-  margin-top: 30px;
-}
-
-footer ul {
-  width: auto;
-  height: 20px;
-  display: inline-block;
-}
-
-footer li {
-  float: left;
-  margin-right: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-footer .col-lg-12 {
-  text-align: center;
-}
-*/
