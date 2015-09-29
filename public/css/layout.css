@@ -1,15 +1,17 @@
 /* New Layout */
-html {
-  min-height: 100%;
-}
-
-body {
-  min-height: 100%;
+html, body {
+  height: 100%;
 }
 
 #wrapper, #wrap {
   position: relative;
   padding-bottom: 65px;
+  min-height: 100%;
+}
+
+#wrapper:after, #wrap:after {
+  content: "";
+  display: block;
 }
 
 a.navbar-brand {
