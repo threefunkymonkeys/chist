@@ -32,7 +32,7 @@ en:
     delete_key_error: 'The key cannot be deleted'
     save: 'Save'
     forgot_password: 'Find Your Account'
-    reset_password: 'Reset Your Account'
+    reset_password: 'Reset Your Password'
     email: 'E-Mail'
     send: 'SEND'
 
