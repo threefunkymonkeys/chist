@@ -86,6 +86,16 @@ module ChistApp
           not_found!
         end
 
+        on 'forgot' do
+          flash[:success] = 'Email enviado'
+          res.redirect '/users/forgot'
+        end
+
+        on 'reset' do
+          flash[:success] = 'Password actualizado'
+          res.redirect '/users/reset'
+        end
+
         not_found!
       end
 
