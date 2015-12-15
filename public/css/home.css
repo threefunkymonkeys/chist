@@ -62,6 +62,15 @@ ul#login-providers li {
   margin-right: 10px;
 }
 
+ul#login-providers li a,
+ul#login-providers li a:hover,
+ul#login-providers li a:link,
+ul#login-providers li a:focus,
+ul#login-providers li a:visited,
+ul#login-providers li a:active {
+  text-decoration: none;
+}
+
 ul#login-providers li img {
   width: 30px;
   height: 30px;
