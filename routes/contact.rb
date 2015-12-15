@@ -16,9 +16,7 @@ class ChistApp::Contact < Cuba
         flash[:error] = ctx.error_message
         session['contact.params'] = params
       end
-      res.redirect "/contact"
+      redirect! "/contact"
     end
-
-    
   end
 end

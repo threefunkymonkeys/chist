@@ -15,10 +15,10 @@ class ChistApp::Password < Cuba
             current_user.update_password = false
             current_user.save
             flash[:success] = I18n.t('user.password_changed')
-            res.redirect '/'
+            redirect! '/'
           rescue StandardError => e
             flash[:error] = e.message
-            res.redirect '/password/reset'
+            redirect! '/password/reset'
           end
         end
         not_found!
