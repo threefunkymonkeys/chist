@@ -32,6 +32,11 @@ module ChistApp
             res.redirect '/'
           end
         end
+
+        on 'failure' do
+          flash[:error] = I18n.t('home.providers.error')
+          res.redirect '/'
+        end
       end
     end
   end

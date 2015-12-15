@@ -20,6 +20,7 @@ en:
       facebook: 'Facebook'
       twitter: 'Twitter'
       github: 'Github'
+      error: 'There was an error while connecting to external service. Please try again.'
     login:
       login: 'START'
       login_error: 'Your email or password were incorrect.'
