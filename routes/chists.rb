@@ -15,7 +15,7 @@ module ChistApp
               {:id => chist.id, :favorite => current_user.favorited?(chist)}.to_json
             )
           else
-            res.redirect("/chists/#{chist.id}")
+            redirect! "/chists/#{chist.id}"
           end
 
         end
@@ -37,12 +37,12 @@ module ChistApp
                 chist.format = chist_params['format']
                 chist.save
                 flash[:success] = I18n.t('chists.chist_edited')
-                res.redirect "/chists/#{chist.id}"
+                redirect! "/chists/#{chist.id}"
               rescue => e
                 flash[:error] = e.message
                 chist_params.delete('chist')
                 session['chist.chist_params'] = chist_params
-                res.redirect "/chists/#{chist.id}/edit"
+                redirect! "/chists/#{chist.id}/edit"
               end
             else
               not_found!
@@ -61,15 +61,15 @@ module ChistApp
             case ctx.call
             when :success
               flash[:success] = I18n.t('chists.chists_created')
-              res.redirect "/chists/#{ctx.chist.id}"
+              redirect! "/chists/#{ctx.chist.id}"
             when :error
               flash[:error] = ctx.error_message
               session['chist.chist_params'] = chist
-              res.redirect '/chists/new'
+              redirect! '/chists/new'
             end
           end
 
-          res.redirect "/login"
+          redirect! "/login"
         end
 
         not_found!
@@ -130,7 +130,7 @@ module ChistApp
           if chist = Chist[chist_id]
             chist.destroy_cascade
             flash[:success] = I18n.t('chists.deleted')
-            res.redirect '/dashboard'
+            redirect! '/dashboard'
           else
             not_found!
           end
@@ -141,4 +141,3 @@ module ChistApp
     end
   end
 end
-

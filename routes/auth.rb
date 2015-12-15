@@ -13,29 +13,32 @@ module ChistApp
           case result
           when :provider_duplicated
             flash[:warning] = I18n.t("auth.duplicated")
-            res.redirect '/chists/new'
+            redirect! '/chists/new'
 
           when :provider_added
             flash[:success] = I18n.t("auth.#{provider}")
-            res.redirect '/users/connections'
+            redirect! '/users/connections'
 
           when :user_authenticated
-            res.redirect '/chists/new'
+            redirect! '/chists/new'
           when :empty_email
             session['chist.auth'] = @env['omniauth.auth'].to_signup_hash
             flash[:warning] = I18n.t("auth.missing_email")
-            res.redirect '/users/signup'
+            redirect! '/users/signup'
+          when :account_exists
+            flash[:warning] = I18n.t("auth.account_exists")
+            redirect! '/'
 
           when :user_created
             Mailer.send_validation_code(context.user)
             flash[:success] = I18n.t('home.user_created')
-            res.redirect '/'
+            redirect! '/'
           end
         end
 
         on 'failure' do
           flash[:error] = I18n.t('home.providers.error')
-          res.redirect '/'
+          redirect! '/'
         end
       end
     end
