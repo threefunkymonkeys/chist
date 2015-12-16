@@ -9,24 +9,28 @@
 
 .chist-show
   .chist-show-actions
-    - if current_user.id == chist.user_id
-      %a.btn-edit{href: "/chists/#{chist.id}/edit"}
-    %form.fav-form.form-horizontal#favorite-wrapper.pull-right{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
-      %input{ type: "hidden", name: "_method", value: "PUT" }
-      %button.btn-fav{ type: "submit"}
-    - if current_user.id == chist.user_id
-      %form.del-for{method: 'post', action: "/chists/#{chist.id}"}
-        %button.btn-delete{type: 'submit', value: ''}
-        %input{type: 'hidden', name: '_method', value: 'DELETE'}
+    - if current_user
+      - if current_user.id == chist.user_id
+        %a.btn-edit{href: "/chists/#{chist.id}/edit"}
+      %form.fav-form.form-horizontal#favorite-wrapper.pull-right{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
+        %input{ type: "hidden", name: "_method", value: "PUT" }
+        %button.btn-fav{ type: "submit"}
+
+      - if current_user.id == chist.user_id
+        %form.del-for{method: 'post', action: "/chists/#{chist.id}"}
+          %button.btn-delete{type: 'submit', value: ''}
+          %input{type: 'hidden', name: '_method', value: 'DELETE'}
   .row.your-chists
     .panel.panel-primary.chist-panel
       .panel-heading
-        .action-fav
-          %form.fav-form{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
-            %input{ type: "hidden", name: "_method", value: "PUT" }
-            %button.btn.fav-button{ type: "submit", :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
+        - if current_user
+          .action-fav
+            %form.fav-form{ action: "/chists/#{chist.id}/favorite", method: "POST", :'data-remote' => 'true' }
+              %input{ type: "hidden", name: "_method", value: "PUT" }
+              %button.btn.fav-button{ type: "submit", :class => current_user.favorited?(chist) ? 'favorited' : 'no-favorited'}
+            
         %h3.panel-title
-          - if chist.user_id == current_user.id
+          - if current_user && chist.user_id == current_user.id
             %a.col-md-4{href: "/chists/#{chist.id}"}=chist.title
           - else
             %a.col-md-4{href: "/chists/#{chist.id}"}="#{chist.user.name}/#{chist.title}"
