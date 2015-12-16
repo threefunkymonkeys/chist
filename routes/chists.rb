@@ -108,9 +108,11 @@ module ChistApp
         on ":id" do |chist_id|
           chist = Chist[chist_id]
           not_found! unless chist
+          latest_chists = current_user ? current_user.latest_chists : []
+
           on root do
             res.write render("./views/layouts/app.haml", is_public: chist.public, chist: chist) {
-              render("./views/chists/show.haml", chists: current_user.latest_chists, chist: chist)
+              render("./views/chists/show.haml", chists: latest_chists, chist: chist)
             }
           end
 
