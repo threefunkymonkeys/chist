@@ -87,12 +87,24 @@ module ChistApp
         end
 
         on 'forgot' do
-          flash[:success] = 'Email enviado'
+          #find user by email
+          flash[:error] = 'Wrong email '
+
+          #make hash
+	  hash = SecureRandom.hex(12)
+
+          #store hash in user
+
+          #send email with link (hash)
+            # /helpers/mailer_helper.rb
+            # Mailer.send_forgot_password_link(hash)
+          
+          flash[:success] = 'Email sent'
           res.redirect '/users/forgot'
         end
 
         on 'reset' do
-          flash[:success] = 'Password actualizado'
+          flash[:success] = 'Password has been updated'
           res.redirect '/users/reset'
         end
 
