@@ -18,9 +18,15 @@ module ChistApp
           }
         end
 
-        on 'reset' do
+        on 'reset/:token' do |token|
+	  user = User.find( :token_reset => token)
+
+          if user.nil?
+            flash[:error] = 'Invalid link'
+          end
+
           res.write render("./views/layouts/home.haml") {
-            render("./views/users/password_reset.haml")
+            render("./views/users/password_reset.haml", token: token)
           }
         end
 
@@ -87,25 +93,39 @@ module ChistApp
         end
 
         on 'forgot' do
-          #find user by email
-          flash[:error] = 'Wrong email '
+          user = User.find( :email => req.params['email'])
 
-          #make hash
-	  hash = SecureRandom.hex(12)
+          if user.nil?
+            flash[:error] = 'Wrong email'
+            redirect! '/users/forgot'
+          end
 
-          #store hash in user
+	  user.token_reset = SecureRandom.hex(24)
+          user.save
+          Mailer.send_forgot_password_link(user)
 
-          #send email with link (hash)
-            # /helpers/mailer_helper.rb
-            # Mailer.send_forgot_password_link(hash)
-          
           flash[:success] = 'Email sent'
           res.redirect '/users/forgot'
         end
 
-        on 'reset' do
-          flash[:success] = 'Password has been updated'
-          res.redirect '/users/reset'
+        on 'reset/:token' do |token|
+          user = User.find( :token_reset => token)
+
+          if user.nil?
+            flash[:error] = 'Invalid link'
+          end
+
+          if req.params['new_password'] != req.params['new_password']
+            flash[:error] = 'Passwords not match'
+          end
+
+#          user.crypted_password = 
+
+          if user.save
+            flash[:success] = 'Password has been updated'           
+          end
+
+          res.redirect '/users/reset/' + token
         end
 
         not_found!
