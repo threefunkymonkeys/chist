@@ -11,3 +11,6 @@ en:
       privacy: Privacy
       terms: Terms
       contact: Contact
+  errors:
+    not_found_title: Oops! Page not found
+    back_home: Back Home

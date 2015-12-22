@@ -1,1 +1,6 @@
-%h1 404
+#not-found-page
+  %p
+    %img{ src: "/img/monkey-404.png" }
+  %h1= I18n.t('errors.not_found_title')
+  %p
+    %a.btn.btn-primary{ href: current_user ? "/dashboard" : "/" }= I18n.t('errors.back_home')
