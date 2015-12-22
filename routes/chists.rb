@@ -20,6 +20,18 @@ module ChistApp
         end
 
         on authenticated(User) do
+          on put, "favorite" do
+            current_user.toggle_favorite(chist)
+
+            if req.xhr?
+              res.write(
+                {:id => chist.id, :favorite => current_user.favorited?(chist)}.to_json
+              )
+            else
+              redirect! "/chists/#{chist.id}"
+            end
+          end
+
           on chist_owner?(chist) do
             on get, 'edit' do |chist_id|
 
@@ -64,18 +76,6 @@ module ChistApp
           end
 
           not_found!
-        end
-
-        on put, "favorite" do
-          current_user.toggle_favorite(chist)
-
-          if req.xhr?
-            res.write(
-              {:id => chist.id, :favorite => current_user.favorited?(chist)}.to_json
-            )
-          else
-            redirect! "/chists/#{chist.id}"
-          end
         end
 
         not_found!
