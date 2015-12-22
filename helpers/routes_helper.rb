@@ -1,4 +1,6 @@
 module ChistApp::Helpers
+  CHIST_UUID = /([a-zA-Z\d]{32})/
+
   def not_found!
     res.redirect '/404'
   end
@@ -38,5 +40,9 @@ module ChistApp::Helpers
   def chist_params_from_request
     body = req.body.read
     (body == "" ? {} : JSON.parse(body))
+  end
+
+  def chist_owner?(chist)
+    chist.user_id == current_user.id
   end
 end

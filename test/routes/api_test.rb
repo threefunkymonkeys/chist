@@ -11,10 +11,14 @@ describe 'ChistApp::ApiRoutes' do
   end
 
   it 'should not take an API request without the auth header' do
-    post '/chists', {}
+    headers = {
+      "CONTENT_TYPE" => "application/json",
+      "HTTP_ACCEPT" => "application/json"
+    }
 
-    assert last_response.redirect?
-    last_response["Location"].must_equal "/login"
+    post '/chists', {}, headers
+
+    last_response.status.must_equal 404
   end
 
   it 'should create chist from request body' do
@@ -27,7 +31,7 @@ describe 'ChistApp::ApiRoutes' do
     }
 
     post "/chists", params.to_json, headers
-    
+
     last_response.status.must_equal 201
 
     response = JSON.parse(last_response.body)

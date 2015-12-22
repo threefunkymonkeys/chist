@@ -25,5 +25,7 @@ class ChistApp::Password < Cuba
       end
       not_found!
     end
+
+    not_found!
   end
 end
