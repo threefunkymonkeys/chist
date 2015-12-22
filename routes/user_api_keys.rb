@@ -28,6 +28,8 @@ module ChistApp
           redirect! "/users/edit"
         end
       end
+
+      not_found!
     end
   end
 end

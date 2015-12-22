@@ -23,5 +23,7 @@ class ChistApp::Services < Cuba
 
       halt [200, headers, body.to_json]
     end
+
+    not_found!
   end
 end

@@ -18,5 +18,7 @@ class ChistApp::Contact < Cuba
       end
       redirect! "/contact"
     end
+
+    not_found!
   end
 end
