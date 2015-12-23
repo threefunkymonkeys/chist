@@ -1,7 +1,7 @@
 class ChistApp::Routes < Cuba
   define do
     on current_user && current_user.update_password do
-      res.redirect '/password/reset'
+      redirect! '/password/reset'
     end
 
     on "services" do
@@ -43,7 +43,7 @@ class ChistApp::Routes < Cuba
     on get do
       on root do
         if current_user
-          res.redirect('/chists/new')
+          redirect!('/chists/new')
         else
           res.write render("./views/layouts/home.haml") {
             render("./views/home/home.haml")

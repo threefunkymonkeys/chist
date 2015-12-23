@@ -62,7 +62,7 @@ describe ChistApp::Chists do
     params = chist.to_hash.merge(title: new_title)
     params.delete(:public)
     params.delete(:id)
-    put "/chists/#{chist.id}/edit", {chist: params}
+    put "/chists/#{chist.id}", {chist: params}
 
     updated_chist = Chist[chist.id]
 
@@ -71,12 +71,16 @@ describe ChistApp::Chists do
   end
 
   it 'should delete a chist' do
+    user = User.spawn(password: 'test')
+    login(user, 'test')
+
     chist = Chist.create(
       title: Faker::Lorem.sentence(1),
       chist: Faker::Lorem.paragraph,
       chist_raw: Faker::Lorem.paragraph,
       format: 'none',
-      public: true
+      public: true,
+      user_id: user.id
     )
     chist.wont_be_nil
 

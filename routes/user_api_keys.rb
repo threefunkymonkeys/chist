@@ -11,10 +11,10 @@ module ChistApp
             key = UserApiKey.create(key_attrs)
 
             unless key && key.valid?
-              flash[:error] = I18n.t('.user.create_key_error') 
+              flash[:error] = I18n.t('.user.create_key_error')
             end
 
-            res.redirect "/users/edit"
+            redirect! "/users/edit"
           end
         end
 
@@ -25,9 +25,11 @@ module ChistApp
             flash[:error] = I18n.t('.user.delete_key_error')
           end
 
-          res.redirect "/users/edit"
+          redirect! "/users/edit"
         end
       end
+
+      not_found!
     end
   end
 end
