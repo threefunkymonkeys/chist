@@ -119,13 +119,15 @@ module ChistApp
             flash[:error] = 'Passwords not match'
           end
 
-#          user.crypted_password = 
+          user.password = req.params['new_password']
+          user.token_reset = nil
 
           if user.save
-            flash[:success] = 'Password has been updated'           
+            flash[:success] = 'Password has been updated'
+            res.redirect '/'
+          else
+            res.redirect '/users/reset/' + token
           end
-
-          res.redirect '/users/reset/' + token
         end
 
         not_found!
