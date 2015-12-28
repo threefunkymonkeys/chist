@@ -22,7 +22,7 @@ module ChistApp
 	  user = User.find( :token_reset => token)
 
           if user.nil?
-            flash[:error] = 'Invalid link'
+            flash[:error] = I18n.t('user.reset_invalid_link')
           end
 
           res.write render("./views/layouts/home.haml") {
@@ -96,7 +96,7 @@ module ChistApp
           user = User.find( :email => req.params['email'])
 
           if user.nil?
-            flash[:error] = 'Wrong email'
+            flash[:error] = I18n.t('user.forgot_invalid_email')
             redirect! '/users/forgot'
           end
 
@@ -104,7 +104,7 @@ module ChistApp
           user.save
           Mailer.send_forgot_password_link(user)
 
-          flash[:success] = 'Email sent'
+          flash[:success] = I18n.t('user.forgot_email_sent')
           res.redirect '/users/forgot'
         end
 
@@ -112,7 +112,7 @@ module ChistApp
           user = User.find( :token_reset => token)
 
           if user.nil?
-            flash[:error] = 'Invalid link'
+            flash[:error] = I18n.t('user.reset_invalid_link')
           end
 
           if req.params['new_password'] != req.params['new_password']
@@ -123,7 +123,7 @@ module ChistApp
           user.token_reset = nil
 
           if user.save
-            flash[:success] = 'Password has been updated'
+            flash[:success] = I18n.t('user.reset_password_updated')
             res.redirect '/'
           else
             res.redirect '/users/reset/' + token

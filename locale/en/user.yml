@@ -35,7 +35,10 @@ en:
     reset_password: 'Reset Your Password'
     email: 'E-Mail'
     send: 'SEND'
-
+    reset_invalid_link: 'Invalid link'
+    reset_password_updated: 'Password has been updated'
+    forgot_invalid_email: 'Wrong email'
+    forgot_email_sent: 'Email sent'
     actions:
       cancel: 'Cancel'
       confirm_delete_key: 'Confirm key deletion'
