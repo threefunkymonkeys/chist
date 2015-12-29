@@ -9,6 +9,10 @@ div#carousel-home {
   height: 140px;
 }
 
+div#carousel-inner {
+  height: 140px;
+}
+
 ol.carousel-indicators {
   bottom: -55px;
   margin-bottom: 0;
@@ -84,25 +88,14 @@ ul#login-providers li img {
 }
 
 #home .form-horizontal{
-    margin-bottom: 45px;
+  margin-bottom: 45px;
 }
-/*
-#logo-container {
-  min-height: 400px;
-  height: 100%;
-  margin-top: 15%;
+
+#carousel-home .item > p {
+  margin-bottom: 35px;
+}
+
+#forgot-password-link {
   text-align: center;
+  font-size: 13px;
 }
-
-#moto {
-  font-family: 'Inconsolata';
-  font-size: 1.2em;
-  text-align: center;
-  color: #006687;
-}
-
-
-.left-separator {
-  border-left: solid 1px #DDDDDD;
-}
-*/
