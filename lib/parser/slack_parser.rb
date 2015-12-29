@@ -1,7 +1,7 @@
 class ChistApp::SlackParser
 
   def self.parse(log)
-    time_regexp = /^.+\s\[\d+:\d{2}\s[AMP]{2}\]\s*/
+    time_regexp = /^.*\s*\[\d+:\d{2}\s*[AMP]{2}*\]\s*/
 
     #scan for participants
     participants = log.scan(/(^.+\s\[\d+:\d{2}\s[AMP]{2}\])\s*$/).collect! {|scan| scan.first.split(" [").first }.uniq
@@ -18,8 +18,18 @@ class ChistApp::SlackParser
       time = line.scan(time_regexp)
 
       if time.any?
-        parsed = time.first.scan(/(^.+)(\s\[\d+:\d{2}\s[AMP]{2}\])/).first
-        username = "#{parsed.last.strip} #{parsed.first.strip}"
+        parsed = time.first.scan(/(^.+)(\s*\[\d+:\d{2}\s*[AMP]{2}*\])/).first
+
+        #Nasty trick to deal with invisible character inserted by scan
+        if parsed.first.strip.length > 1
+          @last_nickname = parsed.first.strip
+          @last_timestamp = parsed.last.strip
+        else
+          parsed.last.gsub!(/\[|\]/,"")
+          @last_timestamp.gsub!(/\d+:\d+/, parsed.last)
+        end
+
+        username = "#{@last_timestamp} #{@last_nickname}"
         next
       end
 
