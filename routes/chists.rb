@@ -97,7 +97,7 @@ module ChistApp
             redirect! "/chists/#{ctx.chist.id}"
           when :error
             flash[:error] = ctx.error_message
-            session['chist.chist_params'] = chist
+            session['chist.chist_params'] = chist_params
             redirect! '/chists/new'
           end
         end
