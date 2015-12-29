@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__)) + '/../test_helper'
+require File.expand_path(File.dirname(__FILE__)) + '/../../test_helper'
 
 describe 'ChistApp::ApiRoutes' do
   before do
@@ -62,6 +62,5 @@ describe 'ChistApp::ApiRoutes' do
 
     assert last_response.unauthorized?
     assert last_response.header["WWW-Authenticate"].include? "Digest"
-
   end
 end

@@ -1,35 +1,40 @@
 module ChistApp
   class ApiRoutes < Cuba
     define do
-      on authenticated_request do
-        on post do
-          on 'chists' do
-            attrs = chist_params_from_request
+      unauthorized! unless authenticated_request
 
-            ctx = ChistApp::Context::ChistCreation.new(attrs["chist"], self)
+      on post do
+        on 'chists' do
+          attrs = chist_params_from_request
 
-            result = ctx.call
+          ctx = ChistApp::Context::ChistCreation.new(attrs["chist"], self)
 
-            if result == :success
-              body = { :chist => {
-                      :url => "#{ENV["SITE_URL"]}/chists/#{ctx.chist.id}",
-                      :created_at => Time.now } }
+          result = ctx.call
 
-              headers = { "Content-type" => "application/json",
-                          "Location" => body[:chist][:url] }
+          if result == :success
+            body = { :chist => {
+                    :url => "#{ENV["SITE_URL"]}/chists/#{ctx.chist.id}",
+                    :created_at => Time.now } }
 
-              halt [201, headers, body.to_json]
-            else
-              res.status = 500
-              res.write("Internal Server Error")
-              halt res.finish
-            end
+            headers = { "Content-type" => "application/json",
+                        "Location" => body[:chist][:url] }
 
+            halt [201, headers, body.to_json]
+          else
+            res.status = 500
+            res.write("Internal Server Error")
+            halt res.finish
           end
+
         end
       end
 
-      unauthorized!
+      on get do
+        on 'chists' do
+          res.status = 200
+          json(:chists => current_user.latest_chists.map(&:to_hash))
+        end
+      end
     end
   end
 end
