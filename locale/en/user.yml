@@ -36,6 +36,7 @@ en:
     email: 'E-Mail'
     send: 'SEND'
     reset_invalid_link: 'Invalid link'
+    reset_password_not_match: 'Passwords not match'
     reset_password_updated: 'Password has been updated'
     forgot_invalid_email: 'Wrong email'
     forgot_email_sent: 'Email sent'

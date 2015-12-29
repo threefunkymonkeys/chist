@@ -117,7 +117,7 @@ module ChistApp
           end
 
           if req.params['new_password'] != req.params['new_password']
-            flash[:error] = 'Passwords not match'
+            flash[:error] = I18n.t('user.reset_password_not_match')
           end
 
           user.password = req.params['new_password']
