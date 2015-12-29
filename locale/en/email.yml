@@ -2,3 +2,4 @@ en:
   emails:
     subject:
       validation: Welcome to iChist.com! Validate your account.
+      forgot_password: Reset your iChist password
