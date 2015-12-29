@@ -19,10 +19,11 @@ module ChistApp
         end
 
         on 'reset/:token' do |token|
-	  user = User.find( :token_reset => token)
+      	  user = User.find( :token_reset => token)
 
           if user.nil?
             flash[:error] = I18n.t('user.reset_invalid_link')
+            redirect! "/"
           end
 
           res.write render("./views/layouts/home.haml") {
