@@ -7,19 +7,23 @@ module ChistApp
         on 'chists' do
           attrs = chist_params_from_request
 
-          ctx = ChistApp::Context::ChistCreation.new(attrs["chist"], self)
+          ctx = ChistApp::Context::ChistCreation.new(attrs, self)
 
           result = ctx.call
 
           if result == :success
             body = { :chist => {
-                    :url => "#{ENV["SITE_URL"]}/chists/#{ctx.chist.id}",
-                    :created_at => Time.now } }
+                          :id         => ctx.chist.id,
+                          :title      => ctx.chist.title,
+                          :url        => "#{ENV["SITE_URL"]}/#{ctx.chist.url}",
+                          :created_at => Time.now }
+                   }
 
-            headers = { "Content-type" => "application/json",
-                        "Location" => body[:chist][:url] }
+            headers = { "Location" => body[:chist][:url] }
 
-            halt [201, headers, body.to_json]
+            res.status = 201
+
+            json(body, headers)
           else
             res.status = 500
             res.write("Internal Server Error")
