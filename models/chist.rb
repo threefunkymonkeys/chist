@@ -7,6 +7,11 @@ class Chist < Sequel::Model
     super
   end
 
+  def before_save
+    self.public = force_boolean(self.public)
+    true
+  end
+
   def id
     if values[:id]
       super.gsub("-", "")
@@ -34,5 +39,20 @@ class Chist < Sequel::Model
       :created_at => created_at,
       :updated_at => updated_at
     }
+  end
+
+  private
+
+  def force_boolean(val)
+    case val.class
+    when Numeric
+      val == 0 ? false : true
+    when String
+      !val.strip.empty?
+    when Hash, Array
+      !val.empty?
+    else
+      !!val
+    end
   end
 end
