@@ -12,12 +12,7 @@ module ChistApp
           result = ctx.call
 
           if result == :success
-            body = { :chist => {
-                          :id         => ctx.chist.id,
-                          :title      => ctx.chist.title,
-                          :url        => "#{ENV["SITE_URL"]}/#{ctx.chist.url}",
-                          :created_at => Time.now }
-                   }
+            body = { :chist => ctx.chist.to_hash.merge(:url => "#{ENV["SITE_URL"]}/#{ctx.chist.url}") }
 
             headers = { "Location" => body[:chist][:url] }
 
