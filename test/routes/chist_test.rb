@@ -59,7 +59,7 @@ describe ChistApp::Chists do
     chist.wont_be_nil
     new_title = Faker::Name.name
 
-    params = chist.to_hash.merge(title: new_title)
+    params = chist.values.merge(title: new_title)
     params.delete(:public)
     params.delete(:id)
     put "/chists/#{chist.id}", {chist: params}
