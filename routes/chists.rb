@@ -53,7 +53,7 @@ module ChistApp
                 chist.title = chist_params['title']
                 chist.chist_raw = chist_params['chist'].dup
                 chist.chist = ChistApp::Parser.parse(chist_params['format'], chist_params['chist'])
-                chist.public = chist_params['public'].to_i == 1
+                chist.public = chist_params['public']
                 chist.format = chist_params['format']
                 chist.save
                 flash[:success] = I18n.t('chists.chist_edited')
