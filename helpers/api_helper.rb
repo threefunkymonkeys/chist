@@ -2,8 +2,8 @@ module ChistApp::Helpers
   def json(body, headers = {})
     headers["Content-type"] = "application/json"
 
-    headers.keys.each do |k|
-      req[k] = headers[k]
+    headers.each do |k, v|
+      req[k] = v
     end
 
     res.write body.to_json
