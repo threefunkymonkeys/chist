@@ -44,24 +44,17 @@ module ChistApp
             end
 
             on put, root do
-              begin
-                chist_params = req.params['chist']
-                chist_form = ChistApp::Validators::ChistForm.hatch(chist_params)
-
-                raise ArgumentError.new(chist_form.errors.full_messages.join(', ')) unless chist_form.valid?
-
-                chist.title = chist_params['title']
-                chist.chist_raw = chist_params['chist'].dup
-                chist.chist = ChistApp::Parser.parse(chist_params['format'], chist_params['chist'])
-                chist.public = chist_params['public'].to_i == 1
-                chist.format = chist_params['format']
-                chist.save
+              ctx = ChistApp::Context::ChistUpdate.new(chist,
+                                                       req.params["chist"],
+                                                       self)
+              case ctx.call
+              when :success
                 flash[:success] = I18n.t('chists.chist_edited')
-                redirect! "/chists/#{chist.id}"
-              rescue => e
-                flash[:error] = e.message
-                chist_params.delete('chist')
-                session['chist.chist_params'] = chist_params
+                redirect! ctx.chist.url
+              when :error
+                flash[:error] = ctx.error_message
+                req.params['chist'].delete('chist')
+                session['chist.chist_params'] = req.params['chist']
                 redirect! "/chists/#{chist.id}/edit"
               end
             end
