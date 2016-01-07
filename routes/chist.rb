@@ -1,9 +1,5 @@
 class ChistApp::Routes < Cuba
   define do
-    on current_user && current_user.update_password do
-      redirect! '/password/reset'
-    end
-
     on "services" do
       run ChistApp::Services
     end
@@ -38,6 +34,10 @@ class ChistApp::Routes < Cuba
 
     on 'contact' do
       run ChistApp::Contact
+    end
+
+    on current_user && current_user.update_password do
+      redirect! '/password/reset'
     end
 
     on get do
