@@ -101,8 +101,7 @@ module ChistApp
             redirect! '/users/forgot'
           end
 
-	  user.token_reset = SecureRandom.hex(24)
-          user.save
+          user.update(:token_reset => SecureRandom.hex(24))
           Mailer.send_forgot_password_link(user)
 
           flash[:success] = I18n.t('user.forgot_email_sent')
