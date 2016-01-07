@@ -3,7 +3,7 @@ class ChistApp::Password < Cuba
     on authenticated(User) do
       on get, 'reset' do
         res.write render("./views/layouts/app.haml") {
-          render("./views/users/password_reset.haml")
+          render("./views/users/password_reset.haml", { :token => current_user.token_reset })
         }
       end
 

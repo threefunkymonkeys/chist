@@ -29,6 +29,7 @@ module ChistApp::Context
               :name => auth_hash[:name],
               :password => SecureRandom.hex(15),
               :validation_code => SecureRandom.hex(24),
+              :token_reset => SecureRandom.hex(24),
               :update_password => true,
               :"#{@provider}_user" => @auth_info.uid
             )
