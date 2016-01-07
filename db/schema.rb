@@ -1,5 +1,11 @@
 Sequel.migration do
   change do
+    create_table(:conns, :ignore_index_errors=>true) do
+      String :id, :text=>true
+
+      index [:id], :name=>:conns_id_key, :unique=>true
+    end
+
     create_table(:contacts) do
       primary_key :id
       String :email, :text=>true, :null=>false
@@ -44,6 +50,7 @@ Sequel.migration do
       String :facebook_user, :text=>true
       String :validation_code, :text=>true
       TrueClass :update_password, :default=>false
+      String :token_reset, :text=>true
     end
     
     create_table(:attachments) do
