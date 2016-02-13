@@ -14,7 +14,7 @@ module ChistApp::Helpers
     halt([401,
           {"Content-type" => "application/json",
            "WWW-Authenticate" => 'Digest realm="214af5b3da3c6b06e851496d7903a150"'},
-          [{:message => "You're not authorized to perform this request"}]])
+          [{:message => "You're not authorized to perform this request"}.to_json]])
   end
 
   def not_implemented!
