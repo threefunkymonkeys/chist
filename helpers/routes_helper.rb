@@ -22,8 +22,8 @@ module ChistApp::Helpers
   end
 
   def api_request
-    !!(req.env["CONTENT_TYPE"] == "application/json" &&
-      req.env["HTTP_ACCEPT"] == "application/json" &&
+    !!(req.env["CONTENT_TYPE"] =~ /application\/json/ &&
+      req.env["HTTP_ACCEPT"] =~ /application\/json/ &&
       !req.env["HTTP_AUTHORIZATION"].nil?)
   end
 
