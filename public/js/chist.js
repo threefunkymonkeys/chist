@@ -71,8 +71,7 @@ window.addEventListener("popstate", function(event) {
 $("body").on('click', ".delete-button, .btn-delete", function(event) {
   event.preventDefault();
   event.stopPropagation();
-  var _this = $('.container');
-  var action = _this.find('.del-for').attr('action');
+  var action = $(event.target).parent().attr('action');
   modal = $("#modal-chist-delete");
   modal.find('form').attr('action', action);
   modal.modal("show");
