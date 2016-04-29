@@ -1,9 +1,10 @@
 require 'monkey-mailer'
 require_relative 'mm-sequel'
+require_relative 'mm-postmark-adapter'
 require_relative "../chist"
 require_relative "../../helpers/environment_helper"
 
-ENV["RACK_ENV"] ||= :development
+ENV["RACK_ENV"] ||= "development"
 
 ChistApp::Helpers.init_environment(ENV["RACK_ENV"])
 
@@ -27,6 +28,9 @@ module ChistMailer
     when 'mandril'
       config.adapter = MonkeyMailer::Adapters::MandrilAPI
       config.adapter_options = {:mandril_api_key => ENV['MANDRIL_API_KEY']}
+    when 'postmark'
+      config.adapter = MonkeyMailer::Adapters::Postmark
+      config.adapter_options = {:postmark_api_token => ENV['POSTMARK_API_TOKEN']}
     else
       raise RuntimeError.new("Must select one adapter: mandril or smtp")
     end
